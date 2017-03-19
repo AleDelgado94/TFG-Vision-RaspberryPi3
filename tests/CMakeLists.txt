@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project(Test)
+find_package(OpenCV REQUIRED)
+add_executable(Captura_imagen captura_imagenes.cpp)
+target_link_libraries(Captura_imagen ${OpenCV_LIBS})
