@@ -43,7 +43,7 @@ void captura(){
 
     std::cout << hora << std::endl;
 
-    cv::imwrite(id + "-" + hora + ".png", bgrMap);
+    cv::imwrite("images/" + id + "-" + hora + ".png", bgrMap);
     numSnapshot++;
     id = static_cast<std::ostringstream*>(&(std::ostringstream() << numSnapshot))->str();
 
@@ -108,8 +108,8 @@ int main(int argc, char* argv[]){
 
 
 
-    foto.join();
     video.join();
+    foto.join();
 
 
 }
