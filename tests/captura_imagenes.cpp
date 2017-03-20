@@ -61,7 +61,7 @@ int graba(){
 
     if (!video.isOpened()) {
         std::cerr<<"Could not open video"<<std::endl;
-        return -1;
+        exit(-1);
     }
 
 
