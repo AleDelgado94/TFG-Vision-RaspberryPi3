@@ -18,6 +18,7 @@
 
 
 using namespace std;
+using namespace cv;
 
 cv::VideoCapture video;
 cv::Mat bgrMap;
@@ -55,35 +56,33 @@ void captura(){
 
 
 int graba(){
-    std::cout << "Press 'Esc' to exit" << std::endl;
+    std::cout << "'Esc' para salir" << std::endl;
 
     video.open(0);
 
     if (!video.isOpened()) {
-        std::cerr<<"Could not open video"<<std::endl;
+        std::cerr<<"No se puede abrir la camera"<<std::endl;
         exit(-1);
     }
 
-
     while (key!=27 && video.grab()) {
-
-
 
         time(&rawtime);
         timeinfo = localtime(&rawtime);
-
-
 
         hora = "";
         for(int i=11; i<19; i++){
           hora += asctime(timeinfo)[i];
         }
-
-
+        
+        
+		
 
         video.retrieve(bgrMap);
+        
+        cv::cvtColor(bgrMap, bgrMap, CV_BGR2RGB);
 
-        cv::imshow("BGR image", bgrMap);
+        cv::imshow("Video", bgrMap);
 
 
         key=cv::waitKey(20);
@@ -110,6 +109,8 @@ int main(int argc, char* argv[]){
 
     video.join();
     foto.join();
+    
+    
 
 
 }
