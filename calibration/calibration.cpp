@@ -505,7 +505,7 @@ int main( int argc, char** argv )
         }
 
        // improve the found corners' coordinate accuracy
-        if( pattern == CHESSBOARD && found) cornerSubPix( viewGray, pointbuf, Size(11,11),
+        if( pattern == CHESSBOARD && found) cornerSubPix( viewGray, pointbuf, Size(6.8,6.8),
             Size(-1,-1), TermCriteria( TermCriteria::EPS+TermCriteria::COUNT, 30, 0.1 ));
 
         if( mode == CAPTURING && found &&
