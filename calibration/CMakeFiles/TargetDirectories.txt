@@ -1,0 +1,3 @@
+/home/pi/TFG-Vision-RaspberryPi3/calibration/CMakeFiles/edit_cache.dir
+/home/pi/TFG-Vision-RaspberryPi3/calibration/CMakeFiles/rebuild_cache.dir
+/home/pi/TFG-Vision-RaspberryPi3/calibration/CMakeFiles/camera_calibration.dir

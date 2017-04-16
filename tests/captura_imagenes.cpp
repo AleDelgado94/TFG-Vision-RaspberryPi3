@@ -21,7 +21,7 @@ using namespace std;
 using namespace cv;
 
 cv::VideoCapture video;
-cv::Mat bgrMap;
+cv::Mat bgrMap(1080,1920,CV_8UC4);
 
 int numSnapshot = 0;
   std::string id = "0";
@@ -43,6 +43,16 @@ void captura(){
     while(key != 27){
 
     std::cout << hora << std::endl;
+
+    //cv::cvtColor(bgrMap, bgrMap, CV_BGR2RGB);
+
+	//video >> bgrMap;
+
+	//cv::cvtColor(bgrMap, bgrMap, CV_BGR2RGB);
+        
+        
+
+        //cv::imshow("Video", bgrMap);
 
     cv::imwrite("images/" + id + "-" + hora + ".png", bgrMap);
     numSnapshot++;
@@ -76,11 +86,16 @@ int graba(){
         }
         
         
-		
+	//cv::cvtColor(bgrMap, bgrMap, CV_BGR2RGB);
 
+	video.grab();
         video.retrieve(bgrMap);
+
+	//video >> bgrMap;
+
+	cv::cvtColor(bgrMap, bgrMap, CV_BGR2RGB);
         
-        cv::cvtColor(bgrMap, bgrMap, CV_BGR2RGB);
+        
 
         cv::imshow("Video", bgrMap);
 

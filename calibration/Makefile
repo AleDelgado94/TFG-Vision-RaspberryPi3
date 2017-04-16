@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/TFG-Vision-RaspberryPi3/tests
+CMAKE_SOURCE_DIR = /home/pi/TFG-Vision-RaspberryPi3/calibration
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/TFG-Vision-RaspberryPi3/tests
+CMAKE_BINARY_DIR = /home/pi/TFG-Vision-RaspberryPi3/calibration
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/TFG-Vision-RaspberryPi3/tests/CMakeFiles /home/pi/TFG-Vision-RaspberryPi3/tests/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/TFG-Vision-RaspberryPi3/calibration/CMakeFiles /home/pi/TFG-Vision-RaspberryPi3/calibration/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/TFG-Vision-RaspberryPi3/tests/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/TFG-Vision-RaspberryPi3/calibration/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,44 +111,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Captura_imagen_rgb
+# Target rules for targets named camera_calibration
 
 # Build rule for target.
-Captura_imagen_rgb: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Captura_imagen_rgb
-.PHONY : Captura_imagen_rgb
+camera_calibration: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 camera_calibration
+.PHONY : camera_calibration
 
 # fast build rule for target.
-Captura_imagen_rgb/fast:
-	$(MAKE) -f CMakeFiles/Captura_imagen_rgb.dir/build.make CMakeFiles/Captura_imagen_rgb.dir/build
-.PHONY : Captura_imagen_rgb/fast
+camera_calibration/fast:
+	$(MAKE) -f CMakeFiles/camera_calibration.dir/build.make CMakeFiles/camera_calibration.dir/build
+.PHONY : camera_calibration/fast
 
-captura_imagenes.o: captura_imagenes.cpp.o
+calibration.o: calibration.cpp.o
 
-.PHONY : captura_imagenes.o
+.PHONY : calibration.o
 
 # target to build an object file
-captura_imagenes.cpp.o:
-	$(MAKE) -f CMakeFiles/Captura_imagen_rgb.dir/build.make CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.o
-.PHONY : captura_imagenes.cpp.o
+calibration.cpp.o:
+	$(MAKE) -f CMakeFiles/camera_calibration.dir/build.make CMakeFiles/camera_calibration.dir/calibration.cpp.o
+.PHONY : calibration.cpp.o
 
-captura_imagenes.i: captura_imagenes.cpp.i
+calibration.i: calibration.cpp.i
 
-.PHONY : captura_imagenes.i
+.PHONY : calibration.i
 
 # target to preprocess a source file
-captura_imagenes.cpp.i:
-	$(MAKE) -f CMakeFiles/Captura_imagen_rgb.dir/build.make CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.i
-.PHONY : captura_imagenes.cpp.i
+calibration.cpp.i:
+	$(MAKE) -f CMakeFiles/camera_calibration.dir/build.make CMakeFiles/camera_calibration.dir/calibration.cpp.i
+.PHONY : calibration.cpp.i
 
-captura_imagenes.s: captura_imagenes.cpp.s
+calibration.s: calibration.cpp.s
 
-.PHONY : captura_imagenes.s
+.PHONY : calibration.s
 
 # target to generate assembly for a file
-captura_imagenes.cpp.s:
-	$(MAKE) -f CMakeFiles/Captura_imagen_rgb.dir/build.make CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.s
-.PHONY : captura_imagenes.cpp.s
+calibration.cpp.s:
+	$(MAKE) -f CMakeFiles/camera_calibration.dir/build.make CMakeFiles/camera_calibration.dir/calibration.cpp.s
+.PHONY : calibration.cpp.s
 
 # Help Target
 help:
@@ -158,10 +158,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... Captura_imagen_rgb"
-	@echo "... captura_imagenes.o"
-	@echo "... captura_imagenes.i"
-	@echo "... captura_imagenes.s"
+	@echo "... camera_calibration"
+	@echo "... calibration.o"
+	@echo "... calibration.i"
+	@echo "... calibration.s"
 .PHONY : help
 
 
