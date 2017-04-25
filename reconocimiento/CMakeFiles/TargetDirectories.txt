@@ -1,0 +1,3 @@
+/home/pi/TFG-Vision-RaspberryPi3/reconocimiento/CMakeFiles/edit_cache.dir
+/home/pi/TFG-Vision-RaspberryPi3/reconocimiento/CMakeFiles/rebuild_cache.dir
+/home/pi/TFG-Vision-RaspberryPi3/reconocimiento/CMakeFiles/reconocimiento.dir

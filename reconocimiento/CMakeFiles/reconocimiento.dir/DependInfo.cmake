@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/pi/TFG-Vision-RaspberryPi3/tests/captura_imagenes.cpp" "/home/pi/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Captura_imagen.dir/captura_imagenes.cpp.o"
+  "/home/pi/TFG-Vision-RaspberryPi3/reconocimiento/reconocimiento.cpp" "/home/pi/TFG-Vision-RaspberryPi3/reconocimiento/CMakeFiles/reconocimiento.dir/reconocimiento.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

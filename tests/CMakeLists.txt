@@ -1,9 +1,27 @@
 cmake_minimum_required(VERSION 2.8)
 project(Test)
+#INCLUDE_DIRECTORIES(;/usr/local/include)
+#LINK_DIRECTORIES("/usr/local/lib")
+
+#set(raspicam_LIBS /opt/vc/lib/libmmal_core.so;/opt/vc/lib/libmmal_util.so;/opt/vc/lib/libmmal.so raspicam) 
+#set(raspicam_FOUND "YES") 
+
+#set(raspicam_CV_FOUND  "YES")
+#set(raspicam_CV_LIBS /opt/vc/lib/libmmal_core.so;/opt/vc/lib/libmmal_util.so;/opt/vc/lib/libmmal.so raspicam opencv_videostab;opencv_video;opencv_ts;opencv_superres;opencv_stitching;opencv_photo;opencv_objdetect;opencv_nonfree;opencv_ml;opencv_legacy;opencv_imgproc;opencv_highgui;opencv_gpu;opencv_flann;opencv_features2d;opencv_core;opencv_contrib;opencv_calib3d raspicam_cv)
+
+#set(raspicam_VERSION        0.1.0)
+#set(raspicam_VERSION_MAJOR  0)
+#set(raspicam_VERSION_MINOR  1)
+#set(raspicam_VERSION_PATCH  0)
+set(raspicam_DIR "/usr/local/lib/cmake")
+#set(raspicam_LIBS /opt/vc/lib/libmmal_core.so;/opt/vc/lib/libmmal_util.so;/opt/vc/lib/libmmal.so raspicam) 
+
 find_package(Threads REQUIRED)
 find_package(OpenCV REQUIRED)
+find_package(raspicam REQUIRED)
 set (CMAKE_CXX_STANDARD 11)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 add_executable(Captura_imagen_rgb captura_imagenes.cpp)
 target_link_libraries(Captura_imagen_rgb Threads::Threads)
 target_link_libraries(Captura_imagen_rgb ${OpenCV_LIBS})
+target_link_libraries(Captura_imagen_rgb /opt/vc/lib/libmmal_core.so;/opt/vc/lib/libmmal_util.so;/opt/vc/lib/libmmal.so raspicam opencv_calib3d;opencv_core;opencv_features2d;opencv_flann;opencv_highgui;opencv_imgcodecs;opencv_imgproc;opencv_ml;opencv_objdetect;opencv_photo;opencv_shape;opencv_stitching;opencv_superres;opencv_video;opencv_videoio;opencv_videostab raspicam_cv)

@@ -68,6 +68,7 @@ CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.o: /usr/local/include/ope
 CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.o: /usr/local/include/opencv2/flann/saving.h
 CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.o: /usr/local/include/opencv2/flann/timer.h
 CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.o: /usr/local/include/opencv2/highgui.hpp
+CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.o: /usr/local/include/opencv2/highgui/highgui.hpp
 CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.o: /usr/local/include/opencv2/highgui/highgui_c.h
 CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.o: /usr/local/include/opencv2/imgcodecs.hpp
 CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.o: /usr/local/include/opencv2/imgcodecs/imgcodecs_c.h
@@ -122,4 +123,5 @@ CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.o: /usr/local/include/ope
 CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.o: /usr/local/include/opencv2/videostab/ring_buffer.hpp
 CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.o: /usr/local/include/opencv2/videostab/stabilizer.hpp
 CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.o: /usr/local/include/opencv2/videostab/wobble_suppression.hpp
+CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.o: /usr/local/include/raspicam/raspicam_cv.h
 

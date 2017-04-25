@@ -69,6 +69,7 @@ CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.o
  /usr/local/include/opencv2/flann/saving.h
  /usr/local/include/opencv2/flann/timer.h
  /usr/local/include/opencv2/highgui.hpp
+ /usr/local/include/opencv2/highgui/highgui.hpp
  /usr/local/include/opencv2/highgui/highgui_c.h
  /usr/local/include/opencv2/imgcodecs.hpp
  /usr/local/include/opencv2/imgcodecs/imgcodecs_c.h
@@ -123,3 +124,4 @@ CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.o
  /usr/local/include/opencv2/videostab/ring_buffer.hpp
  /usr/local/include/opencv2/videostab/stabilizer.hpp
  /usr/local/include/opencv2/videostab/wobble_suppression.hpp
+ /usr/local/include/raspicam/raspicam_cv.h

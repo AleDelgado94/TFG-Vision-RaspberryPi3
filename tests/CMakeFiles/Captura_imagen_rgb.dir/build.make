@@ -90,6 +90,9 @@ Captura_imagen_rgb_EXTERNAL_OBJECTS =
 
 Captura_imagen_rgb: CMakeFiles/Captura_imagen_rgb.dir/captura_imagenes.cpp.o
 Captura_imagen_rgb: CMakeFiles/Captura_imagen_rgb.dir/build.make
+Captura_imagen_rgb: /opt/vc/lib/libmmal_core.so
+Captura_imagen_rgb: /opt/vc/lib/libmmal_util.so
+Captura_imagen_rgb: /opt/vc/lib/libmmal.so
 Captura_imagen_rgb: /usr/local/lib/libopencv_shape.so.3.2.0
 Captura_imagen_rgb: /usr/local/lib/libopencv_stitching.so.3.2.0
 Captura_imagen_rgb: /usr/local/lib/libopencv_superres.so.3.2.0
