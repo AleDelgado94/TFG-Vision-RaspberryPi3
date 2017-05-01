@@ -39,22 +39,35 @@ char key = 0;
 vector<Mat> images;
 vector<float> times;
 
+const int max_exposure = 100;
+const int max_iso = 100;
+int exposure;
+int iso;
 
-void setExposure(float value) {
+void trackbar_exposure(int, void*);
+void trackbar_iso(int, void*);
 
-	float exposure = value;
+void setExposure(float exposure) {
 
 	video.set(CV_CAP_PROP_EXPOSURE, exposure);
+	video.grab();
 	cout << "Exposicion " << video.get(CV_CAP_PROP_EXPOSURE) << endl;
 }
 
+void setISO(float iso){
+	video.set(CV_CAP_PROP_GAIN, iso);
+	video.grab();
+	cout << "ISO" << video.get(CV_CAP_PROP_GAIN) << endl;
+}
+
+ 
 
 void captura(){
 
 
-    //while(key != 27){
+    while(key != 27){
 
-	//sleep(segundos);
+	sleep(segundos);
 
     std::cout <<  "Hora: " <<hora << std::endl;
 	
@@ -65,65 +78,34 @@ void captura(){
 
 	//cv::cvtColor(bgrMap, bgrMap, CV_BGR2RGB);
 	
-	setExposure(100);
-	sleep(1);
+	setExposure(0);
+	setISO(2);
+	sleep(2); 
 	video.grab();
 	video.retrieve(bgrMap);
-	imwrite("images/1.png", bgrMap);
+	imwrite("images/" + id + "-" + hora + "_1.png", bgrMap);
 	
 	
-	setExposure(99);
-	sleep(1);
+	setExposure(0);
+	setISO(7);
+	sleep(2);
 	video.grab();
 	video.retrieve(bgrMap);
-	imwrite("images/2.png", bgrMap);
+	imwrite("images/" + id + "-" + hora + "_2.png", bgrMap);
 	
 	
-	setExposure(95);
-	sleep(1);
+	setExposure(0);
+	setISO(10); 
+	sleep(2);
 	video.grab();
 	video.retrieve(bgrMap);
-	imwrite("images/3.png", bgrMap);
+	imwrite("images/" + id + "-" + hora + "_3.png", bgrMap);
 	
 	
-	setExposure(91);
-	sleep(1);
-	video.grab();
-	video.retrieve(bgrMap);
-	imwrite("images/4.png", bgrMap);
-	video.grab();
-
-	setExposure(88);
-	sleep(1);
-	video.grab();
-	video.retrieve(bgrMap);
-	imwrite("images/5.png", bgrMap);
-	video.grab();
-
-	setExposure(85);
-	sleep(1);
-	video.grab();
-	video.retrieve(bgrMap);
-	imwrite("images/6.png", bgrMap);
-	video.grab();
-
-	setExposure(82);
-	sleep(1);
-	video.grab();
-	video.retrieve(bgrMap);
-	imwrite("images/7.png", bgrMap);
-	video.grab();
-
-	setExposure(79);
-	sleep(1);
-	video.grab();
-	video.retrieve(bgrMap);
-	imwrite("images/8.png", bgrMap);
-	video.grab(); 
-	
+	/*
  
 	float val;
-	for (size_t i = 1; i <= 8; i++)
+	for (size_t i = 1; i <= 3; i++)
 	{
 		String img_name = std::to_string(i) + std::string(".png");
 		val = pow(2, (i*(-1)));
@@ -155,7 +137,7 @@ void captura(){
 	//cvtColor(fusion, fusion, CV_BGR2RGB);
 	imwrite("images/" + id + "-" + hora + ".png", fusion * 255);
 	//imwrite("images/ldr.png", ldr * 255);
-	//imwrite("images/hdr.hdr", hdr);
+	//imwrite("images/hdr.hdr", hdr);*/
         
         
 
@@ -169,7 +151,7 @@ void captura(){
 
     //sleep(segundos);
 
-    //}
+    }
 
 }
 
@@ -179,14 +161,23 @@ int graba(){
 
 	video.set ( CV_CAP_PROP_FRAME_WIDTH, 1920 );
     video.set ( CV_CAP_PROP_FRAME_HEIGHT, 1080 ); 
+    video.set ( CV_CAP_PROP_FPS, 30);
+    cout << video.get ( CV_CAP_PROP_GAIN) << endl;
+    cout << video.get ( CV_CAP_PROP_EXPOSURE) << endl;
+    
 
     if (!video.open()) {
         std::cerr<<"No se puede abrir la camera"<<std::endl;
         exit(-1);
     }
 
+	
+    createTrackbar("Exposure","IMG",&exposure, max_exposure, trackbar_exposure);
+    createTrackbar("iso","IMG",&iso, max_iso, trackbar_iso);
     
-
+    exposure = 0;
+	iso = 0;
+	
     sleep(1);
 
     do {
@@ -211,15 +202,17 @@ int graba(){
 
 	//cv::cvtColor(bgrMap, bgrMap, CV_BGR2RGB);
 
-	if(key == 'c'){
-	cout << "entra" << endl;
+	//if(key == 'c'){
+	//cout << "entra" << endl;
 
-		captura();
+		//captura();
 
-	}
+	//}
+		
+
         
-        
-	
+        //trackbar_iso(iso,0);	
+		//trackbar_exposure(exposure,0);
         cv::imshow("Video", bgrMap);
 
 
@@ -229,6 +222,8 @@ int graba(){
 
 
     }while(key!=27 && video.grab());
+    
+    video.release();
 
 
 
@@ -241,16 +236,31 @@ int main(int argc, char* argv[]){
 
 
     segundos = atoi(argv[1]);
+    //namedWindow("IMG", CV_WINDOW_NORMAL);
 
-  //  std::thread foto_(captura);
+
+    std::thread foto_(captura);
     std::thread video_(graba);
 
-
-
+	
+	
     video_.join();
-    //foto_.join();
+    foto_.join();
     
     
 
 
+}
+
+
+void trackbar_exposure(int, void*){
+		video.set(CV_CAP_PROP_EXPOSURE, exposure);
+		imshow("IMG", bgrMap);
+		//cout << "Exposure: " << video.get ( CV_CAP_PROP_EXPOSURE) << endl;
+}
+
+void trackbar_iso(int, void*){
+		video.set(CV_CAP_PROP_GAIN, iso);
+		imshow("IMG", bgrMap);
+		//cout << "ISO: " << video.get ( CV_CAP_PROP_GAIN) << endl;
 }
