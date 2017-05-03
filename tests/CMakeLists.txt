@@ -25,3 +25,7 @@ target_link_libraries(Sun ${OpenCV_LIBS})
 add_executable(Clouds clouds.cpp)
 target_link_libraries(Clouds Threads::Threads)
 target_link_libraries(Clouds ${OpenCV_LIBS})
+
+add_executable(Homography homography.cpp)
+target_link_libraries(Homography Threads::Threads)
+target_link_libraries(Homography ${OpenCV_LIBS})

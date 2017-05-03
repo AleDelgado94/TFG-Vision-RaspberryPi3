@@ -123,4 +123,7 @@ CMakeFiles/Sun.dir/sun.cpp.o: /usr/local/include/opencv2/videostab/outlier_rejec
 CMakeFiles/Sun.dir/sun.cpp.o: /usr/local/include/opencv2/videostab/ring_buffer.hpp
 CMakeFiles/Sun.dir/sun.cpp.o: /usr/local/include/opencv2/videostab/stabilizer.hpp
 CMakeFiles/Sun.dir/sun.cpp.o: /usr/local/include/opencv2/videostab/wobble_suppression.hpp
+CMakeFiles/Sun.dir/sun.cpp.o: /usr/local/include/opencv2/xfeatures2d.hpp
+CMakeFiles/Sun.dir/sun.cpp.o: /usr/local/include/opencv2/xfeatures2d/cuda.hpp
+CMakeFiles/Sun.dir/sun.cpp.o: /usr/local/include/opencv2/xfeatures2d/nonfree.hpp
 

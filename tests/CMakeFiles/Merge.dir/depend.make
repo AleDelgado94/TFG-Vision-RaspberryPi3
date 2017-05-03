@@ -123,4 +123,7 @@ CMakeFiles/Merge.dir/merge.cpp.o: /usr/local/include/opencv2/videostab/outlier_r
 CMakeFiles/Merge.dir/merge.cpp.o: /usr/local/include/opencv2/videostab/ring_buffer.hpp
 CMakeFiles/Merge.dir/merge.cpp.o: /usr/local/include/opencv2/videostab/stabilizer.hpp
 CMakeFiles/Merge.dir/merge.cpp.o: /usr/local/include/opencv2/videostab/wobble_suppression.hpp
+CMakeFiles/Merge.dir/merge.cpp.o: /usr/local/include/opencv2/xfeatures2d.hpp
+CMakeFiles/Merge.dir/merge.cpp.o: /usr/local/include/opencv2/xfeatures2d/cuda.hpp
+CMakeFiles/Merge.dir/merge.cpp.o: /usr/local/include/opencv2/xfeatures2d/nonfree.hpp
 

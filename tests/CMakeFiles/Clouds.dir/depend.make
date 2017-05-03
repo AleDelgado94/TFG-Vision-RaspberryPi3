@@ -123,4 +123,7 @@ CMakeFiles/Clouds.dir/clouds.cpp.o: /usr/local/include/opencv2/videostab/outlier
 CMakeFiles/Clouds.dir/clouds.cpp.o: /usr/local/include/opencv2/videostab/ring_buffer.hpp
 CMakeFiles/Clouds.dir/clouds.cpp.o: /usr/local/include/opencv2/videostab/stabilizer.hpp
 CMakeFiles/Clouds.dir/clouds.cpp.o: /usr/local/include/opencv2/videostab/wobble_suppression.hpp
+CMakeFiles/Clouds.dir/clouds.cpp.o: /usr/local/include/opencv2/xfeatures2d.hpp
+CMakeFiles/Clouds.dir/clouds.cpp.o: /usr/local/include/opencv2/xfeatures2d/cuda.hpp
+CMakeFiles/Clouds.dir/clouds.cpp.o: /usr/local/include/opencv2/xfeatures2d/nonfree.hpp
 

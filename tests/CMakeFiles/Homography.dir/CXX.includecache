@@ -6,38 +6,24 @@
 
 #IncludeRegexTransform: 
 
-/home/aledelgado/TFG-Vision-RaspberryPi3/tests/merge.cpp
+/home/aledelgado/TFG-Vision-RaspberryPi3/tests/homography.cpp
 iostream
 -
-opencv2/core/core.hpp
+opencv2/calib3d.hpp
+/home/aledelgado/TFG-Vision-RaspberryPi3/tests/opencv2/calib3d.hpp
+opencv2/videoio.hpp
+/home/aledelgado/TFG-Vision-RaspberryPi3/tests/opencv2/videoio.hpp
+opencv2/highgui.hpp
+/home/aledelgado/TFG-Vision-RaspberryPi3/tests/opencv2/highgui.hpp
+opencv2/imgproc.hpp
+/home/aledelgado/TFG-Vision-RaspberryPi3/tests/opencv2/imgproc.hpp
+opencv2/features2d.hpp
+/home/aledelgado/TFG-Vision-RaspberryPi3/tests/opencv2/features2d.hpp
+opencv2/xfeatures2d.hpp
+/home/aledelgado/TFG-Vision-RaspberryPi3/tests/opencv2/xfeatures2d.hpp
+list
 -
-opencv2/opencv.hpp
--
-opencv2/highgui/highgui.hpp
--
-ctime
--
-cstdio
--
-cmath
--
-cstdlib
--
-thread
--
-unistd.h
--
-cstring
--
-time.h
--
-sstream
--
-dirent.h
--
-sys/stat.h
--
-cmath
+vector
 -
 
 /usr/local/include/opencv/cxcore.h
@@ -111,10 +97,6 @@ opencv2/core/neon_utils.hpp
 /usr/local/include/opencv2/core/opencv2/core/neon_utils.hpp
 
 /usr/local/include/opencv2/core/bufferpool.hpp
-
-/usr/local/include/opencv2/core/core.hpp
-opencv2/core.hpp
-/usr/local/include/opencv2/core/opencv2/core.hpp
 
 /usr/local/include/opencv2/core/core_c.h
 opencv2/core/types_c.h
@@ -767,10 +749,6 @@ opencv2/videoio.hpp
 /usr/local/include/opencv2/opencv2/videoio.hpp
 opencv2/highgui/highgui_c.h
 /usr/local/include/opencv2/opencv2/highgui/highgui_c.h
-
-/usr/local/include/opencv2/highgui/highgui.hpp
-opencv2/highgui.hpp
-/usr/local/include/opencv2/highgui/opencv2/highgui.hpp
 
 /usr/local/include/opencv2/highgui/highgui_c.h
 opencv2/core/core_c.h

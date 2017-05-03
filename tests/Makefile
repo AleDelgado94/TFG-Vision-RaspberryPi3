@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/aledelgado/TFG-Vision-RaspberryPi3/tests
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -149,6 +149,19 @@ Sun/fast:
 	$(MAKE) -f CMakeFiles/Sun.dir/build.make CMakeFiles/Sun.dir/build
 .PHONY : Sun/fast
 
+#=============================================================================
+# Target rules for targets named Homography
+
+# Build rule for target.
+Homography: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Homography
+.PHONY : Homography
+
+# fast build rule for target.
+Homography/fast:
+	$(MAKE) -f CMakeFiles/Homography.dir/build.make CMakeFiles/Homography.dir/build
+.PHONY : Homography/fast
+
 clouds.o: clouds.cpp.o
 
 .PHONY : clouds.o
@@ -175,6 +188,33 @@ clouds.s: clouds.cpp.s
 clouds.cpp.s:
 	$(MAKE) -f CMakeFiles/Clouds.dir/build.make CMakeFiles/Clouds.dir/clouds.cpp.s
 .PHONY : clouds.cpp.s
+
+homography.o: homography.cpp.o
+
+.PHONY : homography.o
+
+# target to build an object file
+homography.cpp.o:
+	$(MAKE) -f CMakeFiles/Homography.dir/build.make CMakeFiles/Homography.dir/homography.cpp.o
+.PHONY : homography.cpp.o
+
+homography.i: homography.cpp.i
+
+.PHONY : homography.i
+
+# target to preprocess a source file
+homography.cpp.i:
+	$(MAKE) -f CMakeFiles/Homography.dir/build.make CMakeFiles/Homography.dir/homography.cpp.i
+.PHONY : homography.cpp.i
+
+homography.s: homography.cpp.s
+
+.PHONY : homography.s
+
+# target to generate assembly for a file
+homography.cpp.s:
+	$(MAKE) -f CMakeFiles/Homography.dir/build.make CMakeFiles/Homography.dir/homography.cpp.s
+.PHONY : homography.cpp.s
 
 merge.o: merge.cpp.o
 
@@ -236,14 +276,18 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... edit_cache"
 	@echo "... Merge"
 	@echo "... Clouds"
 	@echo "... rebuild_cache"
 	@echo "... Sun"
-	@echo "... edit_cache"
+	@echo "... Homography"
 	@echo "... clouds.o"
 	@echo "... clouds.i"
 	@echo "... clouds.s"
+	@echo "... homography.o"
+	@echo "... homography.i"
+	@echo "... homography.s"
 	@echo "... merge.o"
 	@echo "... merge.i"
 	@echo "... merge.s"
