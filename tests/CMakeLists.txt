@@ -29,3 +29,11 @@ target_link_libraries(Clouds ${OpenCV_LIBS})
 add_executable(Homography homography.cpp)
 target_link_libraries(Homography Threads::Threads)
 target_link_libraries(Homography ${OpenCV_LIBS})
+
+add_executable(Optical_flow optical_flow.cpp)
+target_link_libraries(Optical_flow Threads::Threads)
+target_link_libraries(Optical_flow ${OpenCV_LIBS})
+
+add_executable(Tracking_cloud cloud_tracking.cpp)
+target_link_libraries(Tracking_cloud Threads::Threads)
+target_link_libraries(Tracking_cloud ${OpenCV_LIBS})

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/aledelgado/TFG-Vision-RaspberryPi3/tests
+CMAKE_SOURCE_DIR = /home/aledelgado/tfg
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/aledelgado/TFG-Vision-RaspberryPi3/tests
+CMAKE_BINARY_DIR = /home/aledelgado/tfg
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/tfg/CMakeFiles /home/aledelgado/tfg/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/tfg/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named Optical_flow
+
+# Build rule for target.
+Optical_flow: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Optical_flow
+.PHONY : Optical_flow
+
+# fast build rule for target.
+Optical_flow/fast:
+	$(MAKE) -f CMakeFiles/Optical_flow.dir/build.make CMakeFiles/Optical_flow.dir/build
+.PHONY : Optical_flow/fast
+
+#=============================================================================
 # Target rules for targets named Merge
 
 # Build rule for target.
@@ -122,6 +135,19 @@ Merge: cmake_check_build_system
 Merge/fast:
 	$(MAKE) -f CMakeFiles/Merge.dir/build.make CMakeFiles/Merge.dir/build
 .PHONY : Merge/fast
+
+#=============================================================================
+# Target rules for targets named Tracking_cloud
+
+# Build rule for target.
+Tracking_cloud: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Tracking_cloud
+.PHONY : Tracking_cloud
+
+# fast build rule for target.
+Tracking_cloud/fast:
+	$(MAKE) -f CMakeFiles/Tracking_cloud.dir/build.make CMakeFiles/Tracking_cloud.dir/build
+.PHONY : Tracking_cloud/fast
 
 #=============================================================================
 # Target rules for targets named Clouds
@@ -161,6 +187,33 @@ Homography: cmake_check_build_system
 Homography/fast:
 	$(MAKE) -f CMakeFiles/Homography.dir/build.make CMakeFiles/Homography.dir/build
 .PHONY : Homography/fast
+
+cloud_tracking.o: cloud_tracking.cpp.o
+
+.PHONY : cloud_tracking.o
+
+# target to build an object file
+cloud_tracking.cpp.o:
+	$(MAKE) -f CMakeFiles/Tracking_cloud.dir/build.make CMakeFiles/Tracking_cloud.dir/cloud_tracking.cpp.o
+.PHONY : cloud_tracking.cpp.o
+
+cloud_tracking.i: cloud_tracking.cpp.i
+
+.PHONY : cloud_tracking.i
+
+# target to preprocess a source file
+cloud_tracking.cpp.i:
+	$(MAKE) -f CMakeFiles/Tracking_cloud.dir/build.make CMakeFiles/Tracking_cloud.dir/cloud_tracking.cpp.i
+.PHONY : cloud_tracking.cpp.i
+
+cloud_tracking.s: cloud_tracking.cpp.s
+
+.PHONY : cloud_tracking.s
+
+# target to generate assembly for a file
+cloud_tracking.cpp.s:
+	$(MAKE) -f CMakeFiles/Tracking_cloud.dir/build.make CMakeFiles/Tracking_cloud.dir/cloud_tracking.cpp.s
+.PHONY : cloud_tracking.cpp.s
 
 clouds.o: clouds.cpp.o
 
@@ -243,6 +296,33 @@ merge.cpp.s:
 	$(MAKE) -f CMakeFiles/Merge.dir/build.make CMakeFiles/Merge.dir/merge.cpp.s
 .PHONY : merge.cpp.s
 
+optical_flow.o: optical_flow.cpp.o
+
+.PHONY : optical_flow.o
+
+# target to build an object file
+optical_flow.cpp.o:
+	$(MAKE) -f CMakeFiles/Optical_flow.dir/build.make CMakeFiles/Optical_flow.dir/optical_flow.cpp.o
+.PHONY : optical_flow.cpp.o
+
+optical_flow.i: optical_flow.cpp.i
+
+.PHONY : optical_flow.i
+
+# target to preprocess a source file
+optical_flow.cpp.i:
+	$(MAKE) -f CMakeFiles/Optical_flow.dir/build.make CMakeFiles/Optical_flow.dir/optical_flow.cpp.i
+.PHONY : optical_flow.cpp.i
+
+optical_flow.s: optical_flow.cpp.s
+
+.PHONY : optical_flow.s
+
+# target to generate assembly for a file
+optical_flow.cpp.s:
+	$(MAKE) -f CMakeFiles/Optical_flow.dir/build.make CMakeFiles/Optical_flow.dir/optical_flow.cpp.s
+.PHONY : optical_flow.cpp.s
+
 sun.o: sun.cpp.o
 
 .PHONY : sun.o
@@ -277,11 +357,16 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... Optical_flow"
 	@echo "... Merge"
+	@echo "... Tracking_cloud"
 	@echo "... Clouds"
 	@echo "... rebuild_cache"
 	@echo "... Sun"
 	@echo "... Homography"
+	@echo "... cloud_tracking.o"
+	@echo "... cloud_tracking.i"
+	@echo "... cloud_tracking.s"
 	@echo "... clouds.o"
 	@echo "... clouds.i"
 	@echo "... clouds.s"
@@ -291,6 +376,9 @@ help:
 	@echo "... merge.o"
 	@echo "... merge.i"
 	@echo "... merge.s"
+	@echo "... optical_flow.o"
+	@echo "... optical_flow.i"
+	@echo "... optical_flow.s"
 	@echo "... sun.o"
 	@echo "... sun.i"
 	@echo "... sun.s"

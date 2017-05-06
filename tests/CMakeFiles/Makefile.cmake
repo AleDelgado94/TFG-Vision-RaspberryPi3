@@ -52,7 +52,9 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/Optical_flow.dir/DependInfo.cmake"
   "CMakeFiles/Merge.dir/DependInfo.cmake"
+  "CMakeFiles/Tracking_cloud.dir/DependInfo.cmake"
   "CMakeFiles/Clouds.dir/DependInfo.cmake"
   "CMakeFiles/Sun.dir/DependInfo.cmake"
   "CMakeFiles/Homography.dir/DependInfo.cmake"

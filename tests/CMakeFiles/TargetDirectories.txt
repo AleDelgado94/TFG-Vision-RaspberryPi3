@@ -1,6 +1,8 @@
-/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/edit_cache.dir
-/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Merge.dir
-/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Clouds.dir
-/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/rebuild_cache.dir
-/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Sun.dir
-/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Homography.dir
+/home/aledelgado/tfg/CMakeFiles/edit_cache.dir
+/home/aledelgado/tfg/CMakeFiles/Optical_flow.dir
+/home/aledelgado/tfg/CMakeFiles/Merge.dir
+/home/aledelgado/tfg/CMakeFiles/Tracking_cloud.dir
+/home/aledelgado/tfg/CMakeFiles/Clouds.dir
+/home/aledelgado/tfg/CMakeFiles/rebuild_cache.dir
+/home/aledelgado/tfg/CMakeFiles/Sun.dir
+/home/aledelgado/tfg/CMakeFiles/Homography.dir

@@ -6,21 +6,21 @@
 
 #IncludeRegexTransform: 
 
-/home/aledelgado/TFG-Vision-RaspberryPi3/tests/homography.cpp
+/home/aledelgado/tfg/homography.cpp
 iostream
 -
 opencv2/calib3d.hpp
-/home/aledelgado/TFG-Vision-RaspberryPi3/tests/opencv2/calib3d.hpp
+/home/aledelgado/tfg/opencv2/calib3d.hpp
 opencv2/videoio.hpp
-/home/aledelgado/TFG-Vision-RaspberryPi3/tests/opencv2/videoio.hpp
+/home/aledelgado/tfg/opencv2/videoio.hpp
 opencv2/highgui.hpp
-/home/aledelgado/TFG-Vision-RaspberryPi3/tests/opencv2/highgui.hpp
+/home/aledelgado/tfg/opencv2/highgui.hpp
 opencv2/imgproc.hpp
-/home/aledelgado/TFG-Vision-RaspberryPi3/tests/opencv2/imgproc.hpp
+/home/aledelgado/tfg/opencv2/imgproc.hpp
 opencv2/features2d.hpp
-/home/aledelgado/TFG-Vision-RaspberryPi3/tests/opencv2/features2d.hpp
+/home/aledelgado/tfg/opencv2/features2d.hpp
 opencv2/xfeatures2d.hpp
-/home/aledelgado/TFG-Vision-RaspberryPi3/tests/opencv2/xfeatures2d.hpp
+/home/aledelgado/tfg/opencv2/xfeatures2d.hpp
 list
 -
 vector

@@ -34,9 +34,7 @@ static void help(char **av)
 
 namespace
 {
-    void drawMatchesRelative(const vector<KeyPoint>& train, const vector<KeyPoint>& query,
-        std::vector<cv::DMatch>& matches, Mat& img, const vector<unsigned char>& mask = vector<
-        unsigned char> ())
+    void drawMatchesRelative(const vector<KeyPoint>& train, const vector<KeyPoint>& query, std::vector<cv::DMatch>& matches, Mat& img, const vector<unsigned char>& mask = vector<unsigned char>())
     {
         for (int i = 0; i < (int)matches.size(); i++)
         {
@@ -178,7 +176,7 @@ int main(int ac, char ** av)
 
             //Mat mask = windowedMatchingMask(test_kpts, train_kpts, 25, 25);
             desc_matcher.match(query_desc, train_desc, matches, Mat());
-            drawKeypoints(frame, test_kpts, frame, Scalar(255, 0, 0), DrawMatchesFlags::DRAW_OVER_OUTIMG);
+            drawKeypoints(frame, test_kpts, frame, Scalar(255, 0, 0), 1);
 
             matches2points(train_kpts, query_kpts, matches, train_pts, query_pts);
 
@@ -207,11 +205,11 @@ int main(int ac, char ** av)
 
         imshow("frame", frame);
 
-        if (ref_live)
+       /* if (ref_live)
         {
             train_kpts = query_kpts;
             query_desc.copyTo(train_desc);
-        }
+        }*/
         char key = (char)waitKey(2);
         switch (key)
         {

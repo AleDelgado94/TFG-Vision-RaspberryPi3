@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/aledelgado/tfg/merge.cpp
+/home/aledelgado/tfg/cloud_tracking.cpp
 iostream
 -
 opencv2/core/core.hpp
@@ -38,6 +38,10 @@ dirent.h
 sys/stat.h
 -
 cmath
+-
+algorithm
+-
+regex
 -
 
 /usr/local/include/opencv/cxcore.h
