@@ -37,3 +37,7 @@ target_link_libraries(Optical_flow ${OpenCV_LIBS})
 add_executable(Tracking_cloud cloud_tracking.cpp)
 target_link_libraries(Tracking_cloud Threads::Threads)
 target_link_libraries(Tracking_cloud ${OpenCV_LIBS})
+
+add_executable(Detection detection.cpp)
+target_link_libraries(Detection Threads::Threads)
+target_link_libraries(Detection ${OpenCV_LIBS})

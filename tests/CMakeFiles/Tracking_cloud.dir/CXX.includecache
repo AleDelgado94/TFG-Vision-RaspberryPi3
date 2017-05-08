@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/aledelgado/tfg/cloud_tracking.cpp
+/home/aledelgado/TFG-Vision-RaspberryPi3/tests/cloud_tracking.cpp
 iostream
 -
 opencv2/core/core.hpp
@@ -32,6 +32,8 @@ cstring
 time.h
 -
 sstream
+-
+fstream
 -
 dirent.h
 -

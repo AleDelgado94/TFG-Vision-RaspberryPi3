@@ -24,6 +24,12 @@ using namespace std;
 using namespace cv;
 
 ofstream fichero;
+int umbral_bajo = 0;
+int const umbral_alto = 255;
+int ratio_ = 3;
+int kernel_size = 3;
+int umbral;
+
 
 void save_data(string ruta_fichero, string nombre_img, Point2i pi, Point2i pf, float dist, float angulo, int id){
 
@@ -119,8 +125,103 @@ vector<string> leer_imagenes(const string& ruta_imagenes)
 
 
 
+
+int menor_vector(vector<float> soles_radio){
+    float menor = soles_radio[0];
+    int retorno;
+    for(int k=0; k<soles_radio.size(); k++){
+        if(soles_radio[k] < menor){
+            menor = soles_radio[k];
+            retorno = k;
+        }
+    }
+    return retorno;
+}
+
+void detecta_sun(Mat img1, int umbral_bajo){
+
+    vector<float> soles_radio;
+    vector<Point2f> soles_center;
+
+    Mat img;
+    img1.copyTo(img);
+    //BILATERAL FILTER
+    Mat bilateralFilterImg;
+    bilateralFilter(img, bilateralFilterImg, 5, 175, 175);
+
+    //EDGE DETECTION
+    Mat edge;
+    cvtColor(bilateralFilterImg, bilateralFilterImg, CV_RGB2GRAY);
+    threshold(bilateralFilterImg, edge, umbral_bajo, umbral_alto, 0);
+
+    //COUNTOURS
+    vector<vector<Point>> contours;
+    vector<Vec4i> hierarchy;
+    findContours(edge, contours, hierarchy, CV_RETR_TREE, CHAIN_APPROX_SIMPLE, Point(0, 0));
+
+    vector<vector<Point>> contours_poly(contours.size());
+    vector<Point2f> center(contours.size());
+    vector<float> radius(contours.size());
+
+    for (int i = 0; i < contours.size(); i++)
+    {
+            approxPolyDP(Mat(contours[i]), contours_poly[i], 3, true);
+            minEnclosingCircle((Mat)contours_poly[i], center[i], radius[i]);
+            //double area = (3.14159265359 * pow(radius[i],2));
+
+            if (radius[i] > 150 && radius[i] < 210) {
+                    cout << radius[i] << endl;
+                    soles_radio.push_back(radius[i]);
+                    soles_center.push_back(center[i]);
+            }
+    }
+
+    if(soles_radio.size() > 1){
+
+        int i, proximo;
+        auto centro = soles_center.front();
+        auto radio = soles_radio.front();
+
+
+        //BUSQUEDA DEL ELEMENTO MÁS PROXIMO A 200
+
+        int num_aproximar = 200;
+
+        vector<float> diferencia;
+        for(int j=0; j<soles_radio.size(); j++){
+            diferencia.push_back(abs(num_aproximar-soles_radio[j]));
+        }
+
+        int index = menor_vector(diferencia);
+
+        centro = soles_center[index];
+        radio = soles_radio[index];
+
+        circle(img, centro, (int)radio, Scalar(0, 0, 255), 2, 8, 0);
+        circle(img, centro, 5, Scalar(255, 0, 0), 2, 8, 0);
+
+
+
+    }else if(soles_radio.size() == 1){
+        auto radio = soles_radio.front();
+        auto centro = soles_center.front();
+        soles_radio.clear();
+        soles_center.clear();
+        circle(img, centro, (int)radio, Scalar(0, 0, 255), 2, 8, 0);
+        circle(img, centro, 5, Scalar(255, 0, 0), 2, 8, 0);
+    }
+
+    namedWindow("sol", CV_WINDOW_NORMAL);
+    imshow("sol", img);
+
+}
+
+
 int main(int argc, char *argv[])
 {
+    umbral_bajo=250;
+
+    cout << "Umbral: " << umbral_bajo << endl << endl;
 
     vector<string> imgs_name = leer_imagenes("images_hdr/");
     vector<string> imgs_name_sort(imgs_name.size()-2);
@@ -157,24 +258,27 @@ int main(int argc, char *argv[])
 
     inicializa_fichero("prueba.txt");
 
-
     for(int i=1; i<200; i++){
         Mat img_ant = images[i-1];
         Mat img_actual = images[i];
+        Mat img_sun = images[i];
         Mat im_ant, im_act;
 
         cvtColor(img_ant, im_ant, CV_RGB2GRAY);
         cvtColor(img_actual, im_act, CV_RGB2GRAY);
+        //cvtColor(img_sun, img_sun, CV_RGB2GRAY);
 
         cout << "IMG: " << i << endl;
+        detecta_sun(img_sun, umbral_bajo);
 
         goodFeaturesToTrack(im_ant, puntos_ant, numero_puntos, 0.01, 0);
         calcOpticalFlowPyrLK(im_ant, im_act, puntos_ant, puntos_actual, estado, error);
-
-
         dibuja_CloudTracking(img_actual, puntos_ant, puntos_actual, estado, i);
-        namedWindow("img", CV_WINDOW_NORMAL);
-        imshow("img", img_actual);
+
+
+        namedWindow("nubes", CV_WINDOW_NORMAL);
+        imshow("nubes", img_actual);
+
 
         /*
          *
@@ -191,15 +295,5 @@ int main(int argc, char *argv[])
 
 
 
-
-
-
-
-
     return 0;
 }
-
-
-
-
-

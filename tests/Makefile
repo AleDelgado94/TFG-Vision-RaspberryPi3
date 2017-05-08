@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/aledelgado/tfg
+CMAKE_SOURCE_DIR = /home/aledelgado/TFG-Vision-RaspberryPi3/tests
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/aledelgado/tfg
+CMAKE_BINARY_DIR = /home/aledelgado/TFG-Vision-RaspberryPi3/tests
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/tfg/CMakeFiles /home/aledelgado/tfg/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/tfg/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -176,6 +176,19 @@ Sun/fast:
 .PHONY : Sun/fast
 
 #=============================================================================
+# Target rules for targets named Detection
+
+# Build rule for target.
+Detection: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Detection
+.PHONY : Detection
+
+# fast build rule for target.
+Detection/fast:
+	$(MAKE) -f CMakeFiles/Detection.dir/build.make CMakeFiles/Detection.dir/build
+.PHONY : Detection/fast
+
+#=============================================================================
 # Target rules for targets named Homography
 
 # Build rule for target.
@@ -241,6 +254,33 @@ clouds.s: clouds.cpp.s
 clouds.cpp.s:
 	$(MAKE) -f CMakeFiles/Clouds.dir/build.make CMakeFiles/Clouds.dir/clouds.cpp.s
 .PHONY : clouds.cpp.s
+
+detection.o: detection.cpp.o
+
+.PHONY : detection.o
+
+# target to build an object file
+detection.cpp.o:
+	$(MAKE) -f CMakeFiles/Detection.dir/build.make CMakeFiles/Detection.dir/detection.cpp.o
+.PHONY : detection.cpp.o
+
+detection.i: detection.cpp.i
+
+.PHONY : detection.i
+
+# target to preprocess a source file
+detection.cpp.i:
+	$(MAKE) -f CMakeFiles/Detection.dir/build.make CMakeFiles/Detection.dir/detection.cpp.i
+.PHONY : detection.cpp.i
+
+detection.s: detection.cpp.s
+
+.PHONY : detection.s
+
+# target to generate assembly for a file
+detection.cpp.s:
+	$(MAKE) -f CMakeFiles/Detection.dir/build.make CMakeFiles/Detection.dir/detection.cpp.s
+.PHONY : detection.cpp.s
 
 homography.o: homography.cpp.o
 
@@ -363,6 +403,7 @@ help:
 	@echo "... Clouds"
 	@echo "... rebuild_cache"
 	@echo "... Sun"
+	@echo "... Detection"
 	@echo "... Homography"
 	@echo "... cloud_tracking.o"
 	@echo "... cloud_tracking.i"
@@ -370,6 +411,9 @@ help:
 	@echo "... clouds.o"
 	@echo "... clouds.i"
 	@echo "... clouds.s"
+	@echo "... detection.o"
+	@echo "... detection.i"
+	@echo "... detection.s"
 	@echo "... homography.o"
 	@echo "... homography.i"
 	@echo "... homography.s"
