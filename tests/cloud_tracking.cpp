@@ -122,7 +122,11 @@ vector<string> leer_imagenes(const string& ruta_imagenes)
 int main(int argc, char *argv[])
 {
 
-    vector<string> imgs_name = leer_imagenes("images_hdr/");
+
+    string directorio_images = argv[1];
+
+
+    vector<string> imgs_name = leer_imagenes(directorio_images);
     vector<string> imgs_name_sort(imgs_name.size()-2);
     int numero_puntos = 2000;
 
@@ -145,7 +149,7 @@ int main(int argc, char *argv[])
 
     vector<Mat> images;
     for(int i=0; i<200; i++){
-        Mat im = imread("images_hdr/"+imgs_name_sort[i]);
+        Mat im = imread(directorio_images+"/"+imgs_name_sort[i]);
         images.push_back(im);
     }
 

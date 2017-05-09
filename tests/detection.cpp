@@ -78,11 +78,11 @@ void dibuja_CloudTracking(Mat img, const vector<Point2f>& img_ant_pts, const vec
             float angulo = atan2((pf.y - pi.y), (pf.x - pi.x));
 
             if(dist >= 2 && dist <= 80){
-                cout << i << endl;
+                /*cout << i << endl;
                 cout << "Pi: (" << pi.x << ", " << pi.y << ")" << endl;
                 cout << "Pf: (" << pf.x << ", " << pf.y << ")" << endl;
                 cout << "Dist: " << dist << endl;
-                cout << "Angulo: " << angulo << endl << endl;
+                cout << "Angulo: " << angulo << endl << endl;*/
 
                 //dibujamos la linea
                 arrowedLine(img, pi, pf, Scalar(255,0,0),1,8,0,0.2);
@@ -210,6 +210,49 @@ void detecta_sun(Mat img1, int umbral_bajo){
         circle(img, centro, (int)radio, Scalar(0, 0, 255), 2, 8, 0);
         circle(img, centro, 5, Scalar(255, 0, 0), 2, 8, 0);
     }
+    else
+    {
+
+
+        //NO SE DETECTO EL SOL MEDIANTE LA TÉCNICA UTILIZADA
+        //TODO: DETECCION MEDIANTE ILUMINACIÓN
+        Mat hsv;
+        cvtColor(img1, hsv, CV_RGB2GRAY);
+
+        Scalar LOW(228,230,237);
+        Scalar HIGH(255,255,255);
+
+
+        //DETECCIÓN MEDIANTE BRILLO
+        Mat mask;
+        inRange(hsv, LOW, HIGH, mask);
+
+        imshow("mask", mask);
+
+        //ELIMINACION DE RUIDOS
+        Moments m;
+        m = moments(mask);
+        double moment_area = m.m00;
+        cout << "Area: " << moment_area << endl;
+        Point2f center;
+
+        //Buscar el centro
+        int x = int(m.m10/m.m00);
+        int y = int(m.m01/m.m00);
+        center.x = x;
+        center.y = y;
+
+        cout << center.x << "  " << center.y << endl;
+
+
+
+        circle(img, center, 70, Scalar(255,0,0),2,8,0);
+
+
+
+        imshow("SOLITO",hsv);
+
+    }
 
     namedWindow("sol", CV_WINDOW_NORMAL);
     imshow("sol", img);
@@ -221,9 +264,11 @@ int main(int argc, char *argv[])
 {
     umbral_bajo=250;
 
+    string ruta_directorio = argv[1];
+
     cout << "Umbral: " << umbral_bajo << endl << endl;
 
-    vector<string> imgs_name = leer_imagenes("images_hdr/");
+    vector<string> imgs_name = leer_imagenes(ruta_directorio);
     vector<string> imgs_name_sort(imgs_name.size()-2);
     int numero_puntos = 2000;
 
@@ -246,7 +291,7 @@ int main(int argc, char *argv[])
 
     vector<Mat> images;
     for(int i=0; i<200; i++){
-        Mat im = imread("images_hdr/"+imgs_name_sort[i]);
+        Mat im = imread(ruta_directorio+"/"+imgs_name_sort[i]);
         images.push_back(im);
     }
 
