@@ -29,7 +29,12 @@ int const umbral_alto = 255;
 int ratio_ = 3;
 int kernel_size = 3;
 int umbral;
+std::vector<std::vector<Point2i>> tracking_points;
+Point2i referencia_ant_i;
+Point2i referencia_ant_f;
 
+Point2i referencia_act_i;
+Point2i referencia_act_f;
 
 void save_data(string ruta_fichero, string nombre_img, Point2i pi, Point2i pf, float dist, float angulo, int id){
 
@@ -64,6 +69,14 @@ void save_end_img(string ruta_fichero){
 
 void dibuja_CloudTracking(Mat img, const vector<Point2f>& img_ant_pts, const vector<Point2f>& img_actual_pts, const vector<unsigned char>& estado,
                           int id){
+
+    //INICIALIZAMOS LOS PRIMEROS PUNTOS
+    if(id==0){
+        referencia_ant_i = img_ant_pts[0];
+        referencia_act_i = img_actual_pts[0];
+    }
+
+
     for(int i=0; i<img_ant_pts.size(); i++){
 
         if(estado[i]){
@@ -85,8 +98,32 @@ void dibuja_CloudTracking(Mat img, const vector<Point2f>& img_ant_pts, const vec
                 cout << "Angulo: " << angulo << endl << endl;*/
 
                 //dibujamos la linea
-                arrowedLine(img, pi, pf, Scalar(255,0,0),1,8,0,0.2);
+                //arrowedLine(img, pi, pf, Scalar(255,0,0),1,8,0,0.2);
                 save_data("prueba.txt", "", pi, pf, dist, angulo, id);
+
+                referencia_ant_i = pf;
+                referencia_ant_f = pi;
+
+                float dist_area_arrow_i = sqrt(pow((referencia_act_i.x - referencia_ant_i.x) , 2) + pow((referencia_act_i.y - referencia_ant_i.y) , 2));
+                float dist_area_arrow_f = sqrt(pow((referencia_act_f.x - referencia_ant_f.x) , 2) + pow((referencia_act_f.y - referencia_ant_f.y) , 2));
+
+
+
+                if(dist_area_arrow > 300){
+                  cout << "Distancia entre puntos: " << dist_area_arrow << endl;
+
+                  int pi_x_medio = (referencia_ant.x + referencia_act.x) / 2;
+                  int pi_y_medio = (referencia_ant.x + referencia_act.x) / 2;
+                  int pf_x_medio =
+                  int pf_y_medio =
+
+
+
+                  referencia_ant = referencia_act;
+                  arrowedLine(img, referencia_ant, referencia_act, Scalar(0,0,255),1,8,0,0.2);
+                }
+
+
 
 
 
@@ -265,6 +302,9 @@ int main(int argc, char *argv[])
     umbral_bajo=250;
 
     string ruta_directorio = argv[1];
+    referencia_act.x=0;
+    referencia_act.y=0;
+    referencia_ant=referencia_act;
 
     cout << "Umbral: " << umbral_bajo << endl << endl;
 
