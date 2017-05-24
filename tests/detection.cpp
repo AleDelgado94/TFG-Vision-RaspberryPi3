@@ -29,7 +29,12 @@ int const umbral_alto = 255;
 int ratio_ = 3;
 int kernel_size = 3;
 int umbral;
+std::vector<std::vector<Point2i>> tracking_points;
+Point2i referencia_ant_i;
+Point2i referencia_ant_f;
 
+Point2i referencia_act_i;
+Point2i referencia_act_f;
 
 void save_data(string ruta_fichero, string nombre_img, Point2i pi, Point2i pf, float dist, float angulo, int id){
 
@@ -61,9 +66,52 @@ void save_end_img(string ruta_fichero){
     fichero.close();
 }
 
+std::vector<std::vector<Point2f>> agrupa_vectores(const std::vector<Point2f>& img_ant_pts, const std::vector<Point2f>& img_actual_pts){
+
+    std::vector<std::vector<Point2f>> v;
+    std::vector<Point2f> v_act;
+    std::vector<Point2f> v_ant;
+
+    Point2f point_ant, point_act;
+
+
+    point_ant = img_ant_pts[0];
+    point_act = img_actual_pts[0];
+    float dist = 0;
+
+    for (size_t i = 1; i < img_ant_pts.size(); i++) {
+        dist = sqrt(pow((img_ant_pts[i].x - point_ant.x), 2) + pow((img_ant_pts[i].y - point_ant.y),2));
+        cout << dist << endl;
+        //if (dist > 10 && dist < 200) {
+          Point2f punto_medio_ant;
+          punto_medio_ant.x = (point_ant.x + img_ant_pts[i].x)/2;
+          punto_medio_ant.y = (point_ant.y + img_ant_pts[i].y)/2;
+          v_ant.push_back(punto_medio_ant);
+
+          Point2f punto_medio_act;
+          punto_medio_act.x = (point_act.x + img_actual_pts[i].x)/2;
+          punto_medio_act.y = (point_act.y + img_actual_pts[i].y)/2;
+          v_act.push_back(punto_medio_act);
+
+          point_ant = img_ant_pts[i];
+          point_act = img_actual_pts[i];
+      //  }
+    }
+
+
+    v.push_back(v_ant);
+    v.push_back(v_act);
+    cout << "N v_act: " << v_act.size() << endl;
+    cout << "N v_ant: " << v_ant.size() << endl;
+    return v;
+
+}
+
 
 void dibuja_CloudTracking(Mat img, const vector<Point2f>& img_ant_pts, const vector<Point2f>& img_actual_pts, const vector<unsigned char>& estado,
                           int id){
+
+
     for(int i=0; i<img_ant_pts.size(); i++){
 
         if(estado[i]){
@@ -87,8 +135,6 @@ void dibuja_CloudTracking(Mat img, const vector<Point2f>& img_ant_pts, const vec
                 //dibujamos la linea
                 arrowedLine(img, pi, pf, Scalar(255,0,0),1,8,0,0.2);
                 save_data("prueba.txt", "", pi, pf, dist, angulo, id);
-
-
 
             }else
                 continue;
@@ -242,7 +288,7 @@ void detecta_sun(Mat img1, int umbral_bajo){
         center.x = x;
         center.y = y;
 
-        cout << center.x << "  " << center.y << endl;
+        //cout << center.x << "  " << center.y << endl;
 
 
 
@@ -265,6 +311,12 @@ int main(int argc, char *argv[])
     umbral_bajo=250;
 
     string ruta_directorio = argv[1];
+    referencia_act_i.x=0;
+    referencia_act_i.y=0;
+    referencia_act_f.x=0;
+    referencia_act_f.y=0;
+    referencia_ant_f=referencia_act_f;
+    referencia_ant_i=referencia_ant_i;
 
     cout << "Umbral: " << umbral_bajo << endl << endl;
 
@@ -318,6 +370,15 @@ int main(int argc, char *argv[])
 
         goodFeaturesToTrack(im_ant, puntos_ant, numero_puntos, 0.01, 0);
         calcOpticalFlowPyrLK(im_ant, im_act, puntos_ant, puntos_actual, estado, error);
+
+        cout << "Puntos ant: " << puntos_ant.size() << endl;
+        cout << "Puntos actuales: " << puntos_actual.size() << endl;
+
+        std::vector<std::vector<Point2f>> v(2);
+        v = agrupa_vectores(puntos_ant, puntos_actual);
+        puntos_ant = v[0];
+        puntos_actual = v[1];
+
         dibuja_CloudTracking(img_actual, puntos_ant, puntos_actual, estado, i);
 
 
