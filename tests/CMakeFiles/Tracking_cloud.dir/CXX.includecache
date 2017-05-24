@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/aledelgado/TFG-Vision-RaspberryPi3/tests/cloud_tracking.cpp
+/home/aledelgado/tfg/cloud_tracking.cpp
 iostream
 -
 opencv2/core/core.hpp

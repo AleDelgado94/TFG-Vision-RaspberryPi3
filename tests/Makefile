@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/aledelgado/TFG-Vision-RaspberryPi3/tests
+CMAKE_SOURCE_DIR = /home/aledelgado/tfg
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/aledelgado/TFG-Vision-RaspberryPi3/tests
+CMAKE_BINARY_DIR = /home/aledelgado/tfg
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/tfg/CMakeFiles /home/aledelgado/tfg/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/tfg/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -161,6 +161,19 @@ Clouds: cmake_check_build_system
 Clouds/fast:
 	$(MAKE) -f CMakeFiles/Clouds.dir/build.make CMakeFiles/Clouds.dir/build
 .PHONY : Clouds/fast
+
+#=============================================================================
+# Target rules for targets named Temperature
+
+# Build rule for target.
+Temperature: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Temperature
+.PHONY : Temperature
+
+# fast build rule for target.
+Temperature/fast:
+	$(MAKE) -f CMakeFiles/Temperature.dir/build.make CMakeFiles/Temperature.dir/build
+.PHONY : Temperature/fast
 
 #=============================================================================
 # Target rules for targets named Sun
@@ -390,6 +403,33 @@ sun.cpp.s:
 	$(MAKE) -f CMakeFiles/Sun.dir/build.make CMakeFiles/Sun.dir/sun.cpp.s
 .PHONY : sun.cpp.s
 
+temperature.o: temperature.cpp.o
+
+.PHONY : temperature.o
+
+# target to build an object file
+temperature.cpp.o:
+	$(MAKE) -f CMakeFiles/Temperature.dir/build.make CMakeFiles/Temperature.dir/temperature.cpp.o
+.PHONY : temperature.cpp.o
+
+temperature.i: temperature.cpp.i
+
+.PHONY : temperature.i
+
+# target to preprocess a source file
+temperature.cpp.i:
+	$(MAKE) -f CMakeFiles/Temperature.dir/build.make CMakeFiles/Temperature.dir/temperature.cpp.i
+.PHONY : temperature.cpp.i
+
+temperature.s: temperature.cpp.s
+
+.PHONY : temperature.s
+
+# target to generate assembly for a file
+temperature.cpp.s:
+	$(MAKE) -f CMakeFiles/Temperature.dir/build.make CMakeFiles/Temperature.dir/temperature.cpp.s
+.PHONY : temperature.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -402,6 +442,7 @@ help:
 	@echo "... Tracking_cloud"
 	@echo "... Clouds"
 	@echo "... rebuild_cache"
+	@echo "... Temperature"
 	@echo "... Sun"
 	@echo "... Detection"
 	@echo "... Homography"
@@ -426,6 +467,9 @@ help:
 	@echo "... sun.o"
 	@echo "... sun.i"
 	@echo "... sun.s"
+	@echo "... temperature.o"
+	@echo "... temperature.i"
+	@echo "... temperature.s"
 .PHONY : help
 
 

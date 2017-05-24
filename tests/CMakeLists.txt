@@ -41,3 +41,7 @@ target_link_libraries(Tracking_cloud ${OpenCV_LIBS})
 add_executable(Detection detection.cpp)
 target_link_libraries(Detection Threads::Threads)
 target_link_libraries(Detection ${OpenCV_LIBS})
+
+add_executable(Temperature temperature.cpp)
+target_link_libraries(Temperature Threads::Threads)
+target_link_libraries(Temperature ${OpenCV_LIBS})

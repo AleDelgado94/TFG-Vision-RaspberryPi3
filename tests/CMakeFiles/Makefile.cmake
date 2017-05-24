@@ -128,6 +128,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/Merge.dir/DependInfo.cmake"
   "CMakeFiles/Tracking_cloud.dir/DependInfo.cmake"
   "CMakeFiles/Clouds.dir/DependInfo.cmake"
+  "CMakeFiles/Temperature.dir/DependInfo.cmake"
   "CMakeFiles/Sun.dir/DependInfo.cmake"
   "CMakeFiles/Detection.dir/DependInfo.cmake"
   "CMakeFiles/Homography.dir/DependInfo.cmake"

@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/aledelgado/tfg/SerialClass/SerialClass.h
+stdio.h
+-
+stdlib.h
+-
+
+/home/aledelgado/tfg/temperature.cpp
+temperature.h
+/home/aledelgado/tfg/temperature.h
+
+/home/aledelgado/tfg/temperature.h
+iostream
+-
+SerialClass/SerialClass.h
+/home/aledelgado/tfg/SerialClass/SerialClass.h
+
