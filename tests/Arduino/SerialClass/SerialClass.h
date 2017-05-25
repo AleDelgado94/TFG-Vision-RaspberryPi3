@@ -1,6 +1,5 @@
 
-#define ARDUINO_WAIT_TIME 2000
-
+#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -29,5 +28,7 @@ class Serial
         std::string getPort() const;
         void setPort(const std::string &value);
         bool IsConnected();
+        FILE *getHandler() const;
+        void setHandler(FILE *value);
 };
 
