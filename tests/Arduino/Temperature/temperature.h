@@ -1,6 +1,7 @@
 #include <iostream>
+#include <unistd.h>
 
-#include "SerialClass/SerialClass.h"
+#include "../SerialClass/SerialClass.h"
 
 using namespace std;
 
@@ -24,4 +25,7 @@ public:
   void setData(const std::string &value);
   int getTime_capture() const;
   void setTime_capture(int value);
+
+  int getTemperature(int i);
+  int getHumidity(int i);
 };

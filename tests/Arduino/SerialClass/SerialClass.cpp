@@ -1,12 +1,22 @@
 #include "SerialClass.h"
 
 
+FILE *Serial::getHandler() const
+{
+    return handler;
+}
+
+void Serial::setHandler(FILE *value)
+{
+    handler = value;
+}
+
 Serial::Serial(std::string portName)
 {
     setConnected(false);
     setPort(portName);
 
-    if(handler = fopen(getPort().c_str()), "w"){
+    if(handler = fopen(getPort().c_str(), "w+")){
         setConnected(true);
     }
 }
