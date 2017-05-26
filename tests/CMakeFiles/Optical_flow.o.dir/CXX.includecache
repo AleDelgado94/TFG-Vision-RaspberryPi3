@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/aledelgado/tfg/OpticalFlow/optical_flow.cpp
+/home/pi/tfg/OpticalFlow/optical_flow.cpp
 iostream
 -
 vector
@@ -14,17 +14,17 @@ vector
 iomanip
 -
 opencv2/core/utility.hpp
-/home/aledelgado/tfg/OpticalFlow/opencv2/core/utility.hpp
+/home/pi/tfg/OpticalFlow/opencv2/core/utility.hpp
 opencv2/imgcodecs.hpp
-/home/aledelgado/tfg/OpticalFlow/opencv2/imgcodecs.hpp
+/home/pi/tfg/OpticalFlow/opencv2/imgcodecs.hpp
 opencv2/videoio.hpp
-/home/aledelgado/tfg/OpticalFlow/opencv2/videoio.hpp
+/home/pi/tfg/OpticalFlow/opencv2/videoio.hpp
 opencv2/highgui.hpp
-/home/aledelgado/tfg/OpticalFlow/opencv2/highgui.hpp
+/home/pi/tfg/OpticalFlow/opencv2/highgui.hpp
 opencv2/core/ocl.hpp
-/home/aledelgado/tfg/OpticalFlow/opencv2/core/ocl.hpp
+/home/pi/tfg/OpticalFlow/opencv2/core/ocl.hpp
 opencv2/video/video.hpp
-/home/aledelgado/tfg/OpticalFlow/opencv2/video/video.hpp
+/home/pi/tfg/OpticalFlow/opencv2/video/video.hpp
 
 /usr/local/include/opencv/cxcore.h
 opencv2/core/core_c.h

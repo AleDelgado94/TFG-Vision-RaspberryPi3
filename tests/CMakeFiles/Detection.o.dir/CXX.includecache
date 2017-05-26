@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/aledelgado/tfg/Detection/detection.cpp
+/home/pi/tfg/Detection/detection.cpp
 iostream
 -
 opencv2/core/core.hpp

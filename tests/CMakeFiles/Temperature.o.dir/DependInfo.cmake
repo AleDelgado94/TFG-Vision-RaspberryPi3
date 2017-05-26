@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/aledelgado/tfg/Arduino/SerialClass/SerialClass.cpp" "/home/aledelgado/tfg/CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o"
-  "/home/aledelgado/tfg/Arduino/Temperature/temperature.cpp" "/home/aledelgado/tfg/CMakeFiles/Temperature.o.dir/Arduino/Temperature/temperature.cpp.o"
+  "/home/pi/tfg/Arduino/SerialClass/SerialClass.cpp" "/home/pi/tfg/CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o"
+  "/home/pi/tfg/Arduino/Temperature/temperature.cpp" "/home/pi/tfg/CMakeFiles/Temperature.o.dir/Arduino/Temperature/temperature.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
