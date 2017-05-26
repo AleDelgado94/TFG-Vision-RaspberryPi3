@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/aledelgado/tfg/Sun/sun.cpp" "/home/aledelgado/tfg/CMakeFiles/Sun.o.dir/Sun/sun.cpp.o"
+  "/home/adelgado/tfg/Sun/sun.cpp" "/home/adelgado/tfg/CMakeFiles/Sun.o.dir/Sun/sun.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

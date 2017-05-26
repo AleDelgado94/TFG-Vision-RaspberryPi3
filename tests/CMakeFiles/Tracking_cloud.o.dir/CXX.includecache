@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/aledelgado/tfg/CloudTracking/cloud_tracking.cpp
+/home/adelgado/tfg/CloudTracking/cloud_tracking.cpp
 iostream
 -
 opencv2/core/core.hpp

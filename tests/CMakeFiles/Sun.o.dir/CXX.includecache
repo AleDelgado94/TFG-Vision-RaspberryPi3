@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/aledelgado/tfg/Sun/sun.cpp
+/home/adelgado/tfg/Sun/sun.cpp
 iostream
 -
 opencv2/core/core.hpp

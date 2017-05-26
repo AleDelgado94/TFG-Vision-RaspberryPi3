@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/aledelgado/tfg/Arduino/SerialClass/SerialClass.cpp
+/home/adelgado/tfg/Arduino/SerialClass/SerialClass.cpp
 SerialClass.h
-/home/aledelgado/tfg/Arduino/SerialClass/SerialClass.h
+/home/adelgado/tfg/Arduino/SerialClass/SerialClass.h
 
-/home/aledelgado/tfg/Arduino/SerialClass/SerialClass.h
+/home/adelgado/tfg/Arduino/SerialClass/SerialClass.h
 iostream
 -
 stdio.h
@@ -18,15 +18,15 @@ stdio.h
 stdlib.h
 -
 
-/home/aledelgado/tfg/Arduino/Temperature/temperature.cpp
+/home/adelgado/tfg/Arduino/Temperature/temperature.cpp
 temperature.h
-/home/aledelgado/tfg/Arduino/Temperature/temperature.h
+/home/adelgado/tfg/Arduino/Temperature/temperature.h
 
-/home/aledelgado/tfg/Arduino/Temperature/temperature.h
+/home/adelgado/tfg/Arduino/Temperature/temperature.h
 iostream
 -
 unistd.h
 -
 ../SerialClass/SerialClass.h
-/home/aledelgado/tfg/Arduino/SerialClass/SerialClass.h
+/home/adelgado/tfg/Arduino/SerialClass/SerialClass.h
 

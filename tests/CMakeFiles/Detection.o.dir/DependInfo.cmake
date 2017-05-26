@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/aledelgado/tfg/Detection/detection.cpp" "/home/aledelgado/tfg/CMakeFiles/Detection.o.dir/Detection/detection.cpp.o"
+  "/home/adelgado/tfg/Detection/detection.cpp" "/home/adelgado/tfg/CMakeFiles/Detection.o.dir/Detection/detection.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
