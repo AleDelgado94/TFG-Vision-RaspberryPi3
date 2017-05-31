@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+using namespace std;
+
 class Serial
 {
     private:
@@ -31,4 +33,3 @@ class Serial
         FILE *getHandler() const;
         void setHandler(FILE *value);
 };
-
