@@ -90,6 +90,8 @@ Merge_o_EXTERNAL_OBJECTS =
 
 Merge.o: CMakeFiles/Merge.o.dir/MergeHDR/merge.cpp.o
 Merge.o: CMakeFiles/Merge.o.dir/build.make
+Merge.o: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
+Merge.o: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
 Merge.o: /usr/local/lib/libopencv_stitching.so.3.2.0
 Merge.o: /usr/local/lib/libopencv_superres.so.3.2.0
 Merge.o: /usr/local/lib/libopencv_videostab.so.3.2.0

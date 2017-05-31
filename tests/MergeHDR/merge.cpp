@@ -15,11 +15,16 @@
 #include <dirent.h>
 #include <sys/stat.h>
 #include <cmath>
+#include <boost/program_options/options_description.hpp>
+#include <boost/program_options.hpp>
+#include <boost/program_options/option.hpp>
+
 
 
 using namespace std;
 using namespace cv;
 //using namespace raspicam;
+namespace opt = boost::program_options;
 
 #define _CRT_SECURE_NO_WARNINGS
 #pragma warning(disable:4996)
@@ -99,56 +104,78 @@ void genera_hdr(int i, vector<string> imgs, string dir_origen,  string dir_desti
 int main(int argc, char *argv[])
 {
 
-    if(argc != 3){
+    /*if(argc != 3){
         cout << "Ayuda: " << endl;
         cout << "./Meger [ruta_imagenes_originales] [ruta_destino_hdr]" << endl;
         exit(-1);
-    }
+    }*/
 
-    //COMPROBAMOS EL DIRECTORIO 1
-    string directorio_origen = argv[1];
-    if(access(directorio_origen.c_str(), 0) == 0){
-        struct stat estado;
-        stat(directorio_origen.c_str(), &estado);
+    string directorio_origen;
+    string directorio_destino;
 
-        if(estado.st_mode && S_IFDIR){
-            //Existe el directorio
-            cout << "Existe el directorio " << directorio_origen << endl;
+    opt::options_description desc("Options");
+    desc.add_options()
+      ("help,h", "./Meger [[ --source | -s ] ruta_imagenes_originales] [[ --destination | -d ] ruta_destino_hdr]")
+      ("source,s", opt::value<std::vector<std::string>>(), "ruta_origen")
+      ("destination,d", opt::value<std::vector<std::string>>(), "ruta_destino");
 
-            //DIRECTORIO DE DESTINO
-            string directorio_destino = argv[2];
-            if(access(directorio_destino.c_str(), 0) == 0){
-                struct stat estado;
-                stat(directorio_destino.c_str(), &estado);
+      opt::variables_map vm;
+      opt::positional_options_description p;
+      p.add("ruta_origen", -1);
+      store(opt::parse_command_line(argc, argv,desc), vm);
+      notify(vm);
 
-                if(estado.st_mode && S_IFDIR){
-                    //Existe el directorio
-                    cout << "Existe el directorio " << directorio_destino << endl;
-                }
-            }
-            else{
-                cout << "Creando directorio " << directorio_destino << endl;
-                mkdir(directorio_destino.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
-            }
+      if(vm.count("help")){
+        cout << desc << endl;
+      }
+      if(vm.count("source")){
+          std::vector<std::string> files = vm["source"].as<std::vector<string>>();
+           directorio_origen = files[0];
+           //COMPROBAMOS EL DIRECTORIO 1
 
-            vector<string> imgs = leer_imagenes(directorio_origen);
-            cout << imgs.size() << endl;
-            for(int i=2; i<imgs.size(); i=i+3)
-                genera_hdr(i,imgs, directorio_origen, directorio_destino);
+           if(access(directorio_origen.c_str(), 0) == 0){
+               struct stat estado;
+               stat(directorio_origen.c_str(), &estado);
+
+               if(estado.st_mode && S_IFDIR){
+                   //Existe el directorio
+                   cout << "Existe el directorio " << directorio_origen << endl;
+
+                   //DIRECTORIO DE DESTINO
+                   if(vm.count("destination")){
+                     std::vector<std::string> files_dest = vm["destination"].as<std::vector<string>>();
+                       directorio_destino = files_dest[0];
+                   }
+
+                   if(access(directorio_destino.c_str(), 0) == 0){
+                       struct stat estado;
+                       stat(directorio_destino.c_str(), &estado);
+
+                       if(estado.st_mode && S_IFDIR){
+                           //Existe el directorio
+                           cout << "Existe el directorio " << directorio_destino << endl;
+                       }
+                   }
+                   else{
+                       cout << "Creando directorio " << directorio_destino << endl;
+                       mkdir(directorio_destino.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+                   }
+
+                   vector<string> imgs = leer_imagenes(directorio_origen);
+                   cout << imgs.size() << endl;
+                   for(int i=2; i<imgs.size(); i=i+3)
+                       genera_hdr(i,imgs, directorio_origen, directorio_destino);
 
 
 
-
-
-
-
-        }
-    }
-    else{
-        //NO Existe el directorio
-        cout << "El directorio de origen no existe" << endl;
-        exit(-1);
-    }
+               }
+           }
+           else{
+               //NO Existe el directorio
+               cout << "El directorio de origen no existe" << endl;
+               exit(-1);
+           }
+      }
 
 
 

@@ -39,6 +39,12 @@ sys/stat.h
 -
 cmath
 -
+boost/program_options/options_description.hpp
+-
+boost/program_options.hpp
+-
+boost/program_options/option.hpp
+-
 
 /usr/local/include/opencv/cxcore.h
 opencv2/core/core_c.h
