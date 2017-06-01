@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <unistd.h>
 
 #include "../SerialClass/SerialClass.h"
@@ -8,7 +8,7 @@ using namespace std;
 
 class Temperature {
 private:
-  /* data */
+
   Serial* arduino1;
   std::string port; // dev/ttyACM0
   std::string data;
@@ -29,3 +29,4 @@ public:
   int getTemperature(int i);
   int getHumidity(int i);
 };
+*/

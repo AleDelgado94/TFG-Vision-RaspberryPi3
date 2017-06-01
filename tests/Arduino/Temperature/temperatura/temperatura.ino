@@ -6,12 +6,12 @@
 
 
 #define DATA_PIN 2
-#define DHT_TYPE 11
+#define DHT_TYPE 22
 
 DHT dht(DATA_PIN, DHT_TYPE);
 
 void setup(){
-  Serial.begin(9600);
+  Serial.begin(115200);
   
   dht.begin();
   
@@ -20,8 +20,10 @@ void setup(){
 
 void loop(){
   
-  int temperatura = (int)dht.readTemperature();
-  int humedad = (int)dht.readHumidity();
+  double temperatura = dht.readTemperature();
+  double humedad = dht.readHumidity();
+  String t="";
+  String h="";
   if(Serial.available()>0){
     
     char option = Serial.read();
@@ -31,13 +33,15 @@ void loop(){
     case 't':{
        //SE ENVIA LA TEMPERATURA RECOGIDA POR EL SENSOR DHT
        delay(100);
-       Serial.print(temperatura);
+       t = String((int)temperatura);
+       Serial.println(t);
     }
        break;
     case 'h':{
        //SE ENVIA LA HUMEDAD RECOGIDA POR EL SENSOR DHT
        delay(100);
-       Serial.print(humedad);
+       h = String((int)humedad);
+       Serial.println(h);
     }
        break; 
     default: break;
