@@ -70,19 +70,20 @@ int main(int argc, char const *argv[]){
 
 
   unsigned char input;
-  cin >> input;
-  while(input != 'q'){
 
+  while(input != 'q'){
+      cin >> input;
     unsigned char command[1] = {0};
 
     // Convert and send
     command[0] = static_cast<unsigned char>( input );
-    as::write(port, as::buffer(command, 1));
-    sleep(1);
-    // Receive response —---------------------------------------------------—
-    //read(port,as::buffer(&data,1));
-    cout << read_serial(port);
-    cin >> input;
+    if(command[0] == 't' || command[0] == 'h'){
+      as::write(port, as::buffer(command, 1));
+      sleep(0.5);
+      // Receive response —---------------------------------------------------—
+      //read(port,as::buffer(&data,1));
+      cout << read_serial(port);
+    }else continue;
   }
 
   return 0;
