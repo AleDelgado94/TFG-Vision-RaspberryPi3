@@ -81,40 +81,66 @@ CMakeFiles/Temperature.o.dir/Arduino/Temperature/temperature.cpp.o.provides: CMa
 CMakeFiles/Temperature.o.dir/Arduino/Temperature/temperature.cpp.o.provides.build: CMakeFiles/Temperature.o.dir/Arduino/Temperature/temperature.cpp.o
 
 
-CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o: CMakeFiles/Temperature.o.dir/flags.make
-CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o: Arduino/SerialClass/SerialClass.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aledelgado/tfg/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o -c /home/aledelgado/tfg/Arduino/SerialClass/SerialClass.cpp
+CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.o: CMakeFiles/Temperature.o.dir/flags.make
+CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.o: Database/sqlite3/sqlite3.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aledelgado/tfg/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.o   -c /home/aledelgado/tfg/Database/sqlite3/sqlite3.c
 
-CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/aledelgado/tfg/Arduino/SerialClass/SerialClass.cpp > CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.i
+CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.i"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/aledelgado/tfg/Database/sqlite3/sqlite3.c > CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.i
 
-CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/aledelgado/tfg/Arduino/SerialClass/SerialClass.cpp -o CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.s
+CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.s"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/aledelgado/tfg/Database/sqlite3/sqlite3.c -o CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.s
 
-CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o.requires:
+CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.o.requires:
 
-.PHONY : CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o.requires
+.PHONY : CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.o.requires
 
-CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o.provides: CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o.provides.build
-.PHONY : CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o.provides
+CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.o.provides: CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.o.requires
+	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.o.provides.build
+.PHONY : CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.o.provides
 
-CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o.provides.build: CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o
+CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.o.provides.build: CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.o
+
+
+CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.o: CMakeFiles/Temperature.o.dir/flags.make
+CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.o: Database/sqlite3/shell.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aledelgado/tfg/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.o   -c /home/aledelgado/tfg/Database/sqlite3/shell.c
+
+CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.i"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/aledelgado/tfg/Database/sqlite3/shell.c > CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.i
+
+CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.s"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/aledelgado/tfg/Database/sqlite3/shell.c -o CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.s
+
+CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.o.requires:
+
+.PHONY : CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.o.requires
+
+CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.o.provides: CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.o.requires
+	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.o.provides.build
+.PHONY : CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.o.provides
+
+CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.o.provides.build: CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.o
 
 
 # Object files for target Temperature.o
 Temperature_o_OBJECTS = \
 "CMakeFiles/Temperature.o.dir/Arduino/Temperature/temperature.cpp.o" \
-"CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o"
+"CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.o" \
+"CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.o"
 
 # External object files for target Temperature.o
 Temperature_o_EXTERNAL_OBJECTS =
 
 Temperature.o: CMakeFiles/Temperature.o.dir/Arduino/Temperature/temperature.cpp.o
-Temperature.o: CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o
+Temperature.o: CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.o
+Temperature.o: CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.o
 Temperature.o: CMakeFiles/Temperature.o.dir/build.make
 Temperature.o: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
 Temperature.o: /usr/lib/x86_64-linux-gnu/libboost_system.so
@@ -163,7 +189,7 @@ Temperature.o: /usr/local/lib/libopencv_imgcodecs.so.3.2.0
 Temperature.o: /usr/local/lib/libopencv_imgproc.so.3.2.0
 Temperature.o: /usr/local/lib/libopencv_core.so.3.2.0
 Temperature.o: CMakeFiles/Temperature.o.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/aledelgado/tfg/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Temperature.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/aledelgado/tfg/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Temperature.o"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Temperature.o.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -172,7 +198,8 @@ CMakeFiles/Temperature.o.dir/build: Temperature.o
 .PHONY : CMakeFiles/Temperature.o.dir/build
 
 CMakeFiles/Temperature.o.dir/requires: CMakeFiles/Temperature.o.dir/Arduino/Temperature/temperature.cpp.o.requires
-CMakeFiles/Temperature.o.dir/requires: CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o.requires
+CMakeFiles/Temperature.o.dir/requires: CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.o.requires
+CMakeFiles/Temperature.o.dir/requires: CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.o.requires
 
 .PHONY : CMakeFiles/Temperature.o.dir/requires
 

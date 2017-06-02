@@ -214,33 +214,6 @@ Clouds.o/fast:
 	$(MAKE) -f CMakeFiles/Clouds.o.dir/build.make CMakeFiles/Clouds.o.dir/build
 .PHONY : Clouds.o/fast
 
-Arduino/SerialClass/SerialClass.o: Arduino/SerialClass/SerialClass.cpp.o
-
-.PHONY : Arduino/SerialClass/SerialClass.o
-
-# target to build an object file
-Arduino/SerialClass/SerialClass.cpp.o:
-	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o
-.PHONY : Arduino/SerialClass/SerialClass.cpp.o
-
-Arduino/SerialClass/SerialClass.i: Arduino/SerialClass/SerialClass.cpp.i
-
-.PHONY : Arduino/SerialClass/SerialClass.i
-
-# target to preprocess a source file
-Arduino/SerialClass/SerialClass.cpp.i:
-	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.i
-.PHONY : Arduino/SerialClass/SerialClass.cpp.i
-
-Arduino/SerialClass/SerialClass.s: Arduino/SerialClass/SerialClass.cpp.s
-
-.PHONY : Arduino/SerialClass/SerialClass.s
-
-# target to generate assembly for a file
-Arduino/SerialClass/SerialClass.cpp.s:
-	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.s
-.PHONY : Arduino/SerialClass/SerialClass.cpp.s
-
 Arduino/Temperature/temperature.o: Arduino/Temperature/temperature.cpp.o
 
 .PHONY : Arduino/Temperature/temperature.o
@@ -321,6 +294,60 @@ Clouds/clouds.s: Clouds/clouds.cpp.s
 Clouds/clouds.cpp.s:
 	$(MAKE) -f CMakeFiles/Clouds.o.dir/build.make CMakeFiles/Clouds.o.dir/Clouds/clouds.cpp.s
 .PHONY : Clouds/clouds.cpp.s
+
+Database/sqlite3/shell.o: Database/sqlite3/shell.c.o
+
+.PHONY : Database/sqlite3/shell.o
+
+# target to build an object file
+Database/sqlite3/shell.c.o:
+	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.o
+.PHONY : Database/sqlite3/shell.c.o
+
+Database/sqlite3/shell.i: Database/sqlite3/shell.c.i
+
+.PHONY : Database/sqlite3/shell.i
+
+# target to preprocess a source file
+Database/sqlite3/shell.c.i:
+	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.i
+.PHONY : Database/sqlite3/shell.c.i
+
+Database/sqlite3/shell.s: Database/sqlite3/shell.c.s
+
+.PHONY : Database/sqlite3/shell.s
+
+# target to generate assembly for a file
+Database/sqlite3/shell.c.s:
+	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.s
+.PHONY : Database/sqlite3/shell.c.s
+
+Database/sqlite3/sqlite3.o: Database/sqlite3/sqlite3.c.o
+
+.PHONY : Database/sqlite3/sqlite3.o
+
+# target to build an object file
+Database/sqlite3/sqlite3.c.o:
+	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.o
+.PHONY : Database/sqlite3/sqlite3.c.o
+
+Database/sqlite3/sqlite3.i: Database/sqlite3/sqlite3.c.i
+
+.PHONY : Database/sqlite3/sqlite3.i
+
+# target to preprocess a source file
+Database/sqlite3/sqlite3.c.i:
+	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.i
+.PHONY : Database/sqlite3/sqlite3.c.i
+
+Database/sqlite3/sqlite3.s: Database/sqlite3/sqlite3.c.s
+
+.PHONY : Database/sqlite3/sqlite3.s
+
+# target to generate assembly for a file
+Database/sqlite3/sqlite3.c.s:
+	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.s
+.PHONY : Database/sqlite3/sqlite3.c.s
 
 Detection/detection.o: Detection/detection.cpp.o
 
@@ -473,9 +500,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Homography.o"
 	@echo "... Clouds.o"
-	@echo "... Arduino/SerialClass/SerialClass.o"
-	@echo "... Arduino/SerialClass/SerialClass.i"
-	@echo "... Arduino/SerialClass/SerialClass.s"
 	@echo "... Arduino/Temperature/temperature.o"
 	@echo "... Arduino/Temperature/temperature.i"
 	@echo "... Arduino/Temperature/temperature.s"
@@ -485,6 +509,12 @@ help:
 	@echo "... Clouds/clouds.o"
 	@echo "... Clouds/clouds.i"
 	@echo "... Clouds/clouds.s"
+	@echo "... Database/sqlite3/shell.o"
+	@echo "... Database/sqlite3/shell.i"
+	@echo "... Database/sqlite3/shell.s"
+	@echo "... Database/sqlite3/sqlite3.o"
+	@echo "... Database/sqlite3/sqlite3.i"
+	@echo "... Database/sqlite3/sqlite3.s"
 	@echo "... Detection/detection.o"
 	@echo "... Detection/detection.i"
 	@echo "... Detection/detection.s"

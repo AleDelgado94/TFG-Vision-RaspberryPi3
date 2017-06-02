@@ -1,10 +1,22 @@
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
+  "C"
   "CXX"
   )
 # The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_C
+  "/home/aledelgado/tfg/Database/sqlite3/shell.c" "/home/aledelgado/tfg/CMakeFiles/Temperature.o.dir/Database/sqlite3/shell.c.o"
+  "/home/aledelgado/tfg/Database/sqlite3/sqlite3.c" "/home/aledelgado/tfg/CMakeFiles/Temperature.o.dir/Database/sqlite3/sqlite3.c.o"
+  )
+set(CMAKE_C_COMPILER_ID "GNU")
+
+# The include file search paths:
+set(CMAKE_C_TARGET_INCLUDE_PATH
+  "SYSTEM"
+  "/usr/local/include"
+  "/usr/local/include/opencv"
+  )
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/aledelgado/tfg/Arduino/SerialClass/SerialClass.cpp" "/home/aledelgado/tfg/CMakeFiles/Temperature.o.dir/Arduino/SerialClass/SerialClass.cpp.o"
   "/home/aledelgado/tfg/Arduino/Temperature/temperature.cpp" "/home/aledelgado/tfg/CMakeFiles/Temperature.o.dir/Arduino/Temperature/temperature.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

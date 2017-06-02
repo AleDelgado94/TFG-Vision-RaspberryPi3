@@ -3,6 +3,7 @@
 #include <boost/program_options/options_description.hpp>
 #include <boost/program_options.hpp>
 #include <boost/program_options/option.hpp>
+#include "../../Database/sqlite3/sqlite3.h"
 
 using namespace::boost::asio;
 using namespace std;
@@ -30,6 +31,14 @@ string read_serial(serial_port& port){
 int main(int argc, char const *argv[]){
   io_service io;
   string PORT;
+  sqlite3* db;
+
+  int db_handler = sqlite3_open("../../Database/database.db", &db);
+  if(db_handler){
+    cout << "Se abrió la base de datos" << endl;
+  }else{
+    cout << "Error al abrir la base de datos" << endl;
+  }
 
 
   opt::options_description desc("Options");
@@ -69,22 +78,19 @@ int main(int argc, char const *argv[]){
 
 
 
-  unsigned char input;
+  unsigned char input[1];
 
-  while(input != 'q'){
-      cin >> input;
-    unsigned char command[1] = {0};
+  do{
+      cin >> input[0];
 
-    // Convert and send
-    command[0] = static_cast<unsigned char>( input );
-    if(command[0] == 't' || command[0] == 'h'){
-      as::write(port, as::buffer(command, 1));
-      sleep(0.5);
-      // Receive response —---------------------------------------------------—
-      //read(port,as::buffer(&data,1));
-      cout << read_serial(port);
+
+    //opcion[0] = static_cast<unsigned char>( input );
+    if(input[0] == 't' || input[0] == 'h' || input[0] == 's'){
+      as::write(port, as::buffer(input, 1));
+      sleep(1);
+      cout << atof(read_serial(port).c_str());
     }else continue;
-  }
+  }while(input[0] != 'q');
 
   return 0;
 }

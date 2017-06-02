@@ -7,16 +7,14 @@ find_package(Threads REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(Boost COMPONENTS system program_options signals thread filesystem REQUIRED COMPONENTS)
 
+#### BOOST ####
 include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIR})
-
-#find_package(raspicam REQUIRED)
-set (CMAKE_CXX_STANDARD 11)
-
-
 FIND_PACKAGE(Boost COMPONENTS program_options REQUIRED)
 INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
 
+#find_package(raspicam REQUIRED)
+set (CMAKE_CXX_STANDARD 11)
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 #add_executable(Captura_imagen_rgb.o captura_imagenes.cpp)
@@ -75,12 +73,11 @@ target_link_libraries(Detection.o ${OpenCV_LIBS})
 
 ################  TEMPERATURE  #######################
 
-add_executable(Temperature.o Arduino/Temperature/temperature.cpp Arduino/SerialClass/SerialClass.cpp)
+add_executable(Temperature.o Arduino/Temperature/temperature.cpp Database/sqlite3/sqlite3.c Arduino/Temperature/temperature.cpp Database/sqlite3/shell.c)
 target_link_libraries(Temperature.o Threads::Threads)
 target_link_libraries(Temperature.o ${Boost_PROGRAM_OPTIONS_LIBRARY})
 target_link_libraries(Temperature.o ${Boost_SYSTEM_LIBRARY})
-#target_link_libraries(Temperature.o ${Boost_LIBS})
 target_link_libraries(Temperature.o ${OpenCV_LIBS})
-
+target_link_libraries (Temperature.o ${SQLITE3_LIBRARIES})
 target_link_libraries(Temperature.o ${Boost_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 target_include_directories(Temperature.o PUBLIC SYSTEM ${Boost_INCLUDE_DIRS})
