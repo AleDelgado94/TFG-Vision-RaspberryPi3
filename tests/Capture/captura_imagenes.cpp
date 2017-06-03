@@ -15,6 +15,7 @@
 #include <boost/program_options/options_description.hpp>
 #include <boost/program_options.hpp>
 #include <boost/program_options/option.hpp>
+#include "../Arduino/Temperature/temperature.h"
 
 
 using namespace std;
