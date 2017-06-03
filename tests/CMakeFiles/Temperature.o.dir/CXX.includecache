@@ -17,10 +17,16 @@ boost/program_options.hpp
 -
 boost/program_options/option.hpp
 -
-../../Database/sqlite3/sqlite3.h
-/home/aledelgado/tfg/Database/sqlite3/sqlite3.h
+sqlite3.h
+-
+../../Database/sqlite3/sqliteCallBack.hpp
+/home/aledelgado/tfg/Database/sqlite3/sqliteCallBack.hpp
 
-/home/aledelgado/tfg/Database/sqlite3/sqlite3.h
-stdarg.h
+/home/aledelgado/tfg/Database/sqlite3/sqliteCallBack.hpp
+iostream
+-
+vector
+-
+string
 -
 

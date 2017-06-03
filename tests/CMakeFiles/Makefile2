@@ -66,7 +66,7 @@ CMAKE_BINARY_DIR = /home/aledelgado/tfg
 CMakeFiles/Temperature.o.dir/all:
 	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/depend
 	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aledelgado/tfg/CMakeFiles --progress-num=13,14,15,16 "Built target Temperature.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aledelgado/tfg/CMakeFiles --progress-num=13,14 "Built target Temperature.o"
 .PHONY : CMakeFiles/Temperature.o.dir/all
 
 # Include target in all.
@@ -76,7 +76,7 @@ all: CMakeFiles/Temperature.o.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Temperature.o.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/tfg/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/tfg/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Temperature.o.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/tfg/CMakeFiles 0
 .PHONY : CMakeFiles/Temperature.o.dir/rule
@@ -140,7 +140,7 @@ clean: CMakeFiles/Detection.o.dir/clean
 CMakeFiles/Tracking_cloud.o.dir/all:
 	$(MAKE) -f CMakeFiles/Tracking_cloud.o.dir/build.make CMakeFiles/Tracking_cloud.o.dir/depend
 	$(MAKE) -f CMakeFiles/Tracking_cloud.o.dir/build.make CMakeFiles/Tracking_cloud.o.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aledelgado/tfg/CMakeFiles --progress-num=17,18 "Built target Tracking_cloud.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aledelgado/tfg/CMakeFiles --progress-num=15,16 "Built target Tracking_cloud.o"
 .PHONY : CMakeFiles/Tracking_cloud.o.dir/all
 
 # Include target in all.
