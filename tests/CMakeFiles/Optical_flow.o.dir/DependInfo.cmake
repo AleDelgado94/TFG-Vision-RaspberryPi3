@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/OpticalFlow/optical_flow.cpp" "/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Optical_flow.o.dir/OpticalFlow/optical_flow.cpp.o"
+  "/home/aledelgado/tfg/OpticalFlow/optical_flow.cpp" "/home/aledelgado/tfg/CMakeFiles/Optical_flow.o.dir/OpticalFlow/optical_flow.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

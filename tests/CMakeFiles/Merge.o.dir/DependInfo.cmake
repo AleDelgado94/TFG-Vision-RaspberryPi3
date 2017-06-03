@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/MergeHDR/merge.cpp" "/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Merge.o.dir/MergeHDR/merge.cpp.o"
+  "/home/aledelgado/tfg/MergeHDR/merge.cpp" "/home/aledelgado/tfg/CMakeFiles/Merge.o.dir/MergeHDR/merge.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
