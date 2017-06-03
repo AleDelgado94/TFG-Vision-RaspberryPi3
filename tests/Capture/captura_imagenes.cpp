@@ -46,7 +46,7 @@ int day;
 int month;
 int year;
 
-std::string hora;
+std::string hora, hora_momento_foto;
 char key = 0;
 
 vector<Mat> images;
@@ -108,6 +108,7 @@ void captura(){
 	sleep(segundos);
 
     std::cout <<  "Hora: " <<hora << std::endl;
+    hora_momento_foto = hora;
 
 
 	//setExposure(-8);
@@ -431,15 +432,17 @@ void ask_data(serial_port* port, sqlite3* db, std::string fecha, std::string hor
   as::write(*port, as::buffer(opt, 1));
   sleep(1);
   cel = atof(read_serial(port).c_str());
+  
+  cout << id << " " << hora_momento_foto << " " << fecha << " " << to_string(temperature) << " " << to_string(humedad) << " " << to_string(cel) << endl;
 
   //INTRODUCIMOS LOS DATOS EN LA BASE DE DATOS SEGUN EL ID DE LA FOTO
-  std::string sql("INSERT INTO DATOS (ID_NOMBRE, HORA, FECHA, TEMPERATURA, HUMEDAD, SOLAR) VALUES (");
+  std::string sql("INSERT INTO DATOS (ID_NOMBRE, HORA, FECHA, TEMPERATURA, HUMEDAD, SOLAR) VALUES ('");
   sql += id;
-  sql += ",";
-  sql += hora;
-  sql += ",";
+  sql += "','";
+  sql += hora_momento_foto;
+  sql += "','";
   sql += fecha;
-  sql += ",";
+  sql += "',";
   sql += to_string(temperature);
   sql += ",";
   sql += to_string(humedad);
