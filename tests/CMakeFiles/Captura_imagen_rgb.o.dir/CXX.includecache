@@ -6,24 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/aledelgado/tfg/Arduino/Temperature/temperature.h
-iostream
--
-boost/asio.hpp
--
-boost/program_options/options_description.hpp
--
-boost/program_options.hpp
--
-boost/program_options/option.hpp
--
-sqlite3.h
--
-../../Database/sqlite3/sqliteCallBack.hpp
-/home/aledelgado/tfg/Database/sqlite3/sqliteCallBack.hpp
-list
--
-
 /home/aledelgado/tfg/Capture/captura_imagenes.cpp
 iostream
 -
@@ -59,8 +41,14 @@ boost/program_options.hpp
 -
 boost/program_options/option.hpp
 -
-../Arduino/Temperature/temperature.h
-/home/aledelgado/tfg/Arduino/Temperature/temperature.h
+boost/asio.hpp
+-
+sqlite3.h
+-
+../Database/sqlite3/sqliteCallBack.hpp
+/home/aledelgado/tfg/Database/sqlite3/sqliteCallBack.hpp
+list
+-
 
 /home/aledelgado/tfg/Database/sqlite3/sqliteCallBack.hpp
 iostream

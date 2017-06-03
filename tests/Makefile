@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Sun.o
+# Target rules for targets named Captura_imagen_rgb.o
 
 # Build rule for target.
-Sun.o: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Sun.o
-.PHONY : Sun.o
+Captura_imagen_rgb.o: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Captura_imagen_rgb.o
+.PHONY : Captura_imagen_rgb.o
 
 # fast build rule for target.
-Sun.o/fast:
-	$(MAKE) -f CMakeFiles/Sun.o.dir/build.make CMakeFiles/Sun.o.dir/build
-.PHONY : Sun.o/fast
+Captura_imagen_rgb.o/fast:
+	$(MAKE) -f CMakeFiles/Captura_imagen_rgb.o.dir/build.make CMakeFiles/Captura_imagen_rgb.o.dir/build
+.PHONY : Captura_imagen_rgb.o/fast
 
 #=============================================================================
 # Target rules for targets named Merge.o
@@ -137,58 +137,6 @@ Merge.o/fast:
 .PHONY : Merge.o/fast
 
 #=============================================================================
-# Target rules for targets named Homography.o
-
-# Build rule for target.
-Homography.o: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Homography.o
-.PHONY : Homography.o
-
-# fast build rule for target.
-Homography.o/fast:
-	$(MAKE) -f CMakeFiles/Homography.o.dir/build.make CMakeFiles/Homography.o.dir/build
-.PHONY : Homography.o/fast
-
-#=============================================================================
-# Target rules for targets named Optical_flow.o
-
-# Build rule for target.
-Optical_flow.o: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Optical_flow.o
-.PHONY : Optical_flow.o
-
-# fast build rule for target.
-Optical_flow.o/fast:
-	$(MAKE) -f CMakeFiles/Optical_flow.o.dir/build.make CMakeFiles/Optical_flow.o.dir/build
-.PHONY : Optical_flow.o/fast
-
-#=============================================================================
-# Target rules for targets named Tracking_cloud.o
-
-# Build rule for target.
-Tracking_cloud.o: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Tracking_cloud.o
-.PHONY : Tracking_cloud.o
-
-# fast build rule for target.
-Tracking_cloud.o/fast:
-	$(MAKE) -f CMakeFiles/Tracking_cloud.o.dir/build.make CMakeFiles/Tracking_cloud.o.dir/build
-.PHONY : Tracking_cloud.o/fast
-
-#=============================================================================
-# Target rules for targets named Clouds.o
-
-# Build rule for target.
-Clouds.o: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Clouds.o
-.PHONY : Clouds.o
-
-# fast build rule for target.
-Clouds.o/fast:
-	$(MAKE) -f CMakeFiles/Clouds.o.dir/build.make CMakeFiles/Clouds.o.dir/build
-.PHONY : Clouds.o/fast
-
-#=============================================================================
 # Target rules for targets named Detection.o
 
 # Build rule for target.
@@ -200,19 +148,6 @@ Detection.o: cmake_check_build_system
 Detection.o/fast:
 	$(MAKE) -f CMakeFiles/Detection.o.dir/build.make CMakeFiles/Detection.o.dir/build
 .PHONY : Detection.o/fast
-
-#=============================================================================
-# Target rules for targets named Captura_imagen_rgb.o
-
-# Build rule for target.
-Captura_imagen_rgb.o: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Captura_imagen_rgb.o
-.PHONY : Captura_imagen_rgb.o
-
-# fast build rule for target.
-Captura_imagen_rgb.o/fast:
-	$(MAKE) -f CMakeFiles/Captura_imagen_rgb.o.dir/build.make CMakeFiles/Captura_imagen_rgb.o.dir/build
-.PHONY : Captura_imagen_rgb.o/fast
 
 #=============================================================================
 # Target rules for targets named Temperature.o
@@ -281,60 +216,6 @@ Capture/captura_imagenes.cpp.s:
 	$(MAKE) -f CMakeFiles/Captura_imagen_rgb.o.dir/build.make CMakeFiles/Captura_imagen_rgb.o.dir/Capture/captura_imagenes.cpp.s
 .PHONY : Capture/captura_imagenes.cpp.s
 
-CloudTracking/cloud_tracking.o: CloudTracking/cloud_tracking.cpp.o
-
-.PHONY : CloudTracking/cloud_tracking.o
-
-# target to build an object file
-CloudTracking/cloud_tracking.cpp.o:
-	$(MAKE) -f CMakeFiles/Tracking_cloud.o.dir/build.make CMakeFiles/Tracking_cloud.o.dir/CloudTracking/cloud_tracking.cpp.o
-.PHONY : CloudTracking/cloud_tracking.cpp.o
-
-CloudTracking/cloud_tracking.i: CloudTracking/cloud_tracking.cpp.i
-
-.PHONY : CloudTracking/cloud_tracking.i
-
-# target to preprocess a source file
-CloudTracking/cloud_tracking.cpp.i:
-	$(MAKE) -f CMakeFiles/Tracking_cloud.o.dir/build.make CMakeFiles/Tracking_cloud.o.dir/CloudTracking/cloud_tracking.cpp.i
-.PHONY : CloudTracking/cloud_tracking.cpp.i
-
-CloudTracking/cloud_tracking.s: CloudTracking/cloud_tracking.cpp.s
-
-.PHONY : CloudTracking/cloud_tracking.s
-
-# target to generate assembly for a file
-CloudTracking/cloud_tracking.cpp.s:
-	$(MAKE) -f CMakeFiles/Tracking_cloud.o.dir/build.make CMakeFiles/Tracking_cloud.o.dir/CloudTracking/cloud_tracking.cpp.s
-.PHONY : CloudTracking/cloud_tracking.cpp.s
-
-Clouds/clouds.o: Clouds/clouds.cpp.o
-
-.PHONY : Clouds/clouds.o
-
-# target to build an object file
-Clouds/clouds.cpp.o:
-	$(MAKE) -f CMakeFiles/Clouds.o.dir/build.make CMakeFiles/Clouds.o.dir/Clouds/clouds.cpp.o
-.PHONY : Clouds/clouds.cpp.o
-
-Clouds/clouds.i: Clouds/clouds.cpp.i
-
-.PHONY : Clouds/clouds.i
-
-# target to preprocess a source file
-Clouds/clouds.cpp.i:
-	$(MAKE) -f CMakeFiles/Clouds.o.dir/build.make CMakeFiles/Clouds.o.dir/Clouds/clouds.cpp.i
-.PHONY : Clouds/clouds.cpp.i
-
-Clouds/clouds.s: Clouds/clouds.cpp.s
-
-.PHONY : Clouds/clouds.s
-
-# target to generate assembly for a file
-Clouds/clouds.cpp.s:
-	$(MAKE) -f CMakeFiles/Clouds.o.dir/build.make CMakeFiles/Clouds.o.dir/Clouds/clouds.cpp.s
-.PHONY : Clouds/clouds.cpp.s
-
 Detection/detection.o: Detection/detection.cpp.o
 
 .PHONY : Detection/detection.o
@@ -361,33 +242,6 @@ Detection/detection.s: Detection/detection.cpp.s
 Detection/detection.cpp.s:
 	$(MAKE) -f CMakeFiles/Detection.o.dir/build.make CMakeFiles/Detection.o.dir/Detection/detection.cpp.s
 .PHONY : Detection/detection.cpp.s
-
-Homography/homography.o: Homography/homography.cpp.o
-
-.PHONY : Homography/homography.o
-
-# target to build an object file
-Homography/homography.cpp.o:
-	$(MAKE) -f CMakeFiles/Homography.o.dir/build.make CMakeFiles/Homography.o.dir/Homography/homography.cpp.o
-.PHONY : Homography/homography.cpp.o
-
-Homography/homography.i: Homography/homography.cpp.i
-
-.PHONY : Homography/homography.i
-
-# target to preprocess a source file
-Homography/homography.cpp.i:
-	$(MAKE) -f CMakeFiles/Homography.o.dir/build.make CMakeFiles/Homography.o.dir/Homography/homography.cpp.i
-.PHONY : Homography/homography.cpp.i
-
-Homography/homography.s: Homography/homography.cpp.s
-
-.PHONY : Homography/homography.s
-
-# target to generate assembly for a file
-Homography/homography.cpp.s:
-	$(MAKE) -f CMakeFiles/Homography.o.dir/build.make CMakeFiles/Homography.o.dir/Homography/homography.cpp.s
-.PHONY : Homography/homography.cpp.s
 
 MergeHDR/merge.o: MergeHDR/merge.cpp.o
 
@@ -416,60 +270,6 @@ MergeHDR/merge.cpp.s:
 	$(MAKE) -f CMakeFiles/Merge.o.dir/build.make CMakeFiles/Merge.o.dir/MergeHDR/merge.cpp.s
 .PHONY : MergeHDR/merge.cpp.s
 
-OpticalFlow/optical_flow.o: OpticalFlow/optical_flow.cpp.o
-
-.PHONY : OpticalFlow/optical_flow.o
-
-# target to build an object file
-OpticalFlow/optical_flow.cpp.o:
-	$(MAKE) -f CMakeFiles/Optical_flow.o.dir/build.make CMakeFiles/Optical_flow.o.dir/OpticalFlow/optical_flow.cpp.o
-.PHONY : OpticalFlow/optical_flow.cpp.o
-
-OpticalFlow/optical_flow.i: OpticalFlow/optical_flow.cpp.i
-
-.PHONY : OpticalFlow/optical_flow.i
-
-# target to preprocess a source file
-OpticalFlow/optical_flow.cpp.i:
-	$(MAKE) -f CMakeFiles/Optical_flow.o.dir/build.make CMakeFiles/Optical_flow.o.dir/OpticalFlow/optical_flow.cpp.i
-.PHONY : OpticalFlow/optical_flow.cpp.i
-
-OpticalFlow/optical_flow.s: OpticalFlow/optical_flow.cpp.s
-
-.PHONY : OpticalFlow/optical_flow.s
-
-# target to generate assembly for a file
-OpticalFlow/optical_flow.cpp.s:
-	$(MAKE) -f CMakeFiles/Optical_flow.o.dir/build.make CMakeFiles/Optical_flow.o.dir/OpticalFlow/optical_flow.cpp.s
-.PHONY : OpticalFlow/optical_flow.cpp.s
-
-Sun/sun.o: Sun/sun.cpp.o
-
-.PHONY : Sun/sun.o
-
-# target to build an object file
-Sun/sun.cpp.o:
-	$(MAKE) -f CMakeFiles/Sun.o.dir/build.make CMakeFiles/Sun.o.dir/Sun/sun.cpp.o
-.PHONY : Sun/sun.cpp.o
-
-Sun/sun.i: Sun/sun.cpp.i
-
-.PHONY : Sun/sun.i
-
-# target to preprocess a source file
-Sun/sun.cpp.i:
-	$(MAKE) -f CMakeFiles/Sun.o.dir/build.make CMakeFiles/Sun.o.dir/Sun/sun.cpp.i
-.PHONY : Sun/sun.cpp.i
-
-Sun/sun.s: Sun/sun.cpp.s
-
-.PHONY : Sun/sun.s
-
-# target to generate assembly for a file
-Sun/sun.cpp.s:
-	$(MAKE) -f CMakeFiles/Sun.o.dir/build.make CMakeFiles/Sun.o.dir/Sun/sun.cpp.s
-.PHONY : Sun/sun.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -477,43 +277,23 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... Sun.o"
-	@echo "... Merge.o"
-	@echo "... Homography.o"
-	@echo "... Optical_flow.o"
-	@echo "... Tracking_cloud.o"
-	@echo "... Clouds.o"
-	@echo "... Detection.o"
-	@echo "... Captura_imagen_rgb.o"
-	@echo "... Temperature.o"
 	@echo "... edit_cache"
+	@echo "... Captura_imagen_rgb.o"
+	@echo "... Merge.o"
+	@echo "... Detection.o"
+	@echo "... Temperature.o"
 	@echo "... Arduino/Temperature/temperature.o"
 	@echo "... Arduino/Temperature/temperature.i"
 	@echo "... Arduino/Temperature/temperature.s"
 	@echo "... Capture/captura_imagenes.o"
 	@echo "... Capture/captura_imagenes.i"
 	@echo "... Capture/captura_imagenes.s"
-	@echo "... CloudTracking/cloud_tracking.o"
-	@echo "... CloudTracking/cloud_tracking.i"
-	@echo "... CloudTracking/cloud_tracking.s"
-	@echo "... Clouds/clouds.o"
-	@echo "... Clouds/clouds.i"
-	@echo "... Clouds/clouds.s"
 	@echo "... Detection/detection.o"
 	@echo "... Detection/detection.i"
 	@echo "... Detection/detection.s"
-	@echo "... Homography/homography.o"
-	@echo "... Homography/homography.i"
-	@echo "... Homography/homography.s"
 	@echo "... MergeHDR/merge.o"
 	@echo "... MergeHDR/merge.i"
 	@echo "... MergeHDR/merge.s"
-	@echo "... OpticalFlow/optical_flow.o"
-	@echo "... OpticalFlow/optical_flow.i"
-	@echo "... OpticalFlow/optical_flow.s"
-	@echo "... Sun/sun.o"
-	@echo "... Sun/sun.i"
-	@echo "... Sun/sun.s"
 .PHONY : help
 
 

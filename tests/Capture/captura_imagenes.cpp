@@ -15,7 +15,10 @@
 #include <boost/program_options/options_description.hpp>
 #include <boost/program_options.hpp>
 #include <boost/program_options/option.hpp>
-#include "../Arduino/Temperature/temperature.h"
+#include <boost/asio.hpp>
+#include <sqlite3.h>
+#include "../Database/sqlite3/sqliteCallBack.hpp"
+#include <list>
 
 
 using namespace std;
@@ -23,6 +26,7 @@ using namespace cv;
 using namespace raspicam;
 namespace opt = boost::program_options;
 namespace as = boost::asio;
+using namespace::boost::asio;
 
 #define _CRT_SECURE_NO_WARNINGS
 #pragma warning(disable:4996)
@@ -42,7 +46,7 @@ int day;
 int month;
 int year;
 
-std::string hora;
+std::string hora, hora_momento_foto;
 char key = 0;
 
 vector<Mat> images;
@@ -59,6 +63,8 @@ string PORT;
 std::string database;
 sqlite3* db;
 char* sqError = 0;
+serial_port* port;
+
 
 
 
@@ -67,6 +73,17 @@ serial_port_base::baud_rate BAUD(115200);
 serial_port_base::flow_control FLOW( serial_port_base::flow_control::none );
 serial_port_base::parity PARITY( serial_port_base::parity::none );
 serial_port_base::stop_bits STOP( serial_port_base::stop_bits::one );
+
+string read_serial(serial_port& port);
+//std::list<result_query>* consulta_datos(sqlite3* db, char* consulta);
+//std::list<result_query>* consulta_datos(sqlite3* db, std::string consulta);
+void ask_data(serial_port* port, sqlite3* db, std::string fecha, std::string hora, std::string id);
+
+
+
+
+
+
 
 void setExposure(float exposure) {
 
@@ -91,6 +108,7 @@ void captura(){
 	sleep(segundos);
 
     std::cout <<  "Hora: " <<hora << std::endl;
+    hora_momento_foto = hora;
 
 
 	//setExposure(-8);
@@ -122,7 +140,7 @@ void captura(){
     fecha += "/";
     fecha += to_string(day);
 
-  ask_data(port, db, fecha, hora, id);
+    ask_data(port, db, fecha, hora, (std::string)id);
 
 
     numSnapshot++;
@@ -163,7 +181,7 @@ int graba(){
 
         year = timeinfo->tm_year + 1900;
         month = timeinfo->tm_mon + 1;
-        day = timeinfo->tm_day;
+        day = timeinfo->tm_mday;
 
         hora = "";
         for(int i=11; i<19; i++){
@@ -191,6 +209,7 @@ int graba(){
 
 
 int main(int argc, char* argv[]){
+	
 
     opt::options_description desc("Options");
     desc.add_options()
@@ -201,8 +220,6 @@ int main(int argc, char* argv[]){
     ("port,p", opt::value<std::vector<std::string>>(), "puerto");
 
     opt::variables_map vm;
-    opt::positional_options_description p;
-    p.add("port", -1);
     store(opt::parse_command_line(argc, argv,desc), vm);
     notify(vm);
 
@@ -224,7 +241,7 @@ int main(int argc, char* argv[]){
     }
     if(vm.count("database")){
       std::vector<std::string> v = vm["database"].as<std::vector<std::string>>();
-      ruta_carpeta_destino = v[0];
+      database = v[0];
     }
     if(vm.count("port")){
       std::vector<std::string> v = vm["port"].as<std::vector<std::string>>();
@@ -250,11 +267,11 @@ int main(int argc, char* argv[]){
 
     namedWindow("Video", CV_WINDOW_NORMAL);
 
-    serial_port port( io, PORT.c_str() );
-    port.set_option( BAUD );
-    port.set_option( FLOW );
-    port.set_option( PARITY );
-    port.set_option( STOP );
+    port = new serial_port( io, PORT.c_str() );
+    port->set_option( BAUD );
+    port->set_option( FLOW );
+    port->set_option( PARITY );
+    port->set_option( STOP );
 
 
     std::thread foto_(captura);
@@ -266,9 +283,176 @@ int main(int argc, char* argv[]){
     foto_.join();
 
     sqlite3_close(db);
+    
+
     return 0;
 }
 
+string read_serial(serial_port* port){
+  boost::asio::streambuf sb;
+  size_t n = as::read_until(*port, sb, '\n');
+  boost::asio::streambuf::const_buffers_type bufs = sb.data();
+  std::string temp(boost::asio::buffers_begin(bufs), boost::asio::buffers_begin(bufs) + n);
+
+  return temp;
+}
+
+/*
+std::list<result_query>* consulta_datos(sqlite3* db, char* consulta){
+  int handler;
+  sqlite3_stmt* ppStmt;
+  std::list<result_query>* resultado = new std::list<result_query>();
+  handler = sqlite3_prepare_v2(db, consulta, -1, &ppStmt, NULL);
+  if(handler != SQLITE_OK){
+    cerr << "Error al ejecutar la consulta" << endl;
+  }else{
+    int i=0;
+    const unsigned char* vacio = reinterpret_cast<const unsigned char*>("");
+
+    while(SQLITE_ROW == sqlite3_step(ppStmt)){
+      result_query fila;
+
+      if(sqlite3_column_text(ppStmt, 0) == NULL){
+        fila.setId_name(vacio);
+      }else{
+        fila.setId_name(sqlite3_column_text(ppStmt, 0));
+      }
+
+
+      if(sqlite3_column_text(ppStmt, 1) == NULL){
+        fila.setHora(vacio);
+      }else{
+        fila.setHora(sqlite3_column_text(ppStmt, 1));
+      }
+
+
+      if(sqlite3_column_text(ppStmt, 2) == NULL){
+        fila.setFecha(vacio);
+      }else{
+        fila.setFecha(sqlite3_column_text(ppStmt, 2));
+      }
+
+
+      if(sqlite3_column_text(ppStmt, 6) == NULL){
+        fila.setEstado(vacio);
+      }else{
+        fila.setEstado(sqlite3_column_text(ppStmt, 6));
+      }
+
+
+      fila.setTemperatura(sqlite3_column_double(ppStmt, 3));
+      fila.setHumedad(sqlite3_column_double(ppStmt, 4));
+      fila.setCelula_fotoelectrica(sqlite3_column_double(ppStmt, 5));
+
+      resultado->push_back(fila);
+      i++;
+
+    }
+  }
+  return resultado;
+}
+
+
+std::list<result_query>* consulta_datos(sqlite3* db, std::string consulta){
+  int handler;
+  sqlite3_stmt* ppStmt;
+  std::list<result_query>* resultado = new std::list<result_query>();
+  handler = sqlite3_prepare_v2(db, consulta.c_str(), -1, &ppStmt, NULL);
+  if(handler != SQLITE_OK){
+    cerr << "Error al ejecutar la consulta" << endl;
+  }else{
+    int i=0;
+    const unsigned char* vacio = reinterpret_cast<const unsigned char*>("");
+
+    while(SQLITE_ROW == sqlite3_step(ppStmt)){
+      result_query fila;
+
+      if(sqlite3_column_text(ppStmt, 0) == NULL){
+        fila.setId_name(vacio);
+      }else{
+        fila.setId_name(sqlite3_column_text(ppStmt, 0));
+      }
+
+
+      if(sqlite3_column_text(ppStmt, 1) == NULL){
+        fila.setHora(vacio);
+      }else{
+        fila.setHora(sqlite3_column_text(ppStmt, 1));
+      }
+
+
+      if(sqlite3_column_text(ppStmt, 2) == NULL){
+        fila.setFecha(vacio);
+      }else{
+        fila.setFecha(sqlite3_column_text(ppStmt, 2));
+      }
+
+
+      if(sqlite3_column_text(ppStmt, 6) == NULL){
+        fila.setEstado(vacio);
+      }else{
+        fila.setEstado(sqlite3_column_text(ppStmt, 6));
+      }
+
+
+      fila.setTemperatura(sqlite3_column_double(ppStmt, 3));
+      fila.setHumedad(sqlite3_column_double(ppStmt, 4));
+      fila.setCelula_fotoelectrica(sqlite3_column_double(ppStmt, 5));
+
+      resultado->push_back(fila);
+      i++;
+
+    }
+  }
+  return resultado;
+}*/
+
+void ask_data(serial_port* port, sqlite3* db, std::string fecha, std::string hora, std::string id){
+
+  unsigned char opt[1];
+  char* sqlError = 0;
+
+  //PEDIMOS DATOS DE TEMPERATURA
+  opt[0] = 't';
+  float temperature;
+  as::write(*port, as::buffer(opt, 1));
+  sleep(1);
+  temperature = atof(read_serial(port).c_str());
+
+  //PEDIMOS DATOS DE HUMEDAD
+  opt[0] = 'h';
+  float humedad;
+  as::write(*port, as::buffer(opt, 1));
+  sleep(1);
+  humedad = atof(read_serial(port).c_str());
+
+  //PEDIMOS DATOS DE CELULA FOTOVOLTÁICA
+  opt[0] = 's';
+  float cel;
+  as::write(*port, as::buffer(opt, 1));
+  sleep(1);
+  cel = atof(read_serial(port).c_str());
+  
+  cout << id << " " << hora_momento_foto << " " << fecha << " " << to_string(temperature) << " " << to_string(humedad) << " " << to_string(cel) << endl;
+
+  //INTRODUCIMOS LOS DATOS EN LA BASE DE DATOS SEGUN EL ID DE LA FOTO
+  std::string sql("INSERT INTO DATOS (ID_NOMBRE, HORA, FECHA, TEMPERATURA, HUMEDAD, SOLAR) VALUES ('");
+  sql += id;
+  sql += "','";
+  sql += hora_momento_foto;
+  sql += "','";
+  sql += fecha;
+  sql += "',";
+  sql += to_string(temperature);
+  sql += ",";
+  sql += to_string(humedad);
+  sql += ",";
+  sql += to_string(cel);
+  sql += ");";
+  int correct = sqlite3_exec(db, sql.c_str(), callback, 0, &sqlError);
+  if(correct != SQLITE_OK)
+    std::cerr << "Error: " << sqlError  << '\n';
+}
 
 void trackbar_exposure(float, void*){
 		video.set(CV_CAP_PROP_EXPOSURE, exposure);
