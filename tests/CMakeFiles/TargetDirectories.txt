@@ -1,10 +1,11 @@
 /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/edit_cache.dir
-/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/rebuild_cache.dir
-/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Detection.o.dir
+/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Captura_imagen_rgb.o.dir
+/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Sun.o.dir
+/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Clouds.o.dir
+/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Homography.o.dir
+/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Temperature.o.dir
 /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Tracking_cloud.o.dir
 /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Optical_flow.o.dir
-/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Temperature.o.dir
-/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Homography.o.dir
-/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Clouds.o.dir
-/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Sun.o.dir
 /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Merge.o.dir
+/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Detection.o.dir
+/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/rebuild_cache.dir

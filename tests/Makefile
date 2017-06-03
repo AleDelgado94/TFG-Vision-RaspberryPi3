@@ -111,17 +111,69 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Detection.o
+# Target rules for targets named Captura_imagen_rgb.o
 
 # Build rule for target.
-Detection.o: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Detection.o
-.PHONY : Detection.o
+Captura_imagen_rgb.o: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Captura_imagen_rgb.o
+.PHONY : Captura_imagen_rgb.o
 
 # fast build rule for target.
-Detection.o/fast:
-	$(MAKE) -f CMakeFiles/Detection.o.dir/build.make CMakeFiles/Detection.o.dir/build
-.PHONY : Detection.o/fast
+Captura_imagen_rgb.o/fast:
+	$(MAKE) -f CMakeFiles/Captura_imagen_rgb.o.dir/build.make CMakeFiles/Captura_imagen_rgb.o.dir/build
+.PHONY : Captura_imagen_rgb.o/fast
+
+#=============================================================================
+# Target rules for targets named Sun.o
+
+# Build rule for target.
+Sun.o: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Sun.o
+.PHONY : Sun.o
+
+# fast build rule for target.
+Sun.o/fast:
+	$(MAKE) -f CMakeFiles/Sun.o.dir/build.make CMakeFiles/Sun.o.dir/build
+.PHONY : Sun.o/fast
+
+#=============================================================================
+# Target rules for targets named Clouds.o
+
+# Build rule for target.
+Clouds.o: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Clouds.o
+.PHONY : Clouds.o
+
+# fast build rule for target.
+Clouds.o/fast:
+	$(MAKE) -f CMakeFiles/Clouds.o.dir/build.make CMakeFiles/Clouds.o.dir/build
+.PHONY : Clouds.o/fast
+
+#=============================================================================
+# Target rules for targets named Homography.o
+
+# Build rule for target.
+Homography.o: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Homography.o
+.PHONY : Homography.o
+
+# fast build rule for target.
+Homography.o/fast:
+	$(MAKE) -f CMakeFiles/Homography.o.dir/build.make CMakeFiles/Homography.o.dir/build
+.PHONY : Homography.o/fast
+
+#=============================================================================
+# Target rules for targets named Temperature.o
+
+# Build rule for target.
+Temperature.o: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Temperature.o
+.PHONY : Temperature.o
+
+# fast build rule for target.
+Temperature.o/fast:
+	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/build
+.PHONY : Temperature.o/fast
 
 #=============================================================================
 # Target rules for targets named Tracking_cloud.o
@@ -150,58 +202,6 @@ Optical_flow.o/fast:
 .PHONY : Optical_flow.o/fast
 
 #=============================================================================
-# Target rules for targets named Temperature.o
-
-# Build rule for target.
-Temperature.o: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Temperature.o
-.PHONY : Temperature.o
-
-# fast build rule for target.
-Temperature.o/fast:
-	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/build
-.PHONY : Temperature.o/fast
-
-#=============================================================================
-# Target rules for targets named Homography.o
-
-# Build rule for target.
-Homography.o: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Homography.o
-.PHONY : Homography.o
-
-# fast build rule for target.
-Homography.o/fast:
-	$(MAKE) -f CMakeFiles/Homography.o.dir/build.make CMakeFiles/Homography.o.dir/build
-.PHONY : Homography.o/fast
-
-#=============================================================================
-# Target rules for targets named Clouds.o
-
-# Build rule for target.
-Clouds.o: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Clouds.o
-.PHONY : Clouds.o
-
-# fast build rule for target.
-Clouds.o/fast:
-	$(MAKE) -f CMakeFiles/Clouds.o.dir/build.make CMakeFiles/Clouds.o.dir/build
-.PHONY : Clouds.o/fast
-
-#=============================================================================
-# Target rules for targets named Sun.o
-
-# Build rule for target.
-Sun.o: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Sun.o
-.PHONY : Sun.o
-
-# fast build rule for target.
-Sun.o/fast:
-	$(MAKE) -f CMakeFiles/Sun.o.dir/build.make CMakeFiles/Sun.o.dir/build
-.PHONY : Sun.o/fast
-
-#=============================================================================
 # Target rules for targets named Merge.o
 
 # Build rule for target.
@@ -213,6 +213,19 @@ Merge.o: cmake_check_build_system
 Merge.o/fast:
 	$(MAKE) -f CMakeFiles/Merge.o.dir/build.make CMakeFiles/Merge.o.dir/build
 .PHONY : Merge.o/fast
+
+#=============================================================================
+# Target rules for targets named Detection.o
+
+# Build rule for target.
+Detection.o: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Detection.o
+.PHONY : Detection.o
+
+# fast build rule for target.
+Detection.o/fast:
+	$(MAKE) -f CMakeFiles/Detection.o.dir/build.make CMakeFiles/Detection.o.dir/build
+.PHONY : Detection.o/fast
 
 Arduino/Temperature/temperature.o: Arduino/Temperature/temperature.cpp.o
 
@@ -240,6 +253,33 @@ Arduino/Temperature/temperature.s: Arduino/Temperature/temperature.cpp.s
 Arduino/Temperature/temperature.cpp.s:
 	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/Arduino/Temperature/temperature.cpp.s
 .PHONY : Arduino/Temperature/temperature.cpp.s
+
+Capture/captura_imagenes.o: Capture/captura_imagenes.cpp.o
+
+.PHONY : Capture/captura_imagenes.o
+
+# target to build an object file
+Capture/captura_imagenes.cpp.o:
+	$(MAKE) -f CMakeFiles/Captura_imagen_rgb.o.dir/build.make CMakeFiles/Captura_imagen_rgb.o.dir/Capture/captura_imagenes.cpp.o
+.PHONY : Capture/captura_imagenes.cpp.o
+
+Capture/captura_imagenes.i: Capture/captura_imagenes.cpp.i
+
+.PHONY : Capture/captura_imagenes.i
+
+# target to preprocess a source file
+Capture/captura_imagenes.cpp.i:
+	$(MAKE) -f CMakeFiles/Captura_imagen_rgb.o.dir/build.make CMakeFiles/Captura_imagen_rgb.o.dir/Capture/captura_imagenes.cpp.i
+.PHONY : Capture/captura_imagenes.cpp.i
+
+Capture/captura_imagenes.s: Capture/captura_imagenes.cpp.s
+
+.PHONY : Capture/captura_imagenes.s
+
+# target to generate assembly for a file
+Capture/captura_imagenes.cpp.s:
+	$(MAKE) -f CMakeFiles/Captura_imagen_rgb.o.dir/build.make CMakeFiles/Captura_imagen_rgb.o.dir/Capture/captura_imagenes.cpp.s
+.PHONY : Capture/captura_imagenes.cpp.s
 
 CloudTracking/cloud_tracking.o: CloudTracking/cloud_tracking.cpp.o
 
@@ -437,18 +477,22 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... rebuild_cache"
-	@echo "... Detection.o"
+	@echo "... Captura_imagen_rgb.o"
+	@echo "... Sun.o"
+	@echo "... Clouds.o"
+	@echo "... Homography.o"
+	@echo "... Temperature.o"
 	@echo "... Tracking_cloud.o"
 	@echo "... Optical_flow.o"
-	@echo "... Temperature.o"
-	@echo "... Homography.o"
-	@echo "... Clouds.o"
-	@echo "... Sun.o"
 	@echo "... Merge.o"
+	@echo "... Detection.o"
+	@echo "... rebuild_cache"
 	@echo "... Arduino/Temperature/temperature.o"
 	@echo "... Arduino/Temperature/temperature.i"
 	@echo "... Arduino/Temperature/temperature.s"
+	@echo "... Capture/captura_imagenes.o"
+	@echo "... Capture/captura_imagenes.i"
+	@echo "... Capture/captura_imagenes.s"
 	@echo "... CloudTracking/cloud_tracking.o"
 	@echo "... CloudTracking/cloud_tracking.i"
 	@echo "... CloudTracking/cloud_tracking.s"

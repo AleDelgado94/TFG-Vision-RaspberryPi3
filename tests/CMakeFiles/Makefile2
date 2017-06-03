@@ -60,39 +60,187 @@ CMAKE_SOURCE_DIR = /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests
 CMAKE_BINARY_DIR = /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests
 
 #=============================================================================
-# Target rules for target CMakeFiles/Detection.o.dir
+# Target rules for target CMakeFiles/Captura_imagen_rgb.o.dir
 
 # All Build rule for target.
-CMakeFiles/Detection.o.dir/all:
-	$(MAKE) -f CMakeFiles/Detection.o.dir/build.make CMakeFiles/Detection.o.dir/depend
-	$(MAKE) -f CMakeFiles/Detection.o.dir/build.make CMakeFiles/Detection.o.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=3,4 "Built target Detection.o"
-.PHONY : CMakeFiles/Detection.o.dir/all
+CMakeFiles/Captura_imagen_rgb.o.dir/all:
+	$(MAKE) -f CMakeFiles/Captura_imagen_rgb.o.dir/build.make CMakeFiles/Captura_imagen_rgb.o.dir/depend
+	$(MAKE) -f CMakeFiles/Captura_imagen_rgb.o.dir/build.make CMakeFiles/Captura_imagen_rgb.o.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=1,2 "Built target Captura_imagen_rgb.o"
+.PHONY : CMakeFiles/Captura_imagen_rgb.o.dir/all
 
 # Include target in all.
-all: CMakeFiles/Detection.o.dir/all
+all: CMakeFiles/Captura_imagen_rgb.o.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/Detection.o.dir/rule: cmake_check_build_system
+CMakeFiles/Captura_imagen_rgb.o.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Detection.o.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Captura_imagen_rgb.o.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 0
-.PHONY : CMakeFiles/Detection.o.dir/rule
+.PHONY : CMakeFiles/Captura_imagen_rgb.o.dir/rule
 
 # Convenience name for target.
-Detection.o: CMakeFiles/Detection.o.dir/rule
+Captura_imagen_rgb.o: CMakeFiles/Captura_imagen_rgb.o.dir/rule
 
-.PHONY : Detection.o
-
-# clean rule for target.
-CMakeFiles/Detection.o.dir/clean:
-	$(MAKE) -f CMakeFiles/Detection.o.dir/build.make CMakeFiles/Detection.o.dir/clean
-.PHONY : CMakeFiles/Detection.o.dir/clean
+.PHONY : Captura_imagen_rgb.o
 
 # clean rule for target.
-clean: CMakeFiles/Detection.o.dir/clean
+CMakeFiles/Captura_imagen_rgb.o.dir/clean:
+	$(MAKE) -f CMakeFiles/Captura_imagen_rgb.o.dir/build.make CMakeFiles/Captura_imagen_rgb.o.dir/clean
+.PHONY : CMakeFiles/Captura_imagen_rgb.o.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/Captura_imagen_rgb.o.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Sun.o.dir
+
+# All Build rule for target.
+CMakeFiles/Sun.o.dir/all:
+	$(MAKE) -f CMakeFiles/Sun.o.dir/build.make CMakeFiles/Sun.o.dir/depend
+	$(MAKE) -f CMakeFiles/Sun.o.dir/build.make CMakeFiles/Sun.o.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=13,14 "Built target Sun.o"
+.PHONY : CMakeFiles/Sun.o.dir/all
+
+# Include target in all.
+all: CMakeFiles/Sun.o.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Sun.o.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Sun.o.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 0
+.PHONY : CMakeFiles/Sun.o.dir/rule
+
+# Convenience name for target.
+Sun.o: CMakeFiles/Sun.o.dir/rule
+
+.PHONY : Sun.o
+
+# clean rule for target.
+CMakeFiles/Sun.o.dir/clean:
+	$(MAKE) -f CMakeFiles/Sun.o.dir/build.make CMakeFiles/Sun.o.dir/clean
+.PHONY : CMakeFiles/Sun.o.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/Sun.o.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Clouds.o.dir
+
+# All Build rule for target.
+CMakeFiles/Clouds.o.dir/all:
+	$(MAKE) -f CMakeFiles/Clouds.o.dir/build.make CMakeFiles/Clouds.o.dir/depend
+	$(MAKE) -f CMakeFiles/Clouds.o.dir/build.make CMakeFiles/Clouds.o.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=3,4 "Built target Clouds.o"
+.PHONY : CMakeFiles/Clouds.o.dir/all
+
+# Include target in all.
+all: CMakeFiles/Clouds.o.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Clouds.o.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Clouds.o.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 0
+.PHONY : CMakeFiles/Clouds.o.dir/rule
+
+# Convenience name for target.
+Clouds.o: CMakeFiles/Clouds.o.dir/rule
+
+.PHONY : Clouds.o
+
+# clean rule for target.
+CMakeFiles/Clouds.o.dir/clean:
+	$(MAKE) -f CMakeFiles/Clouds.o.dir/build.make CMakeFiles/Clouds.o.dir/clean
+.PHONY : CMakeFiles/Clouds.o.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/Clouds.o.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Homography.o.dir
+
+# All Build rule for target.
+CMakeFiles/Homography.o.dir/all:
+	$(MAKE) -f CMakeFiles/Homography.o.dir/build.make CMakeFiles/Homography.o.dir/depend
+	$(MAKE) -f CMakeFiles/Homography.o.dir/build.make CMakeFiles/Homography.o.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=7,8 "Built target Homography.o"
+.PHONY : CMakeFiles/Homography.o.dir/all
+
+# Include target in all.
+all: CMakeFiles/Homography.o.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Homography.o.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Homography.o.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 0
+.PHONY : CMakeFiles/Homography.o.dir/rule
+
+# Convenience name for target.
+Homography.o: CMakeFiles/Homography.o.dir/rule
+
+.PHONY : Homography.o
+
+# clean rule for target.
+CMakeFiles/Homography.o.dir/clean:
+	$(MAKE) -f CMakeFiles/Homography.o.dir/build.make CMakeFiles/Homography.o.dir/clean
+.PHONY : CMakeFiles/Homography.o.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/Homography.o.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Temperature.o.dir
+
+# All Build rule for target.
+CMakeFiles/Temperature.o.dir/all:
+	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/depend
+	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=15,16 "Built target Temperature.o"
+.PHONY : CMakeFiles/Temperature.o.dir/all
+
+# Include target in all.
+all: CMakeFiles/Temperature.o.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Temperature.o.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Temperature.o.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 0
+.PHONY : CMakeFiles/Temperature.o.dir/rule
+
+# Convenience name for target.
+Temperature.o: CMakeFiles/Temperature.o.dir/rule
+
+.PHONY : Temperature.o
+
+# clean rule for target.
+CMakeFiles/Temperature.o.dir/clean:
+	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/clean
+.PHONY : CMakeFiles/Temperature.o.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/Temperature.o.dir/clean
 
 .PHONY : clean
 
@@ -103,7 +251,7 @@ clean: CMakeFiles/Detection.o.dir/clean
 CMakeFiles/Tracking_cloud.o.dir/all:
 	$(MAKE) -f CMakeFiles/Tracking_cloud.o.dir/build.make CMakeFiles/Tracking_cloud.o.dir/depend
 	$(MAKE) -f CMakeFiles/Tracking_cloud.o.dir/build.make CMakeFiles/Tracking_cloud.o.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=15,16 "Built target Tracking_cloud.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=17,18 "Built target Tracking_cloud.o"
 .PHONY : CMakeFiles/Tracking_cloud.o.dir/all
 
 # Include target in all.
@@ -140,7 +288,7 @@ clean: CMakeFiles/Tracking_cloud.o.dir/clean
 CMakeFiles/Optical_flow.o.dir/all:
 	$(MAKE) -f CMakeFiles/Optical_flow.o.dir/build.make CMakeFiles/Optical_flow.o.dir/depend
 	$(MAKE) -f CMakeFiles/Optical_flow.o.dir/build.make CMakeFiles/Optical_flow.o.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=9,10 "Built target Optical_flow.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=11,12 "Built target Optical_flow.o"
 .PHONY : CMakeFiles/Optical_flow.o.dir/all
 
 # Include target in all.
@@ -171,161 +319,13 @@ clean: CMakeFiles/Optical_flow.o.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/Temperature.o.dir
-
-# All Build rule for target.
-CMakeFiles/Temperature.o.dir/all:
-	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/depend
-	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=13,14 "Built target Temperature.o"
-.PHONY : CMakeFiles/Temperature.o.dir/all
-
-# Include target in all.
-all: CMakeFiles/Temperature.o.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/Temperature.o.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Temperature.o.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 0
-.PHONY : CMakeFiles/Temperature.o.dir/rule
-
-# Convenience name for target.
-Temperature.o: CMakeFiles/Temperature.o.dir/rule
-
-.PHONY : Temperature.o
-
-# clean rule for target.
-CMakeFiles/Temperature.o.dir/clean:
-	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/clean
-.PHONY : CMakeFiles/Temperature.o.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/Temperature.o.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/Homography.o.dir
-
-# All Build rule for target.
-CMakeFiles/Homography.o.dir/all:
-	$(MAKE) -f CMakeFiles/Homography.o.dir/build.make CMakeFiles/Homography.o.dir/depend
-	$(MAKE) -f CMakeFiles/Homography.o.dir/build.make CMakeFiles/Homography.o.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=5,6 "Built target Homography.o"
-.PHONY : CMakeFiles/Homography.o.dir/all
-
-# Include target in all.
-all: CMakeFiles/Homography.o.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/Homography.o.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Homography.o.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 0
-.PHONY : CMakeFiles/Homography.o.dir/rule
-
-# Convenience name for target.
-Homography.o: CMakeFiles/Homography.o.dir/rule
-
-.PHONY : Homography.o
-
-# clean rule for target.
-CMakeFiles/Homography.o.dir/clean:
-	$(MAKE) -f CMakeFiles/Homography.o.dir/build.make CMakeFiles/Homography.o.dir/clean
-.PHONY : CMakeFiles/Homography.o.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/Homography.o.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/Clouds.o.dir
-
-# All Build rule for target.
-CMakeFiles/Clouds.o.dir/all:
-	$(MAKE) -f CMakeFiles/Clouds.o.dir/build.make CMakeFiles/Clouds.o.dir/depend
-	$(MAKE) -f CMakeFiles/Clouds.o.dir/build.make CMakeFiles/Clouds.o.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=1,2 "Built target Clouds.o"
-.PHONY : CMakeFiles/Clouds.o.dir/all
-
-# Include target in all.
-all: CMakeFiles/Clouds.o.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/Clouds.o.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Clouds.o.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 0
-.PHONY : CMakeFiles/Clouds.o.dir/rule
-
-# Convenience name for target.
-Clouds.o: CMakeFiles/Clouds.o.dir/rule
-
-.PHONY : Clouds.o
-
-# clean rule for target.
-CMakeFiles/Clouds.o.dir/clean:
-	$(MAKE) -f CMakeFiles/Clouds.o.dir/build.make CMakeFiles/Clouds.o.dir/clean
-.PHONY : CMakeFiles/Clouds.o.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/Clouds.o.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/Sun.o.dir
-
-# All Build rule for target.
-CMakeFiles/Sun.o.dir/all:
-	$(MAKE) -f CMakeFiles/Sun.o.dir/build.make CMakeFiles/Sun.o.dir/depend
-	$(MAKE) -f CMakeFiles/Sun.o.dir/build.make CMakeFiles/Sun.o.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=11,12 "Built target Sun.o"
-.PHONY : CMakeFiles/Sun.o.dir/all
-
-# Include target in all.
-all: CMakeFiles/Sun.o.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/Sun.o.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Sun.o.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 0
-.PHONY : CMakeFiles/Sun.o.dir/rule
-
-# Convenience name for target.
-Sun.o: CMakeFiles/Sun.o.dir/rule
-
-.PHONY : Sun.o
-
-# clean rule for target.
-CMakeFiles/Sun.o.dir/clean:
-	$(MAKE) -f CMakeFiles/Sun.o.dir/build.make CMakeFiles/Sun.o.dir/clean
-.PHONY : CMakeFiles/Sun.o.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/Sun.o.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/Merge.o.dir
 
 # All Build rule for target.
 CMakeFiles/Merge.o.dir/all:
 	$(MAKE) -f CMakeFiles/Merge.o.dir/build.make CMakeFiles/Merge.o.dir/depend
 	$(MAKE) -f CMakeFiles/Merge.o.dir/build.make CMakeFiles/Merge.o.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=7,8 "Built target Merge.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=9,10 "Built target Merge.o"
 .PHONY : CMakeFiles/Merge.o.dir/all
 
 # Include target in all.
@@ -352,6 +352,43 @@ CMakeFiles/Merge.o.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/Merge.o.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Detection.o.dir
+
+# All Build rule for target.
+CMakeFiles/Detection.o.dir/all:
+	$(MAKE) -f CMakeFiles/Detection.o.dir/build.make CMakeFiles/Detection.o.dir/depend
+	$(MAKE) -f CMakeFiles/Detection.o.dir/build.make CMakeFiles/Detection.o.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=5,6 "Built target Detection.o"
+.PHONY : CMakeFiles/Detection.o.dir/all
+
+# Include target in all.
+all: CMakeFiles/Detection.o.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Detection.o.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Detection.o.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 0
+.PHONY : CMakeFiles/Detection.o.dir/rule
+
+# Convenience name for target.
+Detection.o: CMakeFiles/Detection.o.dir/rule
+
+.PHONY : Detection.o
+
+# clean rule for target.
+CMakeFiles/Detection.o.dir/clean:
+	$(MAKE) -f CMakeFiles/Detection.o.dir/build.make CMakeFiles/Detection.o.dir/clean
+.PHONY : CMakeFiles/Detection.o.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/Detection.o.dir/clean
 
 .PHONY : clean
 

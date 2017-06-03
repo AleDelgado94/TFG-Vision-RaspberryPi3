@@ -22,14 +22,14 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -lsqlite3")
 
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
-#add_executable(Captura_imagen_rgb.o captura_imagenes.cpp)
+
 
 ################  CAPTURA IMAGEN  #######################
 
-
-#target_link_libraries(Captura_imagen_rgb.o Threads::Threads)
-#target_link_libraries(Captura_imagen_rgb.o ${OpenCV_LIBS})
-#target_link_libraries(Captura_imagen_rgb.o /opt/vc/lib/libmmal_core.so;/opt/vc/lib/libmmal_util.so;/opt/vc/lib/libmmal.so raspicam opencv_calib3d;opencv_core;opencv_features2d;opencv_flann;opencv_highgui;opencv_imgcodecs;opencv_imgproc;opencv_ml;opencv_objdetect;opencv_photo;opencv_shape;opencv_stitching;opencv_superres;opencv_video;opencv_videoio;opencv_videostab raspicam_cv)
+add_executable(Captura_imagen_rgb.o Capture/captura_imagenes.cpp)
+target_link_libraries(Captura_imagen_rgb.o Threads::Threads)
+target_link_libraries(Captura_imagen_rgb.o ${OpenCV_LIBS})
+target_link_libraries(Captura_imagen_rgb.o /opt/vc/lib/libmmal_core.so;/opt/vc/lib/libmmal_util.so;/opt/vc/lib/libmmal.so raspicam opencv_calib3d;opencv_core;opencv_features2d;opencv_flann;opencv_highgui;opencv_imgcodecs;opencv_imgproc;opencv_ml;opencv_objdetect;opencv_photo;opencv_shape;opencv_stitching;opencv_superres;opencv_video;opencv_videoio;opencv_videostab raspicam_cv)
 
 ################  MERGE HDR  #######################
 
