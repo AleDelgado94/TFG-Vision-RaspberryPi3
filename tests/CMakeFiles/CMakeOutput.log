@@ -1,4 +1,4 @@
-The system is: Linux - 4.10.0-20-generic - x86_64
+The system is: Linux - 4.4.9-v7+ - armv7l
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: /usr/bin/cc 
 Build flags: 
@@ -10,7 +10,7 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is GNU, found in "/home/aledelgado/tfg/CMakeFiles/3.7.2/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/3.6.2/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: /usr/bin/c++ 
@@ -23,76 +23,75 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is GNU, found in "/home/aledelgado/tfg/CMakeFiles/3.7.2/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/3.6.2/CompilerIdCXX/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /home/aledelgado/tfg/CMakeFiles/CMakeTmp
+Change Dir: /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_462cc/fast"
-/usr/bin/make -f CMakeFiles/cmTC_462cc.dir/build.make CMakeFiles/cmTC_462cc.dir/build
-make[1]: se entra en el directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_462cc.dir/testCCompiler.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_462cc.dir/testCCompiler.c.o   -c /home/aledelgado/tfg/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_462cc
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_462cc.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_462cc.dir/testCCompiler.c.o  -o cmTC_462cc -rdynamic 
-make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_b1039/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b1039.dir/build.make CMakeFiles/cmTC_b1039.dir/build
+make[1]: Entering directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b1039.dir/testCCompiler.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_b1039.dir/testCCompiler.c.o   -c /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_b1039
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b1039.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_b1039.dir/testCCompiler.c.o  -o cmTC_b1039 -rdynamic 
+make[1]: Leaving directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /home/aledelgado/tfg/CMakeFiles/CMakeTmp
+Change Dir: /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_5c8fc/fast"
-/usr/bin/make -f CMakeFiles/cmTC_5c8fc.dir/build.make CMakeFiles/cmTC_5c8fc.dir/build
-make[1]: se entra en el directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_5c8fc.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_5c8fc.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.7/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_5c8fc
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5c8fc.dir/link.txt --verbose=1
-/usr/bin/cc      -v CMakeFiles/cmTC_5c8fc.dir/CMakeCCompilerABI.c.o  -o cmTC_5c8fc -rdynamic  
+Run Build Command:"/usr/bin/make" "cmTC_b34ba/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b34ba.dir/build.make CMakeFiles/cmTC_b34ba.dir/build
+make[1]: Entering directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b34ba.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_b34ba.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.6/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_b34ba
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b34ba.dir/link.txt --verbose=1
+/usr/bin/cc      -v CMakeFiles/cmTC_b34ba.dir/CMakeCCompilerABI.c.o  -o cmTC_b34ba -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
-COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/6/lto-wrapper
-Target: x86_64-linux-gnu
-Configured with: ../src/configure -v --with-pkgversion='Ubuntu 6.3.0-12ubuntu2' --with-bugurl=file:///usr/share/doc/gcc-6/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-6 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-6-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-6-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-6-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/arm-linux-gnueabihf/4.9/lto-wrapper
+Target: arm-linux-gnueabihf
+Configured with: ../src/configure -v --with-pkgversion='Raspbian 4.9.2-10' --with-bugurl=file:///usr/share/doc/gcc-4.9/README.Bugs --enable-languages=c,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-4.9 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.9 --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --enable-gnu-unique-object --disable-libitm --disable-libquadmath --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-4.9-armhf/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-4.9-armhf --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-4.9-armhf --with-arch-directory=arm --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-sjlj-exceptions --with-arch=armv6 --with-fpu=vfp --with-float=hard --enable-checking=release --build=arm-linux-gnueabihf --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf
 Thread model: posix
-gcc version 6.3.0 20170406 (Ubuntu 6.3.0-12ubuntu2) 
-COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/6/:/usr/lib/gcc/x86_64-linux-gnu/6/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/6/:/usr/lib/gcc/x86_64-linux-gnu/
-LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/6/:/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/6/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_5c8fc' '-rdynamic' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/6/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/6/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/6/lto-wrapper -plugin-opt=-fresolution=/tmp/cckht2aV.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_5c8fc /usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/6/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/6 -L/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/6/../../.. CMakeFiles/cmTC_5c8fc.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/6/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_5c8fc' '-rdynamic' '-mtune=generic' '-march=x86-64'
-make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+gcc version 4.9.2 (Raspbian 4.9.2-10) 
+COMPILER_PATH=/usr/lib/gcc/arm-linux-gnueabihf/4.9/:/usr/lib/gcc/arm-linux-gnueabihf/4.9/:/usr/lib/gcc/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/4.9/:/usr/lib/gcc/arm-linux-gnueabihf/
+LIBRARY_PATH=/usr/lib/gcc/arm-linux-gnueabihf/4.9/:/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../:/lib/arm-linux-gnueabihf/:/lib/:/usr/lib/arm-linux-gnueabihf/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b34ba' '-rdynamic' '-march=armv6' '-mfloat-abi=hard' '-mfpu=vfp' '-mtls-dialect=gnu'
+ /usr/lib/gcc/arm-linux-gnueabihf/4.9/collect2 -plugin /usr/lib/gcc/arm-linux-gnueabihf/4.9/liblto_plugin.so -plugin-opt=/usr/lib/gcc/arm-linux-gnueabihf/4.9/lto-wrapper -plugin-opt=-fresolution=/tmp/ccWAEj6c.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux-armhf.so.3 -X --hash-style=gnu -m armelf_linux_eabi -o cmTC_b34ba /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crti.o /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtbegin.o -L/usr/lib/gcc/arm-linux-gnueabihf/4.9 -L/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf -L/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../.. -L/lib/arm-linux-gnueabihf -L/usr/lib/arm-linux-gnueabihf CMakeFiles/cmTC_b34ba.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtend.o /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crtn.o
+make[1]: Leaving directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/aledelgado/tfg/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_5c8fc/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_5c8fc.dir/build.make CMakeFiles/cmTC_5c8fc.dir/build]
-  ignore line: [make[1]: se entra en el directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_5c8fc.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_5c8fc.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.7/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_5c8fc]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5c8fc.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_5c8fc.dir/CMakeCCompilerABI.c.o  -o cmTC_5c8fc -rdynamic  ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_b34ba/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_b34ba.dir/build.make CMakeFiles/cmTC_b34ba.dir/build]
+  ignore line: [make[1]: Entering directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_b34ba.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_b34ba.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.6/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_b34ba]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b34ba.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_b34ba.dir/CMakeCCompilerABI.c.o  -o cmTC_b34ba -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
-  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/6/lto-wrapper]
-  ignore line: [Target: x86_64-linux-gnu]
-  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 6.3.0-12ubuntu2' --with-bugurl=file:///usr/share/doc/gcc-6/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-6 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-6-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-6-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-6-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/arm-linux-gnueabihf/4.9/lto-wrapper]
+  ignore line: [Target: arm-linux-gnueabihf]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Raspbian 4.9.2-10' --with-bugurl=file:///usr/share/doc/gcc-4.9/README.Bugs --enable-languages=c,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-4.9 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.9 --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --enable-gnu-unique-object --disable-libitm --disable-libquadmath --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-4.9-armhf/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-4.9-armhf --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-4.9-armhf --with-arch-directory=arm --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-sjlj-exceptions --with-arch=armv6 --with-fpu=vfp --with-float=hard --enable-checking=release --build=arm-linux-gnueabihf --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf]
   ignore line: [Thread model: posix]
-  ignore line: [gcc version 6.3.0 20170406 (Ubuntu 6.3.0-12ubuntu2) ]
-  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/6/:/usr/lib/gcc/x86_64-linux-gnu/6/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/6/:/usr/lib/gcc/x86_64-linux-gnu/]
-  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/6/:/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/6/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_5c8fc' '-rdynamic' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/6/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/6/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/6/lto-wrapper -plugin-opt=-fresolution=/tmp/cckht2aV.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_5c8fc /usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/6/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/6 -L/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/6/../../.. CMakeFiles/cmTC_5c8fc.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/6/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/crtn.o]
-    arg [/usr/lib/gcc/x86_64-linux-gnu/6/collect2] ==> ignore
+  ignore line: [gcc version 4.9.2 (Raspbian 4.9.2-10) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/arm-linux-gnueabihf/4.9/:/usr/lib/gcc/arm-linux-gnueabihf/4.9/:/usr/lib/gcc/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/4.9/:/usr/lib/gcc/arm-linux-gnueabihf/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/arm-linux-gnueabihf/4.9/:/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../:/lib/arm-linux-gnueabihf/:/lib/:/usr/lib/arm-linux-gnueabihf/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b34ba' '-rdynamic' '-march=armv6' '-mfloat-abi=hard' '-mfpu=vfp' '-mtls-dialect=gnu']
+  link line: [ /usr/lib/gcc/arm-linux-gnueabihf/4.9/collect2 -plugin /usr/lib/gcc/arm-linux-gnueabihf/4.9/liblto_plugin.so -plugin-opt=/usr/lib/gcc/arm-linux-gnueabihf/4.9/lto-wrapper -plugin-opt=-fresolution=/tmp/ccWAEj6c.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux-armhf.so.3 -X --hash-style=gnu -m armelf_linux_eabi -o cmTC_b34ba /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crti.o /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtbegin.o -L/usr/lib/gcc/arm-linux-gnueabihf/4.9 -L/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf -L/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../.. -L/lib/arm-linux-gnueabihf -L/usr/lib/arm-linux-gnueabihf CMakeFiles/cmTC_b34ba.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtend.o /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crtn.o]
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/4.9/collect2] ==> ignore
     arg [-plugin] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/6/liblto_plugin.so] ==> ignore
-    arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/6/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/cckht2aV.res] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/4.9/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/arm-linux-gnueabihf/4.9/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccWAEj6c.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -101,30 +100,24 @@ Parsed C implicit link information from above output:
     arg [--sysroot=/] ==> ignore
     arg [--build-id] ==> ignore
     arg [--eh-frame-hdr] ==> ignore
-    arg [-m] ==> ignore
-    arg [elf_x86_64] ==> ignore
-    arg [--hash-style=gnu] ==> ignore
-    arg [--as-needed] ==> ignore
     arg [-export-dynamic] ==> ignore
     arg [-dynamic-linker] ==> ignore
-    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
-    arg [-pie] ==> ignore
-    arg [-znow] ==> ignore
-    arg [-zrelro] ==> ignore
+    arg [/lib/ld-linux-armhf.so.3] ==> ignore
+    arg [-X] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [armelf_linux_eabi] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_5c8fc] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/crti.o] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/6/crtbeginS.o] ==> ignore
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/6] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/6]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib]
-    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
-    arg [-L/lib/../lib] ==> dir [/lib/../lib]
-    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
-    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/6/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/6/../../..]
-    arg [CMakeFiles/cmTC_5c8fc.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [cmTC_b34ba] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crti.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/4.9/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/4.9] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/4.9]
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf]
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../..] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../..]
+    arg [-L/lib/arm-linux-gnueabihf] ==> dir [/lib/arm-linux-gnueabihf]
+    arg [-L/usr/lib/arm-linux-gnueabihf] ==> dir [/usr/lib/arm-linux-gnueabihf]
+    arg [CMakeFiles/cmTC_b34ba.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -134,39 +127,36 @@ Parsed C implicit link information from above output:
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
     arg [--no-as-needed] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/6/crtendS.o] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/crtn.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/4.9/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crtn.o] ==> ignore
   remove lib [gcc]
   remove lib [gcc_s]
   remove lib [gcc]
   remove lib [gcc_s]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/6] ==> [/usr/lib/gcc/x86_64-linux-gnu/6]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib] ==> [/usr/lib]
-  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
-  collapse library dir [/lib/../lib] ==> [/lib]
-  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
-  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/6/../../..] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/4.9] ==> [/usr/lib/gcc/arm-linux-gnueabihf/4.9]
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf] ==> [/usr/lib/arm-linux-gnueabihf]
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../..] ==> [/usr/lib]
+  collapse library dir [/lib/arm-linux-gnueabihf] ==> [/lib/arm-linux-gnueabihf]
+  collapse library dir [/usr/lib/arm-linux-gnueabihf] ==> [/usr/lib/arm-linux-gnueabihf]
   implicit libs: [c]
-  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/6;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+  implicit dirs: [/usr/lib/gcc/arm-linux-gnueabihf/4.9;/usr/lib/arm-linux-gnueabihf;/usr/lib;/lib/arm-linux-gnueabihf]
   implicit fwks: []
 
 
 
 
 Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /home/aledelgado/tfg/CMakeFiles/CMakeTmp
+Change Dir: /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_fe52b/fast"
-/usr/bin/make -f CMakeFiles/cmTC_fe52b.dir/build.make CMakeFiles/cmTC_fe52b.dir/build
-make[1]: se entra en el directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_fe52b.dir/feature_tests.c.o
-/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_fe52b.dir/feature_tests.c.o   -c /home/aledelgado/tfg/CMakeFiles/feature_tests.c
-Linking C executable cmTC_fe52b
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fe52b.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_fe52b.dir/feature_tests.c.o  -o cmTC_fe52b -rdynamic 
-make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_ed336/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ed336.dir/build.make CMakeFiles/cmTC_ed336.dir/build
+make[1]: Entering directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ed336.dir/feature_tests.c.o
+/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_ed336.dir/feature_tests.c.o   -c /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/feature_tests.c
+Linking C executable cmTC_ed336
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ed336.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_ed336.dir/feature_tests.c.o  -o cmTC_ed336 -rdynamic 
+make[1]: Leaving directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -176,17 +166,17 @@ make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/
 
 
 Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /home/aledelgado/tfg/CMakeFiles/CMakeTmp
+Change Dir: /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_8886a/fast"
-/usr/bin/make -f CMakeFiles/cmTC_8886a.dir/build.make CMakeFiles/cmTC_8886a.dir/build
-make[1]: se entra en el directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_8886a.dir/feature_tests.c.o
-/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_8886a.dir/feature_tests.c.o   -c /home/aledelgado/tfg/CMakeFiles/feature_tests.c
-Linking C executable cmTC_8886a
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8886a.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_8886a.dir/feature_tests.c.o  -o cmTC_8886a -rdynamic 
-make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_36629/fast"
+/usr/bin/make -f CMakeFiles/cmTC_36629.dir/build.make CMakeFiles/cmTC_36629.dir/build
+make[1]: Entering directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_36629.dir/feature_tests.c.o
+/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_36629.dir/feature_tests.c.o   -c /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/feature_tests.c
+Linking C executable cmTC_36629
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_36629.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_36629.dir/feature_tests.c.o  -o cmTC_36629 -rdynamic 
+make[1]: Leaving directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -196,17 +186,17 @@ make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/
 
 
 Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /home/aledelgado/tfg/CMakeFiles/CMakeTmp
+Change Dir: /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_0295d/fast"
-/usr/bin/make -f CMakeFiles/cmTC_0295d.dir/build.make CMakeFiles/cmTC_0295d.dir/build
-make[1]: se entra en el directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_0295d.dir/feature_tests.c.o
-/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_0295d.dir/feature_tests.c.o   -c /home/aledelgado/tfg/CMakeFiles/feature_tests.c
-Linking C executable cmTC_0295d
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0295d.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_0295d.dir/feature_tests.c.o  -o cmTC_0295d -rdynamic 
-make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_1350a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1350a.dir/build.make CMakeFiles/cmTC_1350a.dir/build
+make[1]: Entering directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1350a.dir/feature_tests.c.o
+/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_1350a.dir/feature_tests.c.o   -c /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/feature_tests.c
+Linking C executable cmTC_1350a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1350a.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_1350a.dir/feature_tests.c.o  -o cmTC_1350a -rdynamic 
+make[1]: Leaving directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -214,73 +204,72 @@ make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/
     Feature record: C_FEATURE:0c_static_assert
     Feature record: C_FEATURE:0c_variadic_macros
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /home/aledelgado/tfg/CMakeFiles/CMakeTmp
+Change Dir: /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_cba33/fast"
-/usr/bin/make -f CMakeFiles/cmTC_cba33.dir/build.make CMakeFiles/cmTC_cba33.dir/build
-make[1]: se entra en el directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_cba33.dir/testCXXCompiler.cxx.o
-/usr/bin/c++      -o CMakeFiles/cmTC_cba33.dir/testCXXCompiler.cxx.o -c /home/aledelgado/tfg/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_cba33
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cba33.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_cba33.dir/testCXXCompiler.cxx.o  -o cmTC_cba33 -rdynamic 
-make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_bbad7/fast"
+/usr/bin/make -f CMakeFiles/cmTC_bbad7.dir/build.make CMakeFiles/cmTC_bbad7.dir/build
+make[1]: Entering directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_bbad7.dir/testCXXCompiler.cxx.o
+/usr/bin/c++      -o CMakeFiles/cmTC_bbad7.dir/testCXXCompiler.cxx.o -c /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_bbad7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bbad7.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_bbad7.dir/testCXXCompiler.cxx.o  -o cmTC_bbad7 -rdynamic 
+make[1]: Leaving directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /home/aledelgado/tfg/CMakeFiles/CMakeTmp
+Change Dir: /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_8263e/fast"
-/usr/bin/make -f CMakeFiles/cmTC_8263e.dir/build.make CMakeFiles/cmTC_8263e.dir/build
-make[1]: se entra en el directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_8263e.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++      -o CMakeFiles/cmTC_8263e.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.7/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_8263e
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8263e.dir/link.txt --verbose=1
-/usr/bin/c++       -v CMakeFiles/cmTC_8263e.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_8263e -rdynamic  
+Run Build Command:"/usr/bin/make" "cmTC_8e368/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8e368.dir/build.make CMakeFiles/cmTC_8e368.dir/build
+make[1]: Entering directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_8e368.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++      -o CMakeFiles/cmTC_8e368.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.6/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_8e368
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8e368.dir/link.txt --verbose=1
+/usr/bin/c++       -v CMakeFiles/cmTC_8e368.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_8e368 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
-COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/6/lto-wrapper
-Target: x86_64-linux-gnu
-Configured with: ../src/configure -v --with-pkgversion='Ubuntu 6.3.0-12ubuntu2' --with-bugurl=file:///usr/share/doc/gcc-6/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-6 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-6-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-6-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-6-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/arm-linux-gnueabihf/4.9/lto-wrapper
+Target: arm-linux-gnueabihf
+Configured with: ../src/configure -v --with-pkgversion='Raspbian 4.9.2-10' --with-bugurl=file:///usr/share/doc/gcc-4.9/README.Bugs --enable-languages=c,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-4.9 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.9 --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --enable-gnu-unique-object --disable-libitm --disable-libquadmath --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-4.9-armhf/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-4.9-armhf --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-4.9-armhf --with-arch-directory=arm --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-sjlj-exceptions --with-arch=armv6 --with-fpu=vfp --with-float=hard --enable-checking=release --build=arm-linux-gnueabihf --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf
 Thread model: posix
-gcc version 6.3.0 20170406 (Ubuntu 6.3.0-12ubuntu2) 
-COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/6/:/usr/lib/gcc/x86_64-linux-gnu/6/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/6/:/usr/lib/gcc/x86_64-linux-gnu/
-LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/6/:/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/6/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_8263e' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/6/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/6/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/6/lto-wrapper -plugin-opt=-fresolution=/tmp/ccOQnFip.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_8263e /usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/6/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/6 -L/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/6/../../.. CMakeFiles/cmTC_8263e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/6/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_8263e' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
-make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+gcc version 4.9.2 (Raspbian 4.9.2-10) 
+COMPILER_PATH=/usr/lib/gcc/arm-linux-gnueabihf/4.9/:/usr/lib/gcc/arm-linux-gnueabihf/4.9/:/usr/lib/gcc/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/4.9/:/usr/lib/gcc/arm-linux-gnueabihf/
+LIBRARY_PATH=/usr/lib/gcc/arm-linux-gnueabihf/4.9/:/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../:/lib/arm-linux-gnueabihf/:/lib/:/usr/lib/arm-linux-gnueabihf/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_8e368' '-rdynamic' '-shared-libgcc' '-march=armv6' '-mfloat-abi=hard' '-mfpu=vfp' '-mtls-dialect=gnu'
+ /usr/lib/gcc/arm-linux-gnueabihf/4.9/collect2 -plugin /usr/lib/gcc/arm-linux-gnueabihf/4.9/liblto_plugin.so -plugin-opt=/usr/lib/gcc/arm-linux-gnueabihf/4.9/lto-wrapper -plugin-opt=-fresolution=/tmp/ccBpoCWj.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux-armhf.so.3 -X --hash-style=gnu -m armelf_linux_eabi -o cmTC_8e368 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crti.o /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtbegin.o -L/usr/lib/gcc/arm-linux-gnueabihf/4.9 -L/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf -L/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../.. -L/lib/arm-linux-gnueabihf -L/usr/lib/arm-linux-gnueabihf CMakeFiles/cmTC_8e368.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtend.o /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crtn.o
+make[1]: Leaving directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/aledelgado/tfg/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_8263e/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_8263e.dir/build.make CMakeFiles/cmTC_8263e.dir/build]
-  ignore line: [make[1]: se entra en el directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp']
-  ignore line: [Building CXX object CMakeFiles/cmTC_8263e.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_8263e.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.7/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_8263e]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8263e.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_8263e.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_8263e -rdynamic  ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_8e368/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_8e368.dir/build.make CMakeFiles/cmTC_8e368.dir/build]
+  ignore line: [make[1]: Entering directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_8e368.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_8e368.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.6/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_8e368]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8e368.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_8e368.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_8e368 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
-  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/6/lto-wrapper]
-  ignore line: [Target: x86_64-linux-gnu]
-  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 6.3.0-12ubuntu2' --with-bugurl=file:///usr/share/doc/gcc-6/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-6 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-6-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-6-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-6-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/arm-linux-gnueabihf/4.9/lto-wrapper]
+  ignore line: [Target: arm-linux-gnueabihf]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Raspbian 4.9.2-10' --with-bugurl=file:///usr/share/doc/gcc-4.9/README.Bugs --enable-languages=c,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-4.9 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.9 --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --enable-gnu-unique-object --disable-libitm --disable-libquadmath --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-4.9-armhf/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-4.9-armhf --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-4.9-armhf --with-arch-directory=arm --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-sjlj-exceptions --with-arch=armv6 --with-fpu=vfp --with-float=hard --enable-checking=release --build=arm-linux-gnueabihf --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf]
   ignore line: [Thread model: posix]
-  ignore line: [gcc version 6.3.0 20170406 (Ubuntu 6.3.0-12ubuntu2) ]
-  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/6/:/usr/lib/gcc/x86_64-linux-gnu/6/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/6/:/usr/lib/gcc/x86_64-linux-gnu/]
-  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/6/:/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/6/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_8263e' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/6/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/6/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/6/lto-wrapper -plugin-opt=-fresolution=/tmp/ccOQnFip.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_8263e /usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/6/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/6 -L/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/6/../../.. CMakeFiles/cmTC_8263e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/6/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/crtn.o]
-    arg [/usr/lib/gcc/x86_64-linux-gnu/6/collect2] ==> ignore
+  ignore line: [gcc version 4.9.2 (Raspbian 4.9.2-10) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/arm-linux-gnueabihf/4.9/:/usr/lib/gcc/arm-linux-gnueabihf/4.9/:/usr/lib/gcc/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/4.9/:/usr/lib/gcc/arm-linux-gnueabihf/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/arm-linux-gnueabihf/4.9/:/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../:/lib/arm-linux-gnueabihf/:/lib/:/usr/lib/arm-linux-gnueabihf/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_8e368' '-rdynamic' '-shared-libgcc' '-march=armv6' '-mfloat-abi=hard' '-mfpu=vfp' '-mtls-dialect=gnu']
+  link line: [ /usr/lib/gcc/arm-linux-gnueabihf/4.9/collect2 -plugin /usr/lib/gcc/arm-linux-gnueabihf/4.9/liblto_plugin.so -plugin-opt=/usr/lib/gcc/arm-linux-gnueabihf/4.9/lto-wrapper -plugin-opt=-fresolution=/tmp/ccBpoCWj.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux-armhf.so.3 -X --hash-style=gnu -m armelf_linux_eabi -o cmTC_8e368 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crti.o /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtbegin.o -L/usr/lib/gcc/arm-linux-gnueabihf/4.9 -L/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf -L/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../.. -L/lib/arm-linux-gnueabihf -L/usr/lib/arm-linux-gnueabihf CMakeFiles/cmTC_8e368.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtend.o /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crtn.o]
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/4.9/collect2] ==> ignore
     arg [-plugin] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/6/liblto_plugin.so] ==> ignore
-    arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/6/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccOQnFip.res] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/4.9/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/arm-linux-gnueabihf/4.9/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccBpoCWj.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -289,30 +278,24 @@ Parsed CXX implicit link information from above output:
     arg [--sysroot=/] ==> ignore
     arg [--build-id] ==> ignore
     arg [--eh-frame-hdr] ==> ignore
-    arg [-m] ==> ignore
-    arg [elf_x86_64] ==> ignore
-    arg [--hash-style=gnu] ==> ignore
-    arg [--as-needed] ==> ignore
     arg [-export-dynamic] ==> ignore
     arg [-dynamic-linker] ==> ignore
-    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
-    arg [-pie] ==> ignore
-    arg [-znow] ==> ignore
-    arg [-zrelro] ==> ignore
+    arg [/lib/ld-linux-armhf.so.3] ==> ignore
+    arg [-X] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [armelf_linux_eabi] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_8263e] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/crti.o] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/6/crtbeginS.o] ==> ignore
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/6] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/6]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib]
-    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
-    arg [-L/lib/../lib] ==> dir [/lib/../lib]
-    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
-    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/6/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/6/../../..]
-    arg [CMakeFiles/cmTC_8263e.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [cmTC_8e368] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crti.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/4.9/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/4.9] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/4.9]
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf]
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../..] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../..]
+    arg [-L/lib/arm-linux-gnueabihf] ==> dir [/lib/arm-linux-gnueabihf]
+    arg [-L/usr/lib/arm-linux-gnueabihf] ==> dir [/usr/lib/arm-linux-gnueabihf]
+    arg [CMakeFiles/cmTC_8e368.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -320,42 +303,39 @@ Parsed CXX implicit link information from above output:
     arg [-lc] ==> lib [c]
     arg [-lgcc_s] ==> lib [gcc_s]
     arg [-lgcc] ==> lib [gcc]
-    arg [/usr/lib/gcc/x86_64-linux-gnu/6/crtendS.o] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/crtn.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/4.9/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crtn.o] ==> ignore
   remove lib [gcc_s]
   remove lib [gcc]
   remove lib [gcc_s]
   remove lib [gcc]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/6] ==> [/usr/lib/gcc/x86_64-linux-gnu/6]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/6/../../../../lib] ==> [/usr/lib]
-  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
-  collapse library dir [/lib/../lib] ==> [/lib]
-  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
-  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/6/../../..] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/4.9] ==> [/usr/lib/gcc/arm-linux-gnueabihf/4.9]
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf] ==> [/usr/lib/arm-linux-gnueabihf]
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/4.9/../../..] ==> [/usr/lib]
+  collapse library dir [/lib/arm-linux-gnueabihf] ==> [/lib/arm-linux-gnueabihf]
+  collapse library dir [/usr/lib/arm-linux-gnueabihf] ==> [/usr/lib/arm-linux-gnueabihf]
   implicit libs: [stdc++;m;c]
-  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/6;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+  implicit dirs: [/usr/lib/gcc/arm-linux-gnueabihf/4.9;/usr/lib/arm-linux-gnueabihf;/usr/lib;/lib/arm-linux-gnueabihf]
   implicit fwks: []
 
 
 
 
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
-Change Dir: /home/aledelgado/tfg/CMakeFiles/CMakeTmp
+Change Dir: /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_ff02b/fast"
-/usr/bin/make -f CMakeFiles/cmTC_ff02b.dir/build.make CMakeFiles/cmTC_ff02b.dir/build
-make[1]: se entra en el directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_ff02b.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++14 -o CMakeFiles/cmTC_ff02b.dir/feature_tests.cxx.o -c /home/aledelgado/tfg/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_ff02b
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ff02b.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_ff02b.dir/feature_tests.cxx.o  -o cmTC_ff02b -rdynamic 
-make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_b499f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b499f.dir/build.make CMakeFiles/cmTC_b499f.dir/build
+make[1]: Entering directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_b499f.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++14 -o CMakeFiles/cmTC_b499f.dir/feature_tests.cxx.o -c /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_b499f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b499f.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_b499f.dir/feature_tests.cxx.o  -o cmTC_b499f -rdynamic 
+make[1]: Leaving directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
 
 
-    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
     Feature record: CXX_FEATURE:1cxx_alias_templates
     Feature record: CXX_FEATURE:1cxx_alignas
     Feature record: CXX_FEATURE:1cxx_alignof
@@ -395,7 +375,7 @@ make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/
     Feature record: CXX_FEATURE:1cxx_range_for
     Feature record: CXX_FEATURE:1cxx_raw_string_literals
     Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
-    Feature record: CXX_FEATURE:1cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:0cxx_relaxed_constexpr
     Feature record: CXX_FEATURE:1cxx_return_type_deduction
     Feature record: CXX_FEATURE:1cxx_right_angle_brackets
     Feature record: CXX_FEATURE:1cxx_rvalue_references
@@ -409,23 +389,23 @@ make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/
     Feature record: CXX_FEATURE:1cxx_uniform_initialization
     Feature record: CXX_FEATURE:1cxx_unrestricted_unions
     Feature record: CXX_FEATURE:1cxx_user_literals
-    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:0cxx_variable_templates
     Feature record: CXX_FEATURE:1cxx_variadic_macros
     Feature record: CXX_FEATURE:1cxx_variadic_templates
 
 
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
-Change Dir: /home/aledelgado/tfg/CMakeFiles/CMakeTmp
+Change Dir: /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_9e815/fast"
-/usr/bin/make -f CMakeFiles/cmTC_9e815.dir/build.make CMakeFiles/cmTC_9e815.dir/build
-make[1]: se entra en el directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_9e815.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_9e815.dir/feature_tests.cxx.o -c /home/aledelgado/tfg/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_9e815
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9e815.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_9e815.dir/feature_tests.cxx.o  -o cmTC_9e815 -rdynamic 
-make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_37c82/fast"
+/usr/bin/make -f CMakeFiles/cmTC_37c82.dir/build.make CMakeFiles/cmTC_37c82.dir/build
+make[1]: Entering directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_37c82.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_37c82.dir/feature_tests.cxx.o -c /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_37c82
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_37c82.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_37c82.dir/feature_tests.cxx.o  -o cmTC_37c82 -rdynamic 
+make[1]: Leaving directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -488,17 +468,17 @@ make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/
 
 
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
-Change Dir: /home/aledelgado/tfg/CMakeFiles/CMakeTmp
+Change Dir: /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_eb68d/fast"
-/usr/bin/make -f CMakeFiles/cmTC_eb68d.dir/build.make CMakeFiles/cmTC_eb68d.dir/build
-make[1]: se entra en el directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_eb68d.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_eb68d.dir/feature_tests.cxx.o -c /home/aledelgado/tfg/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_eb68d
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_eb68d.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_eb68d.dir/feature_tests.cxx.o  -o cmTC_eb68d -rdynamic 
-make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_2e38e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2e38e.dir/build.make CMakeFiles/cmTC_2e38e.dir/build
+make[1]: Entering directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_2e38e.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_2e38e.dir/feature_tests.cxx.o -c /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_2e38e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2e38e.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_2e38e.dir/feature_tests.cxx.o  -o cmTC_2e38e -rdynamic 
+make[1]: Leaving directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -559,30 +539,30 @@ make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/
     Feature record: CXX_FEATURE:0cxx_variadic_macros
     Feature record: CXX_FEATURE:0cxx_variadic_templates
 Determining if the include file pthread.h exists passed with the following output:
-Change Dir: /home/aledelgado/tfg/CMakeFiles/CMakeTmp
+Change Dir: /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_cb64c/fast"
-/usr/bin/make -f CMakeFiles/cmTC_cb64c.dir/build.make CMakeFiles/cmTC_cb64c.dir/build
-make[1]: se entra en el directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_cb64c.dir/CheckIncludeFile.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_cb64c.dir/CheckIncludeFile.c.o   -c /home/aledelgado/tfg/CMakeFiles/CMakeTmp/CheckIncludeFile.c
-Linking C executable cmTC_cb64c
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cb64c.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_cb64c.dir/CheckIncludeFile.c.o  -o cmTC_cb64c -rdynamic 
-make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_338ca/fast"
+/usr/bin/make -f CMakeFiles/cmTC_338ca.dir/build.make CMakeFiles/cmTC_338ca.dir/build
+make[1]: Entering directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_338ca.dir/CheckIncludeFile.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_338ca.dir/CheckIncludeFile.c.o   -c /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_338ca
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_338ca.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_338ca.dir/CheckIncludeFile.c.o  -o cmTC_338ca -rdynamic 
+make[1]: Leaving directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
 
 
 Determining if the function pthread_create exists in the pthread passed with the following output:
-Change Dir: /home/aledelgado/tfg/CMakeFiles/CMakeTmp
+Change Dir: /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_05f96/fast"
-/usr/bin/make -f CMakeFiles/cmTC_05f96.dir/build.make CMakeFiles/cmTC_05f96.dir/build
-make[1]: se entra en el directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_05f96.dir/CheckFunctionExists.c.o
-/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_05f96.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
-Linking C executable cmTC_05f96
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_05f96.dir/link.txt --verbose=1
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_05f96.dir/CheckFunctionExists.c.o  -o cmTC_05f96 -rdynamic -lpthread 
-make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_aca84/fast"
+/usr/bin/make -f CMakeFiles/cmTC_aca84.dir/build.make CMakeFiles/cmTC_aca84.dir/build
+make[1]: Entering directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_aca84.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_aca84.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.6/Modules/CheckFunctionExists.c
+Linking C executable cmTC_aca84
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_aca84.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_aca84.dir/CheckFunctionExists.c.o  -o cmTC_aca84 -rdynamic -lpthread 
+make[1]: Leaving directory '/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
 
 

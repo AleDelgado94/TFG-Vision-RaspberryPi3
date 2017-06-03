@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/aledelgado/tfg/Clouds/clouds.cpp" "/home/aledelgado/tfg/CMakeFiles/Clouds.o.dir/Clouds/clouds.cpp.o"
+  "/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/Clouds/clouds.cpp" "/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Clouds.o.dir/Clouds/clouds.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
