@@ -126,12 +126,13 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/Temperature.o.dir/DependInfo.cmake"
-  "CMakeFiles/Detection.o.dir/DependInfo.cmake"
-  "CMakeFiles/Tracking_cloud.o.dir/DependInfo.cmake"
-  "CMakeFiles/Optical_flow.o.dir/DependInfo.cmake"
-  "CMakeFiles/Merge.o.dir/DependInfo.cmake"
   "CMakeFiles/Sun.o.dir/DependInfo.cmake"
+  "CMakeFiles/Merge.o.dir/DependInfo.cmake"
   "CMakeFiles/Homography.o.dir/DependInfo.cmake"
+  "CMakeFiles/Optical_flow.o.dir/DependInfo.cmake"
+  "CMakeFiles/Tracking_cloud.o.dir/DependInfo.cmake"
   "CMakeFiles/Clouds.o.dir/DependInfo.cmake"
+  "CMakeFiles/Detection.o.dir/DependInfo.cmake"
+  "CMakeFiles/Captura_imagen_rgb.o.dir/DependInfo.cmake"
+  "CMakeFiles/Temperature.o.dir/DependInfo.cmake"
   )

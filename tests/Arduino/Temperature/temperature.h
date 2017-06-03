@@ -14,10 +14,10 @@ namespace as = boost::asio;
 
 
 // Base serial settings
-serial_port_base::baud_rate BAUD(115200);
+/*serial_port_base::baud_rate BAUD(115200);
 serial_port_base::flow_control FLOW( serial_port_base::flow_control::none );
 serial_port_base::parity PARITY( serial_port_base::parity::none );
-serial_port_base::stop_bits STOP( serial_port_base::stop_bits::one );
+serial_port_base::stop_bits STOP( serial_port_base::stop_bits::one );*/
 
 
 string read_serial(serial_port& port){
@@ -139,7 +139,7 @@ std::list<result_query>* consulta_datos(sqlite3* db, std::string consulta){
   return resultado;
 }
 
-void ask_data(serial_port& port, sqlite3* db){
+void ask_data(serial_port& port, sqlite3* db, std::string fecha, std::string hora, int id){
 
   unsigned char opt[1];
   char* sqlError = 0;
@@ -166,7 +166,13 @@ void ask_data(serial_port& port, sqlite3* db){
   cel = atof(read_serial(port).c_str());
 
   //INTRODUCIMOS LOS DATOS EN LA BASE DE DATOS SEGUN EL ID DE LA FOTO
-  std::string sql("INSERT INTO DATOS (TEMPERATURA, HUMEDAD, SOLAR) VALUES (");
+  std::string sql("INSERT INTO DATOS (ID_NOMBRE, HORA, FECHA, TEMPERATURA, HUMEDAD, SOLAR) VALUES (");
+  sql += to_string(id);
+  sql += ",";
+  sql += hora;
+  sql += ",";
+  sql += fecha;
+  sql += ",";
   sql += to_string(temperature);
   sql += ",";
   sql += to_string(humedad);
