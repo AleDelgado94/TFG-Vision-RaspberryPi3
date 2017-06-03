@@ -12,11 +12,15 @@
 #include <cstring>
 #include <time.h>
 #include <sstream>
+#include <boost/program_options/options_description.hpp>
+#include <boost/program_options.hpp>
+#include <boost/program_options/option.hpp>
 
 
 using namespace std;
 using namespace cv;
 using namespace raspicam;
+namespace opt = boost::program_options;
 
 #define _CRT_SECURE_NO_WARNINGS
 #pragma warning(disable:4996)
@@ -43,6 +47,7 @@ const float max_exposure = 200;
 const float max_iso = 1000;
 float exposure;
 float iso;
+string ruta_carpeta_destino;
 
 void trackbar_exposure(float, void*);
 void trackbar_iso(float, void*);
@@ -77,7 +82,7 @@ void captura(){
 	sleep(2); 
 	video.grab();
 	video.retrieve(bgrMap);
-	imwrite("images/" + id + "-" + hora + "_1.png", bgrMap);
+	imwrite(ruta_carpeta_destino.c_str() + id + "-" + hora + "_1.png", bgrMap);
 	
 	
 	//setExposure(5);
@@ -85,7 +90,7 @@ void captura(){
 	sleep(2);
 	video.grab();
 	video.retrieve(bgrMap);
-	imwrite("images/" + id + "-" + hora + "_2.png", bgrMap);
+	imwrite(ruta_carpeta_destino.c_str() + id + "-" + hora + "_2.png", bgrMap);
 	
 	
 	//setExposure(10);
@@ -93,12 +98,12 @@ void captura(){
 	sleep(2);
 	video.grab();
 	video.retrieve(bgrMap);
-	imwrite("images/" + id + "-" + hora + "_3.png", bgrMap);
+	imwrite(ruta_carpeta_destino.c_str() + id + "-" + hora + "_3.png", bgrMap);
         
         
 
 
-    //cv::imwrite("images/" + id + "-" + hora + ".png", bgrMap);
+    //cv::imwrite(ruta_carpeta_destino.c_str() + id + "-" + hora + ".png", bgrMap);
     numSnapshot++;
     id = static_cast<std::ostringstream*>(&(std::ostringstream() << numSnapshot))->str();
 
@@ -193,8 +198,40 @@ int main(int argc, char* argv[]){
 
 
 
-    segundos = atoi(argv[1]);
+   // segundos = atoi(argv[1]);
+    
+
+    opt::options_description desc("Options");
+    desc.add_options()
+    ("help,h", "./Temperature [[ --port | -p ] puerto]")
+    ("segundos,s", opt::value<int>(&segundos)->default_value(20), "segundos")
+    ("destino,d", opt::value<std::vector<std::string>>(), "carpeta de destino de las imagenes");
+
+    opt::variables_map vm;
+    opt::positional_options_description p;
+    p.add("port", -1);
+    store(opt::parse_command_line(argc, argv,desc), vm);
+    notify(vm);
+
+    if(argc == 1){
+      cout << desc << endl;
+      return -1;
+    }
+
+    if(vm.count("help")){
+      cout << desc << endl;
+      return 0;
+    }
+    if(vm.count("segundos")){
+      segundos = vm["segundos"].as<int>();
+    }
+    if(vm.count("destino")){
+      std::vector<std::string> v = vm["destino"].as<std::vector<std::string>>();
+      ruta_carpeta_destino = v[0];
+    }
     namedWindow("Video", CV_WINDOW_NORMAL);
+
+    
 
 
     std::thread foto_(captura);

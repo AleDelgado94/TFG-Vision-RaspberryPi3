@@ -114,6 +114,9 @@ Captura_imagen_rgb.o: /opt/vc/lib/libmmal.so
 Captura_imagen_rgb.o: /usr/local/lib/libopencv_stitching.so.3.2.0
 Captura_imagen_rgb.o: /usr/local/lib/libopencv_superres.so.3.2.0
 Captura_imagen_rgb.o: /usr/local/lib/libopencv_videostab.so.3.2.0
+Captura_imagen_rgb.o: /usr/lib/arm-linux-gnueabihf/libboost_program_options.so
+Captura_imagen_rgb.o: /usr/lib/arm-linux-gnueabihf/libboost_system.so
+Captura_imagen_rgb.o: /usr/lib/arm-linux-gnueabihf/libboost_program_options.so
 Captura_imagen_rgb.o: /usr/local/lib/libopencv_xfeatures2d.so.3.2.0
 Captura_imagen_rgb.o: /usr/local/lib/libopencv_shape.so.3.2.0
 Captura_imagen_rgb.o: /usr/local/lib/libopencv_phase_unwrapping.so.3.2.0
@@ -135,6 +138,7 @@ Captura_imagen_rgb.o: /usr/local/lib/libopencv_videoio.so.3.2.0
 Captura_imagen_rgb.o: /usr/local/lib/libopencv_imgcodecs.so.3.2.0
 Captura_imagen_rgb.o: /usr/local/lib/libopencv_imgproc.so.3.2.0
 Captura_imagen_rgb.o: /usr/local/lib/libopencv_core.so.3.2.0
+Captura_imagen_rgb.o: /usr/lib/arm-linux-gnueabihf/libboost_system.so
 Captura_imagen_rgb.o: CMakeFiles/Captura_imagen_rgb.o.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Captura_imagen_rgb.o"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Captura_imagen_rgb.o.dir/link.txt --verbose=$(VERBOSE)
