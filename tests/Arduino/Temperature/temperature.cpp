@@ -7,6 +7,7 @@
 #include "../../Database/sqlite3/sqliteCallBack.hpp"
 #include <list>
 
+
 using namespace::boost::asio;
 using namespace std;
 namespace opt = boost::program_options;

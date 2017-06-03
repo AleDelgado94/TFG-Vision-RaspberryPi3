@@ -26,10 +26,14 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
 
 ################  CAPTURA IMAGEN  #######################
 
-#add_executable(Captura_imagen_rgb.o Capture/captura_imagenes.cpp)
-#target_link_libraries(Captura_imagen_rgb.o ${OpenCV_LIBS})
-#target_link_libraries(Captura_imagen_rgb.o Threads::Threads)
-#target_link_libraries(Captura_imagen_rgb.o /opt/vc/lib/libmmal_core.so;/opt/vc/lib/libmmal_util.so;/opt/vc/lib/libmmal.so raspicam opencv_calib3d;opencv_core;opencv_features2d;opencv_flann;opencv_highgui;opencv_imgcodecs;opencv_imgproc;opencv_ml;opencv_objdetect;opencv_photo;opencv_shape;opencv_stitching;opencv_superres;opencv_video;opencv_videoio;opencv_videostab raspicam_cv)
+add_executable(Captura_imagen_rgb.o Capture/captura_imagenes.cpp)
+target_link_libraries(Captura_imagen_rgb.o Threads::Threads)
+target_link_libraries(Captura_imagen_rgb.o ${OpenCV_LIBS})
+target_link_libraries(Captura_imagen_rgb.o /opt/vc/lib/libmmal_core.so;/opt/vc/lib/libmmal_util.so;/opt/vc/lib/libmmal.so raspicam opencv_calib3d;opencv_core;opencv_features2d;opencv_flann;opencv_highgui;opencv_imgcodecs;opencv_imgproc;opencv_ml;opencv_objdetect;opencv_photo;opencv_shape;opencv_stitching;opencv_superres;opencv_video;opencv_videoio;opencv_videostab raspicam_cv)
+target_link_libraries(Captura_imagen_rgb.o ${Boost_PROGRAM_OPTIONS_LIBRARY})
+target_link_libraries(Captura_imagen_rgb.o ${Boost_SYSTEM_LIBRARY})
+target_link_libraries(Captura_imagen_rgb.o ${Boost_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_include_directories(Captura_imagen_rgb.o PUBLIC SYSTEM ${Boost_INCLUDE_DIRS})
 
 ################  MERGE HDR  #######################
 
