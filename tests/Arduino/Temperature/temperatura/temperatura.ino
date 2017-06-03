@@ -7,12 +7,13 @@
 
 #define DATA_PIN 2
 #define DHT_TYPE 22
-#define SOLAR_PIN 3
+#define SOLAR_PIN 1
 
 DHT dht(DATA_PIN, DHT_TYPE);
 
 void setup(){
   Serial.begin(115200);
+
   
   dht.begin();
   
@@ -20,10 +21,7 @@ void setup(){
 
 
 void loop(){
-  
-  /*float value = analogRead(SOLAR_PIN);
-       float voltaje = (value * 4) / 818;
-       Serial.println(voltaje);*/
+    
 
   if(Serial.available()>0){
     
@@ -48,7 +46,7 @@ void loop(){
     }
     case 's':{
        float value = analogRead(SOLAR_PIN);
-       float voltaje = (value * 4) / 818;
+       float voltaje = (value * 4) / 819;
        char buffer[6];
        String v = dtostrf(voltaje,10,2,buffer);//String((analogRead(SOLAR_PIN)*4)/818, DEC);
        Serial.println(v);
