@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/Detection/detection.cpp
+/home/aledelgado/TFG-Vision-RaspberryPi3/tests/Detection/detection.cpp
 iostream
 -
 opencv2/core/core.hpp
