@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/aledelgado/TFG-Vision-RaspberryPi3/tests
+CMAKE_SOURCE_DIR = /home/adelgado/tfg
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/aledelgado/TFG-Vision-RaspberryPi3/tests
+CMAKE_BINARY_DIR = /home/adelgado/tfg
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adelgado/tfg/CMakeFiles /home/adelgado/tfg/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adelgado/tfg/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -109,6 +109,19 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+#=============================================================================
+# Target rules for targets named Ventana.o
+
+# Build rule for target.
+Ventana.o: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Ventana.o
+.PHONY : Ventana.o
+
+# fast build rule for target.
+Ventana.o/fast:
+	$(MAKE) -f CMakeFiles/Ventana.o.dir/build.make CMakeFiles/Ventana.o.dir/build
+.PHONY : Ventana.o/fast
 
 #=============================================================================
 # Target rules for targets named Detection.o
@@ -270,6 +283,33 @@ RealTime/realtime.cpp.s:
 	$(MAKE) -f CMakeFiles/Realtime.o.dir/build.make CMakeFiles/Realtime.o.dir/RealTime/realtime.cpp.s
 .PHONY : RealTime/realtime.cpp.s
 
+Ventanas/ventana.o: Ventanas/ventana.cpp.o
+
+.PHONY : Ventanas/ventana.o
+
+# target to build an object file
+Ventanas/ventana.cpp.o:
+	$(MAKE) -f CMakeFiles/Ventana.o.dir/build.make CMakeFiles/Ventana.o.dir/Ventanas/ventana.cpp.o
+.PHONY : Ventanas/ventana.cpp.o
+
+Ventanas/ventana.i: Ventanas/ventana.cpp.i
+
+.PHONY : Ventanas/ventana.i
+
+# target to preprocess a source file
+Ventanas/ventana.cpp.i:
+	$(MAKE) -f CMakeFiles/Ventana.o.dir/build.make CMakeFiles/Ventana.o.dir/Ventanas/ventana.cpp.i
+.PHONY : Ventanas/ventana.cpp.i
+
+Ventanas/ventana.s: Ventanas/ventana.cpp.s
+
+.PHONY : Ventanas/ventana.s
+
+# target to generate assembly for a file
+Ventanas/ventana.cpp.s:
+	$(MAKE) -f CMakeFiles/Ventana.o.dir/build.make CMakeFiles/Ventana.o.dir/Ventanas/ventana.cpp.s
+.PHONY : Ventanas/ventana.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -278,6 +318,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... Ventana.o"
 	@echo "... Detection.o"
 	@echo "... Temperature.o"
 	@echo "... Merge.o"
@@ -294,6 +335,9 @@ help:
 	@echo "... RealTime/realtime.o"
 	@echo "... RealTime/realtime.i"
 	@echo "... RealTime/realtime.s"
+	@echo "... Ventanas/ventana.o"
+	@echo "... Ventanas/ventana.i"
+	@echo "... Ventanas/ventana.s"
 .PHONY : help
 
 

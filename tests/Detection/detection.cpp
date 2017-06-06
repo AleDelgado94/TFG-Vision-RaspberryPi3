@@ -305,6 +305,12 @@ void detecta_sun(Mat img1, int umbral_bajo){
 
 }
 
+Mat crear_ventana(Mat img){
+  Mat mask = Mat::zeros(768,1024,CV_8UC3);
+  imshow("Mascara",mask);
+  return mask;
+}
+
 
 int main(int argc, char *argv[])
 {
@@ -342,7 +348,7 @@ int main(int argc, char *argv[])
 
 
     vector<Mat> images;
-    for(int i=0; i<200; i++){
+    for(int i=0; i<10; i++){
         Mat im = imread(ruta_directorio+"/"+imgs_name_sort[i]);
         images.push_back(im);
     }
@@ -355,11 +361,13 @@ int main(int argc, char *argv[])
 
     inicializa_fichero("prueba.txt");
 
-    for(int i=1; i<200; i++){
+    for(int i=1; i<50; i++){
         Mat img_ant = images[i-1];
         Mat img_actual = images[i];
         Mat img_sun = images[i];
         Mat im_ant, im_act;
+
+        //crear_ventana(img_actual);
 
         cvtColor(img_ant, im_ant, CV_RGB2GRAY);
         cvtColor(img_actual, im_act, CV_RGB2GRAY);
