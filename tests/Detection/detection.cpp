@@ -375,9 +375,9 @@ int main(int argc, char *argv[])
         cout << "Puntos actuales: " << puntos_actual.size() << endl;
 
         std::vector<std::vector<Point2f>> v(2);
-        v = agrupa_vectores(puntos_ant, puntos_actual);
-        puntos_ant = v[0];
-        puntos_actual = v[1];
+      //  v = agrupa_vectores(puntos_ant, puntos_actual);
+      //  puntos_ant = v[0];
+      //  puntos_actual = v[1];
 
         dibuja_CloudTracking(img_actual, puntos_ant, puntos_actual, estado, i);
 
