@@ -350,7 +350,10 @@ void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, 
           Point2f p_final = Point2f(p_ini.x+(int)CONSTANTE_X, p_ini.y+(int)CONSTANTE_Y);
           cout << p_final.x << "  " << p_final.y << endl;
 
-          v_act.push_back(p_final);
+          for (size_t i = 0; i < p_img_actual.size(); i++) {
+            v_act.push_back(p_final);
+          }
+          //v_act.push_back(p_final);
 
         //  v_act.push_back(Point2f((int)(media_x_act/p_img_actual.size()), (int)(media_y_act/p_img_actual.size())));
           //CALCULAMOS LA SUMA DE VECTORES PARA VER LA MEDIA DEL VECTOR RESULTANTE PARTIENDO DEL PUNTO
@@ -360,7 +363,7 @@ void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, 
 
 
           //if(v_ant.size() == 1 && v_act.size() == 1)
-            dibuja_CloudTracking(img_original, v_ant, p_img_actual, i, j ,estado, id);
+            dibuja_CloudTracking(img_original, v_ant, v_act, i, j ,estado, id);
         //  else
           //  rectangle(img_original, Point(i,j), Point(1024-i, 768-j), Scalar(0,255,255));
 
