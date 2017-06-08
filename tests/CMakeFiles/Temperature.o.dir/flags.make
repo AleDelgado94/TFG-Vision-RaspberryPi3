@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++11 -lsqlite3   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/adelgado/tfg/SYSTEM -isystem /usr/local/include -isystem /usr/local/include/opencv 
+CXX_INCLUDES = -I/home/aledelgado/TFG-Vision-RaspberryPi3/tests/SYSTEM -isystem /usr/local/include -isystem /usr/local/include/opencv 
 

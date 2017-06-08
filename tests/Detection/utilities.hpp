@@ -91,7 +91,7 @@ int menor_vector(vector<float> soles_radio){
     return retorno;
 }
 
-void detecta_sun(Mat img1, int umbral_bajo){
+void detecta_sun(Mat& img1, int umbral_bajo){
 
     vector<float> soles_radio;
     vector<Point2f> soles_center;
@@ -123,7 +123,6 @@ void detecta_sun(Mat img1, int umbral_bajo){
             //double area = (3.14159265359 * pow(radius[i],2));
 
             if (radius[i] > 150 && radius[i] < 210) {
-                    cout << radius[i] << endl;
                     soles_radio.push_back(radius[i]);
                     soles_center.push_back(center[i]);
             }
@@ -150,8 +149,8 @@ void detecta_sun(Mat img1, int umbral_bajo){
         centro = soles_center[index];
         radio = soles_radio[index];
 
-        circle(img, centro, (int)radio, Scalar(0, 0, 255), 2, 8, 0);
-        circle(img, centro, 5, Scalar(255, 0, 0), 2, 8, 0);
+        circle(img1, centro, (int)radio, Scalar(0, 0, 255), 2, 8, 0);
+        circle(img1, centro, 5, Scalar(255, 0, 0), 2, 8, 0);
 
 
 
@@ -160,8 +159,8 @@ void detecta_sun(Mat img1, int umbral_bajo){
         auto centro = soles_center.front();
         soles_radio.clear();
         soles_center.clear();
-        circle(img, centro, (int)radio, Scalar(0, 0, 255), 2, 8, 0);
-        circle(img, centro, 5, Scalar(255, 0, 0), 2, 8, 0);
+        circle(img1, centro, (int)radio, Scalar(0, 0, 255), 2, 8, 0);
+        circle(img1, centro, 5, Scalar(255, 0, 0), 2, 8, 0);
     }
     else
     {
@@ -179,13 +178,11 @@ void detecta_sun(Mat img1, int umbral_bajo){
         Mat mask;
         inRange(hsv, LOW, HIGH, mask);
 
-        imshow("mask", mask);
 
         //ELIMINACION DE RUIDOS
         Moments m;
         m = moments(mask);
         double moment_area = m.m00;
-        cout << "Area: " << moment_area << endl;
         Point2f center;
 
         //Buscar el centro
@@ -194,20 +191,17 @@ void detecta_sun(Mat img1, int umbral_bajo){
         center.x = x;
         center.y = y;
 
-        //cout << center.x << "  " << center.y << endl;
+
+        circle(img1, center, 70, Scalar(255,0,0),2,8,0);
 
 
 
-        circle(img, center, 70, Scalar(255,0,0),2,8,0);
-
-
-
-        imshow("SOLITO",hsv);
+        //imshow("SOLITO",hsv);
 
     }
 
-    namedWindow("sol", CV_WINDOW_NORMAL);
-    imshow("sol", img);
+    //namedWindow("sol", CV_WINDOW_NORMAL);
+    //imshow("sol", img1);
 
 }
 
@@ -228,23 +222,22 @@ void dibuja_CloudTracking(Mat img, const vector<Point2f>& img_ant_pts, const vec
 
 
             //Calculamos la distancia y el angulo entre los dos puntos
-            float dist = sqrt(pow((pf.x - pi.x) , 2) + pow((pf.y - pi.y) , 2));
-            float angulo = fmod((180*atan2((pf.y - pi.y), (pf.x - pi.x))),360);
+            //float dist = sqrt(pow((pf.x - pi.x) , 2) + pow((pf.y - pi.y) , 2));
+            //float angulo = fmod((180*atan2((pf.y - pi.y), (pf.x - pi.x))),360);
 
-            if(dist >= 2 && dist <= 80){
-                cout << i << endl;
-                cout << "Pi: (" << pi.x << ", " << pi.y << ")" << endl;
+            //if(dist >= 2 && dist <= 80){
+                /*cout << "Pi: (" << pi.x << ", " << pi.y << ")" << endl;
                 cout << "Pf: (" << pf.x << ", " << pf.y << ")" << endl;
                 cout << "Dist: " << dist << endl;
-                cout << "Angulo: " << angulo << endl << endl;
+                cout << "Angulo: " << angulo << endl << endl;*/
 
                 //dibujamos la linea
                 arrowedLine(img, pi, pf, Scalar(255,0,0),1,8,0,0.2);
                 rectangle(img, Point(x,y), Point(1024-x, 768-y), Scalar(0,255,255));
-                save_data(fichero, "prueba.txt", "", pi, pf, dist, angulo, id);
+                //save_data(fichero, "prueba.txt", "", pi, pf, dist, angulo, id);
 
-            }else
-                continue;
+          //  }else
+            //    continue;
 
         }
 
@@ -275,7 +268,10 @@ void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, 
           //imshow(im, ventana_img_actual);
 
           goodFeaturesToTrack(ventana_img_ant, p_img_anterior, num_puntos, 0.01, 0);
-          calcOpticalFlowPyrLK(ventana_img_ant, ventana_img_actual, p_img_anterior, p_img_actual, estado, error);
+          if(p_img_anterior.size() < num_puntos)
+            continue;
+          else
+            calcOpticalFlowPyrLK(ventana_img_ant, ventana_img_actual, p_img_anterior, p_img_actual, estado, error);
           for (size_t k = 0; k < p_img_anterior.size(); k++) {
               p_img_anterior[k].x += i;
               p_img_anterior[k].y += j;
@@ -289,8 +285,8 @@ void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, 
           int media_y_ant = 0;
           int media_x_act = 0;
           int media_y_act = 0;
-          std::vector<Point2f> v_ant;
-          std::vector<Point2f> v_act;
+          std::vector<Point2f> v_ant(1);
+          std::vector<Point2f> v_act(1);
 
           //PUNTO MEDIO PARA EL VECTOR DE LA IMAGEN ANTERIOR EN ESTA VENTANA
           for (size_t k = 0; k < p_img_anterior.size(); k++) {
@@ -298,10 +294,10 @@ void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, 
               media_y_ant += p_img_anterior[k].y;
           }
           Point2f p_ini(media_x_ant/p_img_anterior.size(), media_y_ant/p_img_anterior.size());
-          for (size_t i = 0; i < p_img_anterior.size(); i++) {
+          /*for (size_t i = 0; i < p_img_anterior.size(); i++) {
             v_ant.push_back(p_ini);
-          }
-          //v_ant.push_back(p_ini);
+          }*/
+          v_ant[0] = p_ini;
 
 
           //PUNTO MEDIO PARA EL VECTOR ACTUAL EN ESTA VENTANA
@@ -333,7 +329,7 @@ void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, 
           float CONSTANTE_X = 0;
           float CONSTANTE_Y = 0;
 
-          for (size_t i = 0; i < v_ant.size(); i++) {
+          for (size_t i = 0; i < p_img_actual.size(); i++) {
             Point2f pi, pf;
             pi = v_ant[0];
             pf = p_img_actual[i];
@@ -343,17 +339,18 @@ void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, 
             float dist = sqrt(pow((pf.x - pi.x) , 2) + pow((pf.y - pi.y) , 2));
             float angulo = fmod((180*atan2((pf.y - pi.y), (pf.x - pi.x))),360);
 
-            CONSTANTE_X += dist*cos(angulo);
-            CONSTANTE_Y += dist*sin(angulo);
+            if(dist >= 2 && dist<=30){
+              CONSTANTE_X += dist*cos(angulo);
+              CONSTANTE_Y += dist*sin(angulo);
+            }
           }
 
           Point2f p_final = Point2f(p_ini.x+(int)CONSTANTE_X, p_ini.y+(int)CONSTANTE_Y);
-          cout << p_final.x << "  " << p_final.y << endl;
 
-          for (size_t i = 0; i < p_img_actual.size(); i++) {
+          /*for (size_t i = 0; i < p_img_actual.size(); i++) {
             v_act.push_back(p_final);
-          }
-          //v_act.push_back(p_final);
+          }*/
+          v_act[0] = p_final;
 
         //  v_act.push_back(Point2f((int)(media_x_act/p_img_actual.size()), (int)(media_y_act/p_img_actual.size())));
           //CALCULAMOS LA SUMA DE VECTORES PARA VER LA MEDIA DEL VECTOR RESULTANTE PARTIENDO DEL PUNTO
@@ -362,10 +359,9 @@ void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, 
 
 
 
-          //if(v_ant.size() == 1 && v_act.size() == 1)
+          if(v_ant.size() == 1 && v_act.size() == 1)
             dibuja_CloudTracking(img_original, v_ant, v_act, i, j ,estado, id);
-        //  else
-          //  rectangle(img_original, Point(i,j), Point(1024-i, 768-j), Scalar(0,255,255));
+            rectangle(img_original, Point(i,j), Point(1024-i, 768-j), Scalar(0,255,255));
 
 
       }

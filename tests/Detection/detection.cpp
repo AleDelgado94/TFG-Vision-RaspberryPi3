@@ -36,7 +36,6 @@ int main(int argc, char *argv[])
         if(regex_search(s, match, rgx)){
             string number(match[0]);
             int n = atoi(number.c_str());
-            cout << n << endl;
 
             imgs_name_sort[n] = s;
         }
@@ -47,7 +46,7 @@ int main(int argc, char *argv[])
 
 
     vector<Mat> images;
-    for(int i=0; i<10; i++){
+    for(int i=0; i<100; i++){
         Mat im = imread(ruta_directorio+"/"+imgs_name_sort[i]);
         images.push_back(im);
     }
@@ -60,7 +59,7 @@ int main(int argc, char *argv[])
 
     inicializa_fichero(fichero, "prueba.txt");
 
-    for(int i=1; i<10; i++){
+    for(int i=1; i<100; i++){
         Mat img_ant = images[i-1];
         Mat img_actual = images[i];
         Mat img_sun = images[i];
@@ -93,7 +92,6 @@ int main(int argc, char *argv[])
 
 
 
-        cout << endl;
         key = waitKey(0);
         if(key == 27)
             break;
