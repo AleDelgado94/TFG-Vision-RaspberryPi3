@@ -99,3 +99,12 @@ target_link_libraries(Realtime.o Threads::Threads)
 target_link_libraries(Realtime.o ${Boost_PROGRAM_OPTIONS_LIBRARY})
 target_link_libraries(Realtime.o ${Boost_LIBRARIES})
 target_link_libraries(Realtime.o ${OpenCV_LIBS})
+
+
+################  VENTANAS  #######################
+
+add_executable(Ventana.o Ventanas/ventana.cpp)
+target_link_libraries(Ventana.o Threads::Threads)
+target_link_libraries(Ventana.o ${Boost_PROGRAM_OPTIONS_LIBRARY})
+target_link_libraries(Ventana.o ${Boost_LIBRARIES})
+target_link_libraries(Ventana.o ${OpenCV_LIBS})

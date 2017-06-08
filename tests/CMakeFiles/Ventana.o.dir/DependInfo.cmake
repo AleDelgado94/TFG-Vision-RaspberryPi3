@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/adelgado/tfg/MergeHDR/merge.cpp" "/home/adelgado/tfg/CMakeFiles/Merge.o.dir/MergeHDR/merge.cpp.o"
+  "/home/adelgado/tfg/Ventanas/ventana.cpp" "/home/adelgado/tfg/CMakeFiles/Ventana.o.dir/Ventanas/ventana.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
