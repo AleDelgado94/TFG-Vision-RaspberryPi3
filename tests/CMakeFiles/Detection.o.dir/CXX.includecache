@@ -7,6 +7,10 @@
 #IncludeRegexTransform: 
 
 /home/adelgado/tfg/Detection/detection.cpp
+utilities.hpp
+/home/adelgado/tfg/Detection/utilities.hpp
+
+/home/adelgado/tfg/Detection/utilities.hpp
 iostream
 -
 opencv2/core/core.hpp
