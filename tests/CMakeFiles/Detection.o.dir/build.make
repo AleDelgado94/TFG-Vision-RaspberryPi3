@@ -112,6 +112,9 @@ Detection.o: /usr/local/lib/libopencv_xfeatures2d.so.3.2.0
 Detection.o: /usr/local/lib/libopencv_ximgproc.so.3.2.0
 Detection.o: /usr/local/lib/libopencv_xobjdetect.so.3.2.0
 Detection.o: /usr/local/lib/libopencv_xphoto.so.3.2.0
+Detection.o: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
+Detection.o: /usr/lib/x86_64-linux-gnu/libboost_system.so
+Detection.o: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
 Detection.o: /usr/local/lib/libopencv_shape.so.3.2.0
 Detection.o: /usr/local/lib/libopencv_phase_unwrapping.so.3.2.0
 Detection.o: /usr/local/lib/libopencv_rgbd.so.3.2.0
@@ -132,6 +135,7 @@ Detection.o: /usr/local/lib/libopencv_videoio.so.3.2.0
 Detection.o: /usr/local/lib/libopencv_imgcodecs.so.3.2.0
 Detection.o: /usr/local/lib/libopencv_imgproc.so.3.2.0
 Detection.o: /usr/local/lib/libopencv_core.so.3.2.0
+Detection.o: /usr/lib/x86_64-linux-gnu/libboost_system.so
 Detection.o: CMakeFiles/Detection.o.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Detection.o"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Detection.o.dir/link.txt --verbose=$(VERBOSE)

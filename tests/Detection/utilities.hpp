@@ -18,9 +18,16 @@
 #include <cmath>
 #include <algorithm>
 #include <regex>
+#include <boost/program_options/options_description.hpp>
+#include <boost/program_options.hpp>
+#include <boost/program_options/option.hpp>
+#include <boost/asio.hpp>
 
 using namespace std;
 using namespace cv;
+namespace opt = boost::program_options;
+namespace as = boost::asio;
+using namespace::boost::asio;
 
 
 void save_data(ofstream& fichero, string ruta_fichero, string nombre_img, Point2i pi, Point2i pf, float dist, float angulo, int id){
@@ -246,13 +253,17 @@ void dibuja_CloudTracking(Mat img, const vector<Point2f>& img_ant_pts, const vec
 }
 
 
-void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, int id, int alto=64,
-  int ancho=128, int num_puntos=5){
+void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, int id, int filas=12,
+  int columnas=8, int num_puntos=100){
     vector<vector<vector<Point2f>>> v_tracking;
+    int ancho = 1024/columnas;
+    int alto = 768/filas;
+
+    cout << ancho << "  " << alto << endl;
 
 
-    for (size_t i = ancho ; i < 1024-ancho; i=i+ancho) {
-      for (size_t j = alto; j < 768 - alto; j=j+alto) {
+    for (size_t i = 128 ; i < 1024-ancho; i=i+ancho) {
+      for (size_t j = 64; j < 768 - alto; j=j+alto) {
           std::vector<Point2f> p_img_anterior(num_puntos);
           std::vector<Point2f> p_img_actual(num_puntos);
           std::vector<unsigned char> estado(num_puntos);
@@ -342,6 +353,7 @@ void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, 
             if(dist >= 2 && dist<=30){
               CONSTANTE_X += dist*cos(angulo);
               CONSTANTE_Y += dist*sin(angulo);
+              cout << dist << endl;
             }
           }
 
