@@ -77,7 +77,7 @@ int num_photos(const string& ruta_imagenes){
 
 void genera_hdr(int i, vector<string> imgs, string dir_origen,  string dir_destino){
 
-    vector<Mat> images;
+  /*  vector<Mat> images;
     vector<float> times;
 
     float val;
@@ -105,7 +105,7 @@ void genera_hdr(int i, vector<string> imgs, string dir_origen,  string dir_desti
 
         /*Mat ldr;
         Ptr<TonemapDurand> tonemap = createTonemapDurand(2.2f);
-        tonemap->process(hdr, ldr);*/
+        tonemap->process(hdr, ldr);
 
         Mat fusion;
         Ptr<MergeMertens> merge_mertens = createMergeMertens();
@@ -113,6 +113,58 @@ void genera_hdr(int i, vector<string> imgs, string dir_origen,  string dir_desti
 
 
         imwrite(dir_destino+"/"+imgs[i], fusion * 255);
+
+
+        //i = i+3;
+        cout << i << endl;
+
+    //}*/
+
+
+    vector<Mat> images;
+  //  vector<float> times;
+
+    //float val;
+    //while(i<imgs.size()){
+
+
+
+        for(int k=i; k<(i+3); k++){
+            //val = pow(2, (k*(-1)));
+            Mat img = imread(dir_origen+"/"+imgs[k]);
+            imshow("img",img);
+            images.push_back(img);
+            //times.push_back(1/0.65);
+        }
+
+        //MAT RESPONSE
+        /*Mat response;
+        Ptr<CalibrateDebevec> calibrate = createCalibrateDebevec();
+        calibrate->process(images, response, times);
+
+        //GENERAMOS LA IMAGEN HDR
+        Mat hdr;
+        Ptr<MergeDebevec> merge_debevec = createMergeDebevec();
+        merge_debevec->process(images, hdr, times, response);
+*/
+
+        Mat fusion;
+        Ptr<MergeMertens> merge_mertens = createMergeMertens();
+        merge_mertens->process(images, fusion);
+
+        Mat img_tonemap;
+        Ptr<TonemapDurand> tonemap = createTonemapDurand(0.7f);
+        tonemap->setSaturation(0.8);
+        tonemap->setContrast(3.5);
+        tonemap->process(fusion, img_tonemap);
+
+
+        cout << tonemap->getContrast() << endl << endl;
+
+
+
+        imwrite(dir_destino+"/"+imgs[i], img_tonemap * 255);
+        //imwrite(dir_destino+"/ldr_"+imgs[i], ldr);
 
 
         //i = i+3;
