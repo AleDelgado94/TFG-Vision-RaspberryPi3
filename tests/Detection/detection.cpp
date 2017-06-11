@@ -17,9 +17,40 @@ std::vector<std::vector<Point2i>> tracking_points;
 int main(int argc, char *argv[])
 {
     umbral_bajo=250;
+    int filas, columnas;
+    std::string ruta_directorio;
     int key;
 
-    string ruta_directorio = argv[1];
+    opt::options_description desc("Options");
+    desc.add_options()
+      ("help,h", "./Detection [[ --source | -s ] ruta_imagenes_originales] [[ --destination | -d ] ruta_destino_hdr]")
+      ("dir,d", opt::value<std::vector<std::string>>(), "directorio_imagenes")
+      ("filas,f", opt::value<int>(&filas)->default_value(12), "filas")
+      ("columnas,c", opt::value<int>(&columnas)->default_value(8), "columnas");
+
+      opt::variables_map vm;
+      store(opt::parse_command_line(argc, argv,desc), vm);
+      notify(vm);
+
+
+      if(vm.count("help") || argc == 1){
+        cout << desc << endl;
+        return 0;
+      }
+      if(vm.count("filas")){
+        filas = vm["filas"].as<int>();
+      }
+      if(vm.count("columnas")){
+        columnas = vm["columnas"].as<int>();
+      }
+      if(vm.count("dir")){
+        std::vector<std::string> v = vm["dir"].as<std::vector<std::string>>();
+        ruta_directorio = v[0];
+      }
+
+
+
+    //string ruta_directorio = argv[1];
 
 
     cout << "Umbral: " << umbral_bajo << endl << endl;
@@ -80,7 +111,7 @@ int main(int argc, char *argv[])
         cout << "Puntos ant: " << puntos_ant.size() << endl;
         cout << "Puntos actuales: " << puntos_actual.size() << endl;*/
 
-        vectores_Window(img_actual, im_ant, im_act, i);
+        vectores_Window(img_actual, im_ant, im_act, i, filas, columnas);
 
 
 

@@ -18,9 +18,16 @@
 #include <cmath>
 #include <algorithm>
 #include <regex>
+#include <boost/program_options/options_description.hpp>
+#include <boost/program_options.hpp>
+#include <boost/program_options/option.hpp>
+#include <boost/asio.hpp>
 
 using namespace std;
 using namespace cv;
+namespace opt = boost::program_options;
+namespace as = boost::asio;
+using namespace::boost::asio;
 
 
 void save_data(ofstream& fichero, string ruta_fichero, string nombre_img, Point2i pi, Point2i pf, float dist, float angulo, int id){
@@ -222,10 +229,10 @@ void dibuja_CloudTracking(Mat img, const vector<Point2f>& img_ant_pts, const vec
 
 
             //Calculamos la distancia y el angulo entre los dos puntos
-            //float dist = sqrt(pow((pf.x - pi.x) , 2) + pow((pf.y - pi.y) , 2));
-            //float angulo = fmod((180*atan2((pf.y - pi.y), (pf.x - pi.x))),360);
+            float dist = sqrt(pow((pf.x - pi.x) , 2) + pow((pf.y - pi.y) , 2));
+            float angulo = fmod((180*atan2((pf.y - pi.y), (pf.x - pi.x))),360);
 
-            //if(dist >= 2 && dist <= 80){
+            if(dist >= 2 && dist <= 80){
                 /*cout << "Pi: (" << pi.x << ", " << pi.y << ")" << endl;
                 cout << "Pf: (" << pf.x << ", " << pf.y << ")" << endl;
                 cout << "Dist: " << dist << endl;
@@ -236,8 +243,8 @@ void dibuja_CloudTracking(Mat img, const vector<Point2f>& img_ant_pts, const vec
                 rectangle(img, Point(x,y), Point(1024-x, 768-y), Scalar(0,255,255));
                 //save_data(fichero, "prueba.txt", "", pi, pf, dist, angulo, id);
 
-          //  }else
-            //    continue;
+            }else
+                continue;
 
         }
 
@@ -246,13 +253,17 @@ void dibuja_CloudTracking(Mat img, const vector<Point2f>& img_ant_pts, const vec
 }
 
 
-void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, int id, int alto=64,
-  int ancho=128, int num_puntos=5){
+void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, int id, int filas=12,
+  int columnas=8, int num_puntos=100){
     vector<vector<vector<Point2f>>> v_tracking;
+    int ancho = 1024/columnas;
+    int alto = 768/filas;
+
+    cout << ancho << "  " << alto << endl;
 
 
-    for (size_t i = ancho ; i < 1024-ancho; i=i+ancho) {
-      for (size_t j = alto; j < 768 - alto; j=j+alto) {
+    for (size_t i = 128 ; i < 1024-ancho; i=i+ancho) {
+      for (size_t j = 64; j < 768 - alto; j=j+alto) {
           std::vector<Point2f> p_img_anterior(num_puntos);
           std::vector<Point2f> p_img_actual(num_puntos);
           std::vector<unsigned char> estado(num_puntos);
@@ -270,8 +281,11 @@ void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, 
           goodFeaturesToTrack(ventana_img_ant, p_img_anterior, num_puntos, 0.01, 0);
           if(p_img_anterior.size() < num_puntos)
             continue;
-          else
+          else{
             calcOpticalFlowPyrLK(ventana_img_ant, ventana_img_actual, p_img_anterior, p_img_actual, estado, error);
+            calcOpticalFlowPyrLK(ventana_img_ant, ventana_img_actual, p_img_anterior, p_img_actual, estado, error);
+
+          }
           for (size_t k = 0; k < p_img_anterior.size(); k++) {
               p_img_anterior[k].x += i;
               p_img_anterior[k].y += j;
@@ -342,6 +356,7 @@ void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, 
             if(dist >= 2 && dist<=30){
               CONSTANTE_X += dist*cos(angulo);
               CONSTANTE_Y += dist*sin(angulo);
+              cout << dist << endl;
             }
           }
 
@@ -361,7 +376,7 @@ void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, 
 
           if(v_ant.size() == 1 && v_act.size() == 1)
             dibuja_CloudTracking(img_original, v_ant, v_act, i, j ,estado, id);
-            rectangle(img_original, Point(i,j), Point(1024-i, 768-j), Scalar(0,255,255));
+          else rectangle(img_original, Point(i,j), Point(1024-i, 768-j), Scalar(0,255,255));
 
 
       }
