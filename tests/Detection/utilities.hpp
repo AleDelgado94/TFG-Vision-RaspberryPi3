@@ -98,7 +98,7 @@ int menor_vector(vector<float> soles_radio){
     return retorno;
 }
 
-void detecta_sun(Mat& img1, int umbral_bajo){
+Point2f detecta_sun(Mat& img1, int umbral_bajo){
 
     vector<float> soles_radio;
     vector<Point2f> soles_center;
@@ -123,17 +123,25 @@ void detecta_sun(Mat& img1, int umbral_bajo){
     vector<Point2f> center(contours.size());
     vector<float> radius(contours.size());
 
+    cout << "Contornos encontrados: " << contours.size() << endl;
+
+    Point2f aprox_punto_central;
+
     for (int i = 0; i < contours.size(); i++)
     {
             approxPolyDP(Mat(contours[i]), contours_poly[i], 3, true);
             minEnclosingCircle((Mat)contours_poly[i], center[i], radius[i]);
             //double area = (3.14159265359 * pow(radius[i],2));
 
-            if (radius[i] > 150 && radius[i] < 210) {
+            cout << "Radio: " << radius[i] << endl;
+
+            if (radius[i] > 120 && radius[i] < 210) {
                     soles_radio.push_back(radius[i]);
                     soles_center.push_back(center[i]);
             }
     }
+
+    std::cout << "Radio_Sol: " << soles_radio.size() << '\n';
 
     if(soles_radio.size() > 1){
 
@@ -155,8 +163,11 @@ void detecta_sun(Mat& img1, int umbral_bajo){
 
         centro = soles_center[index];
         radio = soles_radio[index];
+        aprox_punto_central = centro;
 
-        circle(img1, centro, (int)radio, Scalar(0, 0, 255), 2, 8, 0);
+        std::cout << "Detección por contornos aproximacion" << '\n';
+
+        circle(img1, centro, 70, Scalar(0, 0, 255), 2, 8, 0);
         circle(img1, centro, 5, Scalar(255, 0, 0), 2, 8, 0);
 
 
@@ -164,9 +175,11 @@ void detecta_sun(Mat& img1, int umbral_bajo){
     }else if(soles_radio.size() == 1){
         auto radio = soles_radio.front();
         auto centro = soles_center.front();
+        aprox_punto_central = centro;
         soles_radio.clear();
         soles_center.clear();
-        circle(img1, centro, (int)radio, Scalar(0, 0, 255), 2, 8, 0);
+        std::cout << "Detección por contornos" << '\n';
+        circle(img1, centro, 70, Scalar(0, 0, 255), 2, 8, 0);
         circle(img1, centro, 5, Scalar(255, 0, 0), 2, 8, 0);
     }
     else
@@ -184,6 +197,7 @@ void detecta_sun(Mat& img1, int umbral_bajo){
         //DETECCIÓN MEDIANTE BRILLO
         Mat mask;
         inRange(hsv, LOW, HIGH, mask);
+        imshow("Mascara", mask);
 
 
         //ELIMINACION DE RUIDOS
@@ -192,13 +206,16 @@ void detecta_sun(Mat& img1, int umbral_bajo){
         double moment_area = m.m00;
         Point2f center;
 
+        cout << moment_area << endl;
         //Buscar el centro
         int x = int(m.m10/m.m00);
         int y = int(m.m01/m.m00);
         center.x = x;
         center.y = y;
+        cout << center << endl;
+        aprox_punto_central = center;
 
-
+        std::cout << "Detección por brillo" << '\n';
         circle(img1, center, 70, Scalar(255,0,0),2,8,0);
 
 
@@ -209,6 +226,7 @@ void detecta_sun(Mat& img1, int umbral_bajo){
 
     //namedWindow("sol", CV_WINDOW_NORMAL);
     //imshow("sol", img1);
+    return aprox_punto_central;
 
 }
 
@@ -240,7 +258,7 @@ void dibuja_CloudTracking(Mat img, const vector<Point2f>& img_ant_pts, const vec
 
                 //dibujamos la linea
                 arrowedLine(img, pi, pf, Scalar(255,0,0),1,8,0,0.2);
-                rectangle(img, Point(x,y), Point(1024-x, 768-y), Scalar(0,255,255));
+              //  rectangle(img, Point(x,y), Point(1024-x, 768-y), Scalar(0,255,255));
                 //save_data(fichero, "prueba.txt", "", pi, pf, dist, angulo, id);
 
             }else
@@ -253,17 +271,28 @@ void dibuja_CloudTracking(Mat img, const vector<Point2f>& img_ant_pts, const vec
 }
 
 
-void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, int id, int filas=12,
+void vectores_Window(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const Mat& img_act, int id, int filas=12,
   int columnas=8, int num_puntos=100){
     vector<vector<vector<Point2f>>> v_tracking;
     int ancho = 1024/columnas;
     int alto = 768/filas;
 
     cout << ancho << "  " << alto << endl;
+    cout << "El centro del sol es: " << centro_sol << endl;
 
 
-    for (size_t i = 128 ; i < 1024-ancho; i=i+ancho) {
-      for (size_t j = 64; j < 768 - alto; j=j+alto) {
+
+    for (size_t i = ancho ; i < 1024 - ancho; i=i+ancho) {
+      for (size_t j = 0; j < 768 - alto; j=j+alto) {
+
+
+      /*  circle(img_original, Point(i,j), 5, Scalar(255,0,0),2,8,0);
+        circle(img_original, centro_sol, 65, Scalar(0,0,255),2,8,0);*/
+
+        rectangle(img_original, Point(i,j), Point(i+ancho, j+alto), Scalar(0,255,255));
+
+
+
           std::vector<Point2f> p_img_anterior(num_puntos);
           std::vector<Point2f> p_img_actual(num_puntos);
           std::vector<unsigned char> estado(num_puntos);
@@ -356,7 +385,7 @@ void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, 
             if(dist >= 2 && dist<=30){
               CONSTANTE_X += dist*cos(angulo);
               CONSTANTE_Y += dist*sin(angulo);
-              cout << dist << endl;
+            //  cout << dist << endl;
             }
           }
 
@@ -376,9 +405,37 @@ void vectores_Window(Mat& img_original, const Mat& img_ant, const Mat& img_act, 
 
           if(v_ant.size() == 1 && v_act.size() == 1)
             dibuja_CloudTracking(img_original, v_ant, v_act, i, j ,estado, id);
-          else rectangle(img_original, Point(i,j), Point(1024-i, 768-j), Scalar(0,255,255));
+
+
+
 
 
       }
     }
+
+
+
+
+        for (size_t i = ancho ; i < 1024 - ancho; i=i+ancho) {
+          for (size_t j = 0; j < 768 - alto; j=j+alto) {
+            if((centro_sol.x-70 >= i && centro_sol.y+70 >= j) && (centro_sol.x-70 <= i+ancho && centro_sol.y+70 <= j+alto)
+            || (centro_sol.x+70 >= i && centro_sol.y-70 >= j) && (centro_sol.x+70 <= i+ancho && centro_sol.y-70 <= j+alto)
+            || (centro_sol.x+70 >= i && centro_sol.y+70 >= j) && (centro_sol.x+70 <= i+ancho && centro_sol.y+70 <= j+alto)
+            || (centro_sol.x-70 >= i && centro_sol.y-70 >= j) && (centro_sol.x-70 <= i+ancho && centro_sol.y-70 <= j+alto)
+            || (centro_sol.x-70 >= i && centro_sol.y >= j) && (centro_sol.x-70 <= i+ancho && centro_sol.y <= j+alto)
+            || (centro_sol.x+70 >= i && centro_sol.y >= j) && (centro_sol.x+70 <= i+ancho && centro_sol.y <= j+alto)
+            || (centro_sol.x >= i && centro_sol.y+70 >= j) && (centro_sol.x <= i+ancho && centro_sol.y+70 <= j+alto)
+            || (centro_sol.x >= i && centro_sol.y-70 >= j) && (centro_sol.x <= i+ancho && centro_sol.y-70 <= j+alto)
+            || (centro_sol.x-70/2 >= i && centro_sol.y >= j) && (centro_sol.x-70/2 <= i+ancho && centro_sol.y <= j+alto)
+            || (centro_sol.x+70/2 >= i && centro_sol.y >= j) && (centro_sol.x+70/2 <= i+ancho && centro_sol.y <= j+alto)
+            || (centro_sol.x >= i && centro_sol.y+70/2 >= j) && (centro_sol.x <= i+ancho && centro_sol.y+70/2 <= j+alto)
+            || (centro_sol.x >= i && centro_sol.y-70/2 >= j) && (centro_sol.x <= i+ancho && centro_sol.y-70/2 <= j+alto)){
+              Point ini(centro_sol.x-70,centro_sol.y+70);
+              Point fin(centro_sol.x+70, centro_sol.y-70);
+              rectangle(img_original, ini, fin, Scalar(0,0,255));
+              rectangle(img_original, Point(i,j), Point(i+ancho, j+alto), Scalar(0,0,255));
+            }
+          }
+        }
+
 }

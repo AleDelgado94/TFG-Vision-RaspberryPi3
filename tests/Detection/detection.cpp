@@ -95,6 +95,7 @@ int main(int argc, char *argv[])
         Mat img_actual = images[i];
         Mat img_sun = images[i];
         Mat im_ant, im_act;
+        Point2f centro_sol;
         //PARA CADA VENTANA SE PROCESAN LOS VECTORES DE MOVIMIENTO
         //IMAGEN SE DIVIDE EN VENTANAS DE 8X12 DE TAMAÑO (128X64)
 
@@ -102,7 +103,7 @@ int main(int argc, char *argv[])
         cvtColor(img_actual, im_act, CV_RGB2GRAY);
 
         cout << "IMG: " << i << endl;
-        detecta_sun(img_sun, umbral_bajo);
+        centro_sol = detecta_sun(img_sun, umbral_bajo);
 
 
         /*goodFeaturesToTrack(im_ant, puntos_ant, numero_puntos, 0.01, 0);
@@ -111,7 +112,7 @@ int main(int argc, char *argv[])
         cout << "Puntos ant: " << puntos_ant.size() << endl;
         cout << "Puntos actuales: " << puntos_actual.size() << endl;*/
 
-        vectores_Window(img_actual, im_ant, im_act, i, filas, columnas);
+        vectores_Window(centro_sol, img_actual, im_ant, im_act, i, filas, columnas);
 
 
 
