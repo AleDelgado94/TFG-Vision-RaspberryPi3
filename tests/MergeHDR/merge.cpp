@@ -93,9 +93,6 @@ void genera_hdr(int i, vector<string> imgs, string dir_origen,  string dir_desti
         tonemap->process(fusion, img_tonemap);
 
 
-        cout << tonemap->getContrast() << endl << endl;
-
-
 
         imwrite(dir_destino+"/"+imgs[i], img_tonemap * 255);
         //imwrite(dir_destino+"/ldr_"+imgs[i], ldr);

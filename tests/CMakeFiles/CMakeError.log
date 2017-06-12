@@ -1,22 +1,22 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_b7249/fast"
-/usr/bin/make -f CMakeFiles/cmTC_b7249.dir/build.make CMakeFiles/cmTC_b7249.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_0856c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_0856c.dir/build.make CMakeFiles/cmTC_0856c.dir/build
 make[1]: se entra en el directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_b7249.dir/CheckSymbolExists.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_b7249.dir/CheckSymbolExists.c.o   -c /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_b7249
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b7249.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_b7249.dir/CheckSymbolExists.c.o  -o cmTC_b7249 -rdynamic 
-CMakeFiles/cmTC_b7249.dir/CheckSymbolExists.c.o: En la función `main':
+Building C object CMakeFiles/cmTC_0856c.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_0856c.dir/CheckSymbolExists.c.o   -c /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_0856c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0856c.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_0856c.dir/CheckSymbolExists.c.o  -o cmTC_0856c -rdynamic 
+CMakeFiles/cmTC_0856c.dir/CheckSymbolExists.c.o: En la función `main':
 CheckSymbolExists.c:(.text+0x1b): referencia a `pthread_create' sin definir
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_b7249.dir/build.make:97: fallo en las instrucciones para el objetivo 'cmTC_b7249'
-make[1]: *** [cmTC_b7249] Error 1
+CMakeFiles/cmTC_0856c.dir/build.make:97: fallo en las instrucciones para el objetivo 'cmTC_0856c'
+make[1]: *** [cmTC_0856c] Error 1
 make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
-Makefile:126: fallo en las instrucciones para el objetivo 'cmTC_b7249/fast'
-make: *** [cmTC_b7249/fast] Error 2
+Makefile:126: fallo en las instrucciones para el objetivo 'cmTC_0856c/fast'
+make: *** [cmTC_0856c/fast] Error 2
 
 File /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -36,20 +36,20 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_96b37/fast"
-/usr/bin/make -f CMakeFiles/cmTC_96b37.dir/build.make CMakeFiles/cmTC_96b37.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_ac3ba/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ac3ba.dir/build.make CMakeFiles/cmTC_ac3ba.dir/build
 make[1]: se entra en el directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_96b37.dir/CheckFunctionExists.c.o
-/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_96b37.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
-Linking C executable cmTC_96b37
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_96b37.dir/link.txt --verbose=1
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_96b37.dir/CheckFunctionExists.c.o  -o cmTC_96b37 -rdynamic -lpthreads 
+Building C object CMakeFiles/cmTC_ac3ba.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_ac3ba.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_ac3ba
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ac3ba.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_ac3ba.dir/CheckFunctionExists.c.o  -o cmTC_ac3ba -rdynamic -lpthreads 
 /usr/bin/ld: no se puede encontrar -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_96b37.dir/build.make:97: fallo en las instrucciones para el objetivo 'cmTC_96b37'
-make[1]: *** [cmTC_96b37] Error 1
+CMakeFiles/cmTC_ac3ba.dir/build.make:97: fallo en las instrucciones para el objetivo 'cmTC_ac3ba'
+make[1]: *** [cmTC_ac3ba] Error 1
 make[1]: se sale del directorio '/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/CMakeTmp'
-Makefile:126: fallo en las instrucciones para el objetivo 'cmTC_96b37/fast'
-make: *** [cmTC_96b37/fast] Error 2
+Makefile:126: fallo en las instrucciones para el objetivo 'cmTC_ac3ba/fast'
+make: *** [cmTC_ac3ba/fast] Error 2
 
 
