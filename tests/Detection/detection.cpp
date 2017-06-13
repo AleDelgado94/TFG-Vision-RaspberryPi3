@@ -82,18 +82,12 @@ int main(int argc, char *argv[])
         images.push_back(im);
     }
 
-    /*vector<Point2f> puntos_ant(numero_puntos);
-    vector<Point2f> puntos_actual(numero_puntos);
-    vector<unsigned char> estado(numero_puntos);
-    vector<float> error;
-    int key;*/
-
     inicializa_fichero(fichero, "prueba.txt");
 
     for(int i=1; i<100; i++){
-        Mat img_ant = images[i-1];
-        Mat img_actual = images[i];
-        Mat img_sun = images[i];
+        Mat img_ant = images[i-1].clone();
+        Mat img_actual = images[i].clone();
+        Mat img_sun = images[i].clone();
         Mat im_ant, im_act;
         Point2f centro_sol;
         //PARA CADA VENTANA SE PROCESAN LOS VECTORES DE MOVIMIENTO
@@ -106,13 +100,8 @@ int main(int argc, char *argv[])
         centro_sol = detecta_sun(img_sun, umbral_bajo);
 
 
-        /*goodFeaturesToTrack(im_ant, puntos_ant, numero_puntos, 0.01, 0);
-        calcOpticalFlowPyrLK(im_ant, im_act, puntos_ant, puntos_actual, estado, error);
-
-        cout << "Puntos ant: " << puntos_ant.size() << endl;
-        cout << "Puntos actuales: " << puntos_actual.size() << endl;*/
-
-        vectores_Window(centro_sol, img_actual, im_ant, im_act, i, filas, columnas);
+      //  vectores_Window(centro_sol, img_actual, im_ant, im_act, i, filas, columnas);
+        vectores_img(centro_sol, img_actual, im_ant, im_act, i, filas, columnas);
 
 
 
@@ -120,7 +109,9 @@ int main(int argc, char *argv[])
 
 
         namedWindow("nubes", CV_WINDOW_NORMAL);
+        namedWindow("sol", CV_WINDOW_NORMAL);
         imshow("nubes", img_actual);
+        imshow("sol", img_sun);
 
 
 
@@ -129,8 +120,6 @@ int main(int argc, char *argv[])
             break;
 
     }
-
-
 
 
     return 0;
