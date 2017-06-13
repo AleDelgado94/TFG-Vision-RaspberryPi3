@@ -109,9 +109,9 @@ int main(int argc, char *argv[])
 
 
         namedWindow("nubes", CV_WINDOW_NORMAL);
-        namedWindow("sol", CV_WINDOW_NORMAL);
+        //namedWindow("sol", CV_WINDOW_NORMAL);
         imshow("nubes", img_actual);
-        imshow("sol", img_sun);
+        //imshow("sol", img_sun);
 
 
 

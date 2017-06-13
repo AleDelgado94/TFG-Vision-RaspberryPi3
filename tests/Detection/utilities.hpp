@@ -197,7 +197,7 @@ Point2f detecta_sun(Mat& img1, int umbral_bajo){
         //DETECCIÓN MEDIANTE BRILLO
         Mat mask;
         inRange(hsv, LOW, HIGH, mask);
-        imshow("Mascara", mask);
+        //imshow("Mascara", mask);
 
 
         //ELIMINACION DE RUIDOS
@@ -373,7 +373,7 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
   }
 
   void vectores_img(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const Mat& img_act, int id, int filas=12,
-    int columnas=8, int num_puntos=2000){
+    int columnas=8, int num_puntos=5000){
       vector<vector<vector<Point2f>>> v_tracking;
       int ancho = 1024/columnas;
       int alto = 768/filas;
@@ -410,7 +410,7 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
 
                 float media_x=0, media_y=0;
                 int size = v_p_ant.size();
-                if(size >= 20){
+                if(size >= 30){
                   std::cout << "Hay " << size << " vectores" << '\n';
                   std::cout << "Hay " << v_p_act.size() << " vectores actuales" << '\n';
                   for (size_t k = 0; k < size; k++) {
@@ -420,10 +420,9 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
                   Point2f p_medio((int)(media_x/size), (int)(media_y/size));
                   cout << "Punto medio: " << p_medio << endl;
 
-                  circle(img_original, p_medio,5, Scalar(0,0,255),2,8,0);
 
                   for (size_t k = 0; k < size; k++) {
-                      while((v_p_ant[k].x != p_medio.x) && (v_p_ant[k].y != p_medio.y)){
+                      while(v_p_ant[k].x != p_medio.x){
                         if(v_p_ant[k].x < p_medio.x){
                           v_p_ant[k].x++;
                           v_p_act[k].x++;
@@ -431,7 +430,9 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
                           v_p_ant[k].x--;
                           v_p_act[k].x--;
                         }
+                      }
 
+                      while(v_p_ant[k].y != p_medio.y){
                         if(v_p_ant[k].y < p_medio.y){
                           v_p_ant[k].y++;
                           v_p_act[k].y++;
@@ -448,38 +449,47 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
                   float CONSTANTE_X = 0;
                   float CONSTANTE_Y = 0;
 
-                  for (size_t k = 0; k < v_p_act.size(); k++) {
+                  /*for (size_t k = 0; k < v_p_act.size(); k++) {
                     Point2f pi, pf;
-                    pi = v_p_ant[k];
+                    pi = v_p_ant[0];
                     pf = v_p_act[k];
-
 
                     //Calculamos la distancia y el angulo entre los dos puntos
                     float dist = sqrt(pow((pf.x - pi.x) , 2) + pow((pf.y - pi.y) , 2));
-                    float angulo = fmod((180*atan2((pf.y - pi.y), (pf.x - pi.x))),360);
+                      if(dist >= 2 && dist<=30){
+                      //float angulo = fmod((180*atan2((pf.y - pi.y), (pf.x - pi.x))),360);
+                      double angulo = ((atan2((pf.y - pi.y), (pf.x - pi.x))));
+                      angulo = (angulo*360)/(2*M_PI);
+                      std::cout << "angulo: " << angulo << '\n';
+                      std::cout << "Distancia: " << dist << '\n';
 
 
-                    //if(dist >= 2 && dist<=30){
-                      CONSTANTE_X += dist*cos(angulo);
-                      CONSTANTE_Y += dist*sin(angulo);
-                    //  cout << dist << endl;
-                    //}
+
+                        CONSTANTE_X += dist*cos(angulo);
+                        CONSTANTE_Y += dist*sin(angulo);
+                      //  cout << dist << endl;
+
+                    }
+                  }*/
+
+                  int media_x_act=0, media_y_act=0;
+                  int size_act = v_p_act.size();
+                  for (size_t k = 0; k < v_p_act.size(); k++) {
+                    media_x_act += v_p_act[k].x;
+                    media_y_act += v_p_act[k].y;
                   }
+                  Point2f p_final = Point2f((int)(media_x_act/size_act), (int)(media_y_act/size_act));
 
-                  /*for (size_t k = 0; k < v_p_act.size(); k++) {
-                    CONSTANTE_X += v_p_act[k].x;
-                    CONSTANTE_Y += v_p_act[k].y;
-                  }
-                  */
-                  std::cout << "CONSTANTE_X: " << CONSTANTE_X  << '\n';
-                  std::cout << "CONSTANTE_Y: " << CONSTANTE_Y  << '\n';
 
                   //Point2f p_final = Point2f((int)(CONSTANTE_X/v_p_act.size()), (int)(CONSTANTE_Y/v_p_act.size()));
-                  Point2f p_final = Point2f((int)(CONSTANTE_X), (int)(CONSTANTE_Y));
+                  //Point2f p_final = Point2f(p_medio.x+(int)(CONSTANTE_X), p_medio.y+(int)(CONSTANTE_Y));
+                  std::cout << "Punto final: "<< p_final << '\n';
                   v_fin.push_back(p_final);
 
-                //  dibuja_CloudTracking_red(img_original, p_img_anterior, p_img_actual,i,j,estado,id);
-                  dibuja_CloudTracking(img_original, v_p_ant, v_p_act, i, j ,estado, id);
+                  std::cout << "Distancia final: " << sqrt(pow((p_final.x - p_medio.x) , 2) + pow((p_final.y - p_medio.y) , 2)) << '\n';
+                  arrowedLine(img_original, p_medio, p_final, Scalar(0,0,255),1,8,0,0.2);
+                  //dibuja_CloudTracking_red(img_original, v_ini, v_fin,i,j,estado,id);
+                //  dibuja_CloudTracking(img_original, v_p_ant, v_p_act, i, j ,estado, id);
                 }
 
 
