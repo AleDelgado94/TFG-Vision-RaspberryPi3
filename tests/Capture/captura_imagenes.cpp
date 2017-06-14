@@ -106,6 +106,7 @@ void captura(){
     while(key != 27){
 
 	sleep(segundos);
+	sqlite3_open(database.c_str(), &db);
 
     std::cout <<  "Hora: " <<hora << std::endl;
     hora_momento_foto = hora;
@@ -141,7 +142,13 @@ void captura(){
     fecha += to_string(day);
 
     ask_data(port, db, fecha, hora, (std::string)id);
-
+	sqlite3_close(db);
+	
+	string command = "cp ";
+	command += database;
+	command += " /home/pi/DBTFG";
+	
+	system(command.c_str());
 
     numSnapshot++;
     id = static_cast<std::ostringstream*>(&(std::ostringstream() << numSnapshot))->str();
@@ -238,6 +245,10 @@ int main(int argc, char* argv[]){
     if(vm.count("destino")){
       std::vector<std::string> v = vm["destino"].as<std::vector<std::string>>();
       ruta_carpeta_destino = v[0];
+      /*if(access(ruta_carpeta_destino.c_str(), 0) != 0){
+		  mkdir(ruta_carpeta_destino.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+	  }*/
+	  
     }
     if(vm.count("database")){
       std::vector<std::string> v = vm["database"].as<std::vector<std::string>>();
@@ -247,6 +258,9 @@ int main(int argc, char* argv[]){
       std::vector<std::string> v = vm["port"].as<std::vector<std::string>>();
       PORT = v[0];
     }
+    
+	sqlite3_enable_shared_cache(1);
+    //sqlite3_busy_timeout(db, 1000);
 
     int db_handler = sqlite3_open(database.c_str(), &db);
     if(db_handler){
@@ -255,6 +269,7 @@ int main(int argc, char* argv[]){
     }else{
       cout << "Se abrió la base de datos" << endl;
     }
+    
 
     string crear_tabla_data = "CREATE TABLE IF NOT EXISTS DATOS ( ID_NOMBRE TEXT PRIMARY KEY, HORA TEXT, FECHA TEXT,  TEMPERATURA INTEGER, HUMEDAD INTEGER, SOLAR REAL, ESTADO TEXT);";
     int exe = sqlite3_exec(db, crear_tabla_data.c_str(), callback, 0, &sqError);
@@ -262,7 +277,7 @@ int main(int argc, char* argv[]){
       fprintf(stderr, "SQL error: %s\n", sqError);
       sqlite3_free(sqError);
     }
-
+	sqlite3_close(db);
 
 
     namedWindow("Video", CV_WINDOW_NORMAL);
@@ -282,7 +297,7 @@ int main(int argc, char* argv[]){
     video_.join();
     foto_.join();
 
-    sqlite3_close(db);
+    
     
 
     return 0;
