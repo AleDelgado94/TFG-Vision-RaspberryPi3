@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/Capture/captura_imagenes.cpp
+/home/aledelgado/TFG-Vision-RaspberryPi3/tests/RealTime/realtime.cpp
 iostream
 -
 opencv2/core/core.hpp
@@ -14,8 +14,6 @@ opencv2/core/core.hpp
 opencv2/opencv.hpp
 -
 opencv2/highgui/highgui.hpp
--
-raspicam/raspicam_cv.h
 -
 ctime
 -
@@ -35,27 +33,21 @@ time.h
 -
 sstream
 -
+dirent.h
+-
+sys/stat.h
+-
+cmath
+-
 boost/program_options/options_description.hpp
 -
 boost/program_options.hpp
 -
 boost/program_options/option.hpp
 -
-boost/asio.hpp
+algorithm
 -
-sqlite3.h
--
-../Database/sqlite3/sqliteCallBack.hpp
-/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/Database/sqlite3/sqliteCallBack.hpp
-list
--
-
-/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/Database/sqlite3/sqliteCallBack.hpp
-iostream
--
-vector
--
-string
+regex
 -
 
 /usr/local/include/opencv/cxcore.h
@@ -1287,10 +1279,4 @@ opencv2/core/cuda.hpp
 /usr/local/include/opencv2/xfeatures2d/nonfree.hpp
 opencv2/features2d.hpp
 /usr/local/include/opencv2/xfeatures2d/opencv2/features2d.hpp
-
-/usr/local/include/raspicam/raspicam_cv.h
-opencv2/core/core.hpp
--
-opencv2/highgui/highgui.hpp
--
 

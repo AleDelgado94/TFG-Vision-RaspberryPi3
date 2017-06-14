@@ -4,13 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/Capture/captura_imagenes.cpp" "/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Captura_imagen_rgb.o.dir/Capture/captura_imagenes.cpp.o"
+  "/home/aledelgado/TFG-Vision-RaspberryPi3/tests/RealTime/realtime.cpp" "/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Realtime.o.dir/RealTime/realtime.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "SYSTEM"
   "/usr/local/include"
   "/usr/local/include/opencv"
   )
