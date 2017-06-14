@@ -17,7 +17,7 @@ std::vector<std::vector<Point2i>> tracking_points;
 int main(int argc, char *argv[])
 {
     umbral_bajo=250;
-    int filas, columnas;
+    int filas, columnas, puntos;
     std::string ruta_directorio;
     int key;
 
@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
       ("help,h", "./Detection [[ --source | -s ] ruta_imagenes_originales] [[ --destination | -d ] ruta_destino_hdr]")
       ("dir,d", opt::value<std::vector<std::string>>(), "directorio_imagenes")
       ("filas,f", opt::value<int>(&filas)->default_value(12), "filas")
+      ("puntos,p", opt::value<int>(&puntos)->default_value(2000), "puntos")
       ("columnas,c", opt::value<int>(&columnas)->default_value(8), "columnas");
 
       opt::variables_map vm;
@@ -42,6 +43,9 @@ int main(int argc, char *argv[])
       }
       if(vm.count("columnas")){
         columnas = vm["columnas"].as<int>();
+      }
+      if(vm.count("puntos")){
+        puntos = vm["puntos"].as<int>();
       }
       if(vm.count("dir")){
         std::vector<std::string> v = vm["dir"].as<std::vector<std::string>>();
@@ -101,7 +105,7 @@ int main(int argc, char *argv[])
 
 
       //  vectores_Window(centro_sol, img_actual, im_ant, im_act, i, filas, columnas);
-        vectores_img(centro_sol, img_actual, im_ant, im_act, i, filas, columnas);
+        vectores_img(centro_sol, img_actual, im_ant, im_act, i, filas, columnas, puntos);
 
 
 
