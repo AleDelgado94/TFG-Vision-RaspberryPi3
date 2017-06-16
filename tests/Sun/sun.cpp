@@ -52,11 +52,12 @@ void detecta_sun(Mat img, int umbral_bajo){
     //BILATERAL FILTER
     Mat bilateralFilterImg;
     bilateralFilter(img, bilateralFilterImg, 5, 175, 175);
-
+    imshow("bilateralFilter", bilateralFilterImg);
     //EDGE DETECTION
     Mat edge;
     cvtColor(bilateralFilterImg, bilateralFilterImg, CV_RGB2GRAY);
     threshold(bilateralFilterImg, edge, umbral_bajo, umbral_alto, 0);
+    imshow("threshold", edge);
 
     //COUNTOURS
     vector<vector<Point>> contours;
@@ -69,12 +70,13 @@ void detecta_sun(Mat img, int umbral_bajo){
 
     for (int i = 0; i < contours.size(); i++)
     {
+            
             approxPolyDP(Mat(contours[i]), contours_poly[i], 3, true);
             minEnclosingCircle((Mat)contours_poly[i], center[i], radius[i]);
             double area = (3.14159265359 * pow(radius[i],2));
-
-            if (radius[i] > 150 && radius[i] < 210) {
-                    cout << radius[i] << endl;
+  cout << radius[i] << endl;
+            if (radius[i] > 40 && radius[i] < 100) {
+              //      cout << radius[i] << endl;
                     soles_radio.push_back(radius[i]);
                     soles_center.push_back(center[i]);
             }
@@ -89,7 +91,7 @@ void detecta_sun(Mat img, int umbral_bajo){
 
         //BUSQUEDA DEL ELEMENTO MÁS PROXIMO A 200
 
-        int num_aproximar = 200;
+        int num_aproximar = 80;
 
         vector<float> diferencia;
         for(int j=0; j<soles_radio.size(); j++){
@@ -121,7 +123,7 @@ void detecta_sun(Mat img, int umbral_bajo){
 int main(int argc, char *argv[])
 {
     namedWindow("IMG", CV_WINDOW_NORMAL);
-    umbral_bajo=250;
+    umbral_bajo=235;
 
     cout << "Umbral: " << umbral_bajo << endl << endl;
 

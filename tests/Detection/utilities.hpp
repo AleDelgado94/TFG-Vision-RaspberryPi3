@@ -113,6 +113,7 @@ Point2f detecta_sun(Mat& img1, int umbral_bajo){
     Mat edge;
     cvtColor(bilateralFilterImg, bilateralFilterImg, CV_RGB2GRAY);
     threshold(bilateralFilterImg, edge, umbral_bajo, 255, 0);
+    imshow("threshold", edge);
 
     //COUNTOURS
     vector<vector<Point>> contours;
@@ -133,9 +134,9 @@ Point2f detecta_sun(Mat& img1, int umbral_bajo){
             minEnclosingCircle((Mat)contours_poly[i], center[i], radius[i]);
             //double area = (3.14159265359 * pow(radius[i],2));
 
-            cout << "Radio: " << radius[i] << endl;
+          //  cout << "Radio: " << radius[i] << endl;
 
-            if (radius[i] > 120 && radius[i] < 210) {
+            if (radius[i] > 75 && radius[i] < 100) {
                     soles_radio.push_back(radius[i]);
                     soles_center.push_back(center[i]);
             }
@@ -152,7 +153,7 @@ Point2f detecta_sun(Mat& img1, int umbral_bajo){
 
         //BUSQUEDA DEL ELEMENTO MÁS PROXIMO A 200
 
-        int num_aproximar = 200;
+        int num_aproximar = 80;
 
         vector<float> diferencia;
         for(int j=0; j<soles_radio.size(); j++){
@@ -185,7 +186,7 @@ Point2f detecta_sun(Mat& img1, int umbral_bajo){
     else
     {
 
-
+      //imshow("img1",img1);
         //NO SE DETECTO EL SOL MEDIANTE LA TÉCNICA UTILIZADA
         Mat hsv;
         cvtColor(img1, hsv, CV_RGB2GRAY);
@@ -197,7 +198,7 @@ Point2f detecta_sun(Mat& img1, int umbral_bajo){
         //DETECCIÓN MEDIANTE BRILLO
         Mat mask;
         inRange(hsv, LOW, HIGH, mask);
-        //imshow("Mascara", mask);
+        imshow("Mascara", mask);
 
 
         //ELIMINACION DE RUIDOS
@@ -393,7 +394,7 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
             int index = 0;
             for (size_t i = 0; i < 1024 ; i=i+ancho) {
               for (size_t j = 0; j < 768  ; j=j+alto) {
-                cout << "Index: " << index << endl;
+              //  cout << "Index: " << index << endl;
                 index++;
                 std::vector<Point2f> v_p_ant;
                 std::vector<Point2f> v_p_act;
@@ -411,14 +412,14 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
                 float media_x=0, media_y=0;
                 int size = v_p_ant.size();
                 if(size >= 30){
-                  std::cout << "Hay " << size << " vectores" << '\n';
-                  std::cout << "Hay " << v_p_act.size() << " vectores actuales" << '\n';
+                //  std::cout << "Hay " << size << " vectores" << '\n';
+                //  std::cout << "Hay " << v_p_act.size() << " vectores actuales" << '\n';
                   for (size_t k = 0; k < size; k++) {
                     media_x += v_p_ant[k].x;
                     media_y += v_p_ant[k].y;
                   }
                   Point2f p_medio((int)(media_x/size), (int)(media_y/size));
-                  cout << "Punto medio: " << p_medio << endl;
+                  //cout << "Punto medio: " << p_medio << endl;
 
 
                   for (size_t k = 0; k < size; k++) {
@@ -483,10 +484,10 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
 
                   //Point2f p_final = Point2f((int)(CONSTANTE_X/v_p_act.size()), (int)(CONSTANTE_Y/v_p_act.size()));
                   //Point2f p_final = Point2f(p_medio.x+(int)(CONSTANTE_X), p_medio.y+(int)(CONSTANTE_Y));
-                  std::cout << "Punto final: "<< p_final << '\n';
+                  //std::cout << "Punto final: "<< p_final << '\n';
                   v_fin.push_back(p_final);
 
-                  std::cout << "Distancia final: " << sqrt(pow((p_final.x - p_medio.x) , 2) + pow((p_final.y - p_medio.y) , 2)) << '\n';
+                  //std::cout << "Distancia final: " << sqrt(pow((p_final.x - p_medio.x) , 2) + pow((p_final.y - p_medio.y) , 2)) << '\n';
                   arrowedLine(img_original, p_medio, p_final, Scalar(0,0,255),1,8,0,0.2);
                   //dibuja_CloudTracking_red(img_original, v_ini, v_fin,i,j,estado,id);
                 //  dibuja_CloudTracking(img_original, v_p_ant, v_p_act, i, j ,estado, id);
