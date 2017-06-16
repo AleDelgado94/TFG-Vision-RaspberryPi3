@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
 
 
     vector<Mat> images;
-    for(int i=0; i<100; i++){
+    for(int i=0; i<imgs_name_sort.size(); i++){
         Mat im = imread(ruta_directorio+"/"+imgs_name_sort[i]);
         images.push_back(im);
     }
