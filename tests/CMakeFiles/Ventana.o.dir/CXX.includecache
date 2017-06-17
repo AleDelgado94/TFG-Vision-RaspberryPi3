@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/adelgado/TFG-Vision-RaspberryPi3/tests/Ventanas/ventana.cpp
+/home/aledelgado/TFG-Vision-RaspberryPi3/tests/Ventanas/ventana.cpp
 iostream
 -
 opencv2/core/core.hpp

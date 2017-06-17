@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/adelgado/TFG-Vision-RaspberryPi3/tests/RealTime/realtime.cpp
+/home/aledelgado/TFG-Vision-RaspberryPi3/tests/RealTime/realtime.cpp
 iostream
 -
 opencv2/core/core.hpp

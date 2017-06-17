@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/adelgado/TFG-Vision-RaspberryPi3/tests/Detection/detection.cpp
+/home/aledelgado/TFG-Vision-RaspberryPi3/tests/Detection/detection.cpp
 utilities.hpp
-/home/adelgado/TFG-Vision-RaspberryPi3/tests/Detection/utilities.hpp
+/home/aledelgado/TFG-Vision-RaspberryPi3/tests/Detection/utilities.hpp
 
-/home/adelgado/TFG-Vision-RaspberryPi3/tests/Detection/utilities.hpp
+/home/aledelgado/TFG-Vision-RaspberryPi3/tests/Detection/utilities.hpp
 iostream
 -
 opencv2/core/core.hpp

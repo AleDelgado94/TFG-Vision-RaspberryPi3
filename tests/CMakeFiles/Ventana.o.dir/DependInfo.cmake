@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/adelgado/TFG-Vision-RaspberryPi3/tests/Ventanas/ventana.cpp" "/home/adelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Ventana.o.dir/Ventanas/ventana.cpp.o"
+  "/home/aledelgado/TFG-Vision-RaspberryPi3/tests/Ventanas/ventana.cpp" "/home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Ventana.o.dir/Ventanas/ventana.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

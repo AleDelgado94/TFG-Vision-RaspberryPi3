@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
 
     inicializa_fichero(fichero, "prueba.txt");
 
-    for(int i=1; i<100; i++){
+    for(int i=1; i<imgs_name_sort.size(); i++){
         Mat img_ant = images[i-1].clone();
         Mat img_actual = images[i].clone();
         Mat img_sun = images[i].clone();
@@ -105,7 +105,7 @@ int main(int argc, char *argv[])
 
 
       //  vectores_Window(centro_sol, img_actual, im_ant, im_act, i, filas, columnas);
-        vectores_img(centro_sol, img_actual, im_ant, im_act, i, filas, columnas, puntos);
+        vectores(centro_sol, img_actual, im_ant, im_act, i, filas, columnas, puntos);
 
 
 
