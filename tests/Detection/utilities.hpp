@@ -374,6 +374,15 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
   }
 
 
+
+  bool entre(Point punto_procesar, Point vertice_superior, Point vertice_inferior){
+    if(entre(punto_procesar.x, vertice_superior.x, vertice_inferior.x) && entre(punto_procesar.y, vertice_superior.y, vertice_inferior.y))
+      return true;
+    else
+      return false;
+  }
+
+
   void predice(Mat& img_original, Point2f centro_sol, Point2f base_vector, Point2f final_vector){
     double dist = sqrt(pow((final_vector.x - base_vector.x) , 2) + pow((final_vector.y - base_vector.y) , 2));
     //cvFlip(img_original);
@@ -388,20 +397,54 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
       int COMPONENTE_X = final_vector.x - base_vector.x;
       int COMPONENTE_Y = -(final_vector.y - base_vector.y);
 
-      double angle = atan2((COMPONENTE_Y - 0), (COMPONENTE_X - 0));
+      double angle = ((atan2((COMPONENTE_Y - 0), (COMPONENTE_X - 0)))*360) / (2*M_PI);
+      std::cout << "angulo: " << angle << '\n';
+
 
       Point final = Point((base_vector.x+(100*COMPONENTE_X)), (base_vector.y+100*(-COMPONENTE_Y)));
       Point actual = final_vector;
 
       int i=0;
       bool intercepta = false;
-      /*while(!(entre(actual.x, ini_sol.x, fin_sol.x) && entre(actual.y, ini_sol.y, fin_sol.y)) || ((actual.x > 1024 || actual.x < 0) || (actual.y > 768 || actual.y < 0))){
-        if(centro_sol.x)
-      }*/
+      while(((actual.x < 1024 && actual.x > 0) && (actual.y < 768 && actual.y > 0))){
+        if(angle == 0){
+          actual.x = actual.x + COMPONENTE_X;
+        }else if(angle == 90){
+          actual.y = actual.y - -COMPONENTE_Y;
+        }else if(angle == 180){
+          actual.x = actual.x + COMPONENTE_X;
+        }else if(angle == -90){
+          actual.y = actual.y + -COMPONENTE_Y;
+        }else if(angle > 90){
+          //SEGUNDO CUADRANTE +-
+          actual.x = actual.x + COMPONENTE_X;
+          actual.y = actual.y - COMPONENTE_Y;
+        }else if(angle > 0){
+          //PRIMER CUADRANTE ++
+          actual.x = actual.x + COMPONENTE_X;
+          actual.y = actual.y - COMPONENTE_Y; 
+        }else if(angle < -90){
+          //CUARTO CUADRANTE --
+          actual.x = actual.x + COMPONENTE_X;
+          actual.y = actual.y + -COMPONENTE_Y;
+        }else if(angle < 0){
+          //TERCER CUADRANTE -+
+          actual.x = actual.x + COMPONENTE_X;
+          actual.y = actual.y + -COMPONENTE_Y;
+        }
+        circle(img_original, actual, 1, Scalar(255,0,0));
 
+        if(entre(actual, ini_sol, fin_sol)){
+         intercepta = true;
+
+         break;
+        }
+      }
+
+      std::cout << "Direccion al Sol??: " << intercepta << '\n';
       std::cout << "COMPONENTE_X: " << COMPONENTE_X << '\n';
       std::cout << "COMPONENTE_Y: " << COMPONENTE_Y << '\n';
-      line(img_original, base_vector, final, CV_RGB(0,255,0), 2 ,CV_AA);
+      //line(img_original, base_vector, final, CV_RGB(0,255,0), 2 ,CV_AA);
     }
 
   }
