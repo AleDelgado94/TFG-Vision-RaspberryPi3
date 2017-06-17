@@ -376,7 +376,7 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
 
 
   bool entre(Point punto_procesar, Point vertice_superior, Point vertice_inferior){
-    if(entre(punto_procesar.x, vertice_superior.x, vertice_inferior.x) && entre(punto_procesar.y, vertice_superior.y, vertice_inferior.y))
+    if(entre(punto_procesar.x, vertice_inferior.x, vertice_superior.x) && entre(punto_procesar.y, vertice_inferior.y, vertice_superior.y))
       return true;
     else
       return false;
@@ -388,8 +388,8 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
     //cvFlip(img_original);
 
     //angle = angle
-    Point ini_sol(centro_sol.x-70,centro_sol.y+70);
-    Point fin_sol(centro_sol.x+70, centro_sol.y-70);
+    Point ini_sol(centro_sol.x-70,centro_sol.y-70);
+    Point fin_sol(centro_sol.x+70, centro_sol.y+70);
     if(dist >= 15){
 
 
@@ -407,6 +407,12 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
       int i=0;
       bool intercepta = false;
       while(((actual.x < 1024 && actual.x > 0) && (actual.y < 768 && actual.y > 0))){
+
+        if(entre(actual, ini_sol, fin_sol)){
+         intercepta = true;
+         break;
+        }
+
         if(angle == 0){
           actual.x = actual.x + COMPONENTE_X;
         }else if(angle == 90){
@@ -422,7 +428,7 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
         }else if(angle > 0){
           //PRIMER CUADRANTE ++
           actual.x = actual.x + COMPONENTE_X;
-          actual.y = actual.y - COMPONENTE_Y; 
+          actual.y = actual.y - COMPONENTE_Y;
         }else if(angle < -90){
           //CUARTO CUADRANTE --
           actual.x = actual.x + COMPONENTE_X;
@@ -432,14 +438,12 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
           actual.x = actual.x + COMPONENTE_X;
           actual.y = actual.y + -COMPONENTE_Y;
         }
-        circle(img_original, actual, 1, Scalar(255,0,0));
 
-        if(entre(actual, ini_sol, fin_sol)){
-         intercepta = true;
 
-         break;
-        }
       }
+
+      circle(img_original, ini_sol, 5, Scalar(255,0,0));
+      circle(img_original, fin_sol, 5, Scalar(0,255,0));
 
       std::cout << "Direccion al Sol??: " << intercepta << '\n';
       std::cout << "COMPONENTE_X: " << COMPONENTE_X << '\n';
