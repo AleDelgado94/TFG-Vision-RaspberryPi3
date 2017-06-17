@@ -1,8 +1,0 @@
-/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/edit_cache.dir
-/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/rebuild_cache.dir
-/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Ventana.o.dir
-/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Realtime.o.dir
-/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Temperature.o.dir
-/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Detection.o.dir
-/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Sun.o.dir
-/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/Merge.o.dir

@@ -48,10 +48,17 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
+<<<<<<< HEAD
 CMAKE_SOURCE_DIR = /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests
+=======
+CMAKE_SOURCE_DIR = /home/aledelgado/TFG-Vision-RaspberryPi3/tests
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = /home/aledelgado/TFG-Vision-RaspberryPi3/tests
+>>>>>>> c2c2d35f7e5f24a7fc320cd89efbac57b2c24b2b
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +87,15 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
+<<<<<<< HEAD
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/CMakeFiles 0
+=======
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles/progress.marks
+	$(MAKE) -f CMakeFiles/Makefile2 all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aledelgado/TFG-Vision-RaspberryPi3/tests/CMakeFiles 0
+>>>>>>> c2c2d35f7e5f24a7fc320cd89efbac57b2c24b2b
 .PHONY : all
 
 # The main clean target
