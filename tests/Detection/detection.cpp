@@ -98,6 +98,11 @@ int main(int argc, char *argv[])
         Mat img_ant = images[i-1].clone();
         Mat img_actual = images[i].clone();
         Mat img_sun = images[i].clone();
+
+        /*flip(img_ant, img_ant, -1);
+        flip(img_actual,img_actual , -1);
+        flip(img_sun, img_sun, -1);
+*/
         Mat im_ant, im_act;
         Point2f centro_sol;
         //PARA CADA VENTANA SE PROCESAN LOS VECTORES DE MOVIMIENTO
@@ -109,6 +114,7 @@ int main(int argc, char *argv[])
         im_act = img_actual;
 
         cout << "IMG: " << i << endl;
+
         centro_sol = detecta_sun(img_sun, umbral_bajo);
 
 

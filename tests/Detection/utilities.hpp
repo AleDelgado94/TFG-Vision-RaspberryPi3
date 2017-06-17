@@ -373,6 +373,40 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
     return (num_procesar <= value_max && num_procesar >= value_min) ? true : false;
   }
 
+
+  void predice(Mat& img_original, Point2f centro_sol, Point2f base_vector, Point2f final_vector){
+    double dist = sqrt(pow((final_vector.x - base_vector.x) , 2) + pow((final_vector.y - base_vector.y) , 2));
+    //cvFlip(img_original);
+
+    //angle = angle
+    Point ini_sol(centro_sol.x-70,centro_sol.y+70);
+    Point fin_sol(centro_sol.x+70, centro_sol.y-70);
+    if(dist >= 15){
+
+
+      //CALCULAMOS LAS COMPONENTES DEL VECTOR
+      int COMPONENTE_X = final_vector.x - base_vector.x;
+      int COMPONENTE_Y = -(final_vector.y - base_vector.y);
+
+      double angle = atan2((COMPONENTE_Y - 0), (COMPONENTE_X - 0));
+
+      Point final = Point((base_vector.x+(100*COMPONENTE_X)), (base_vector.y+100*(-COMPONENTE_Y)));
+      Point actual = final_vector;
+
+      int i=0;
+      bool intercepta = false;
+      /*while(!(entre(actual.x, ini_sol.x, fin_sol.x) && entre(actual.y, ini_sol.y, fin_sol.y)) || ((actual.x > 1024 || actual.x < 0) || (actual.y > 768 || actual.y < 0))){
+        if(centro_sol.x)
+      }*/
+
+      std::cout << "COMPONENTE_X: " << COMPONENTE_X << '\n';
+      std::cout << "COMPONENTE_Y: " << COMPONENTE_Y << '\n';
+      line(img_original, base_vector, final, CV_RGB(0,255,0), 2 ,CV_AA);
+    }
+
+  }
+
+
   void vectores_img(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const Mat& img_act, int id, int filas=12,
     int columnas=8, int num_puntos=5000){
       vector<vector<vector<Point2f>>> v_tracking;
@@ -485,6 +519,7 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
 
                   //arrowedLine(img_original, p_medio, p_final, Scalar(0,0,255),1,8,0,0.2);
                   dibuja_CloudTracking_red(img_original, v_ini, v_fin,i,j,estado,id);
+                  predice(img_original, centro_sol,p_medio, p_final);
                }
 
 
