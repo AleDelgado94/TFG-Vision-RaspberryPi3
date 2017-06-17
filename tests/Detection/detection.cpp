@@ -17,7 +17,7 @@ std::vector<std::vector<Point2i>> tracking_points;
 int main(int argc, char *argv[])
 {
     umbral_bajo=235;
-    int filas, columnas, puntos;
+    int filas, columnas, puntos, inicial;
     std::string ruta_directorio;
     int key;
 
@@ -26,8 +26,9 @@ int main(int argc, char *argv[])
       ("help,h", "./Detection [[ --source | -s ] ruta_imagenes_originales] [[ --destination | -d ] ruta_destino_hdr]")
       ("dir,d", opt::value<std::vector<std::string>>(), "directorio_imagenes")
       ("filas,f", opt::value<int>(&filas)->default_value(12), "filas")
+      ("columnas,c", opt::value<int>(&columnas)->default_value(8), "columnas")
       ("puntos,p", opt::value<int>(&puntos)->default_value(2000), "puntos")
-      ("columnas,c", opt::value<int>(&columnas)->default_value(8), "columnas");
+      ("inicial,i", opt::value<int>(&inicial)->default_value(1), "inicial");
 
       opt::variables_map vm;
       store(opt::parse_command_line(argc, argv,desc), vm);
@@ -46,6 +47,9 @@ int main(int argc, char *argv[])
       }
       if(vm.count("puntos")){
         puntos = vm["puntos"].as<int>();
+      }
+      if(vm.count("inicial")){
+        inicial = vm["inicial"].as<int>();
       }
       if(vm.count("dir")){
         std::vector<std::string> v = vm["dir"].as<std::vector<std::string>>();
@@ -90,7 +94,7 @@ int main(int argc, char *argv[])
 
 
 
-    for(int i=1; i<images.size(); i++){
+    for(int i=inicial; i<images.size(); i++){
         Mat img_ant = images[i-1].clone();
         Mat img_actual = images[i].clone();
         Mat img_sun = images[i].clone();
@@ -99,15 +103,18 @@ int main(int argc, char *argv[])
         //PARA CADA VENTANA SE PROCESAN LOS VECTORES DE MOVIMIENTO
         //IMAGEN SE DIVIDE EN VENTANAS DE 8X12 DE TAMAÑO (128X64)
 
-        cvtColor(img_ant, im_ant, CV_RGB2GRAY);
-        cvtColor(img_actual, im_act, CV_RGB2GRAY);
+        //cvtColor(img_ant, im_ant, CV_RGB2GRAY);
+        //cvtColor(img_actual, im_act, CV_RGB2GRAY);
+        im_ant = img_ant;
+        im_act = img_actual;
 
         cout << "IMG: " << i << endl;
         centro_sol = detecta_sun(img_sun, umbral_bajo);
 
 
       //  vectores_Window(centro_sol, img_actual, im_ant, im_act, i, filas, columnas);
-        vectores(centro_sol, img_actual, im_ant, im_act, i, filas, columnas, puntos);
+        //vectores(centro_sol, img_actual, im_ant, im_act, i, filas, columnas, puntos);
+        vectores_img(centro_sol, img_actual, im_ant, im_act, i, filas, columnas, puntos);
 
 
 

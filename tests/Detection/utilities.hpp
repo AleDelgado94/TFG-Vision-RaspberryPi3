@@ -113,7 +113,7 @@ Point2f detecta_sun(Mat& img1, int umbral_bajo){
     Mat edge;
     cvtColor(bilateralFilterImg, bilateralFilterImg, CV_RGB2GRAY);
     threshold(bilateralFilterImg, edge, umbral_bajo, 255, 0);
-    imshow("threshold", edge);
+    //imshow("threshold", edge);
 
     //COUNTOURS
     vector<vector<Point>> contours;
@@ -198,7 +198,7 @@ Point2f detecta_sun(Mat& img1, int umbral_bajo){
         //DETECCIÓN MEDIANTE BRILLO
         Mat mask;
         inRange(hsv, LOW, HIGH, mask);
-        imshow("Mascara", mask);
+        //imshow("Mascara", mask);
 
 
         //ELIMINACION DE RUIDOS
@@ -385,16 +385,34 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
             std::vector<unsigned char> estado(num_puntos);
             std::vector<float> error;
 
+            Mat bilateralFilterImg;
+            bilateralFilter(img_ant, bilateralFilterImg, 5, 175, 175);
+
+            //EDGE DETECTION
+            Mat edge;
+            cvtColor(bilateralFilterImg, bilateralFilterImg, CV_RGB2GRAY);
+            threshold(bilateralFilterImg, edge, 200, 255, 0);
+            imshow("edge", edge);
+
+            Mat bilateralFilterImg2;
+            bilateralFilter(img_act, bilateralFilterImg2, 5, 175, 175);
+
+            //EDGE DETECTION
+            Mat edge2;
+            cvtColor(bilateralFilterImg2, bilateralFilterImg2, CV_RGB2GRAY);
+            threshold(bilateralFilterImg2, edge2, 200, 255, 0);
+            imshow("edge", edge2);
+
 
             //imshow(im, ventana_img_actual);
 
-            goodFeaturesToTrack(img_ant, p_img_anterior, num_puntos, 0.01, 0);
-            calcOpticalFlowPyrLK(img_ant, img_act, p_img_anterior, p_img_actual, estado, error);
+            goodFeaturesToTrack(edge, p_img_anterior, num_puntos, 0.01, 0);
+            calcOpticalFlowPyrLK(edge, edge2, p_img_anterior, p_img_actual, estado, error);
 
             int index = 0;
             for (size_t i = 0; i < 1024 ; i=i+ancho) {
               for (size_t j = 0; j < 768  ; j=j+alto) {
-              //  cout << "Index: " << index << endl;
+                cout << "Index: " << index << endl;
                 index++;
                 std::vector<Point2f> v_p_ant;
                 std::vector<Point2f> v_p_act;
@@ -404,6 +422,7 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
                   //Si el punto se encuentra dentro del área a procesar, entonces los reducimos a un
                   //único vector por área
                   if(entre(p_procesado_actual.x, i+ancho, i) && entre(p_procesado_actual.y, j+alto, j)){
+                    //cout << p_procesado_actual << endl;
                     v_p_ant.push_back(p_procesado_actual);
                     v_p_act.push_back(p_procesado_actual_act);
                   }
@@ -411,7 +430,7 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
 
                 float media_x=0, media_y=0;
                 int size = v_p_ant.size();
-                if(size >= 30){
+                if(size >= 1){
                 //  std::cout << "Hay " << size << " vectores" << '\n';
                 //  std::cout << "Hay " << v_p_act.size() << " vectores actuales" << '\n';
                   for (size_t k = 0; k < size; k++) {
@@ -419,7 +438,7 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
                     media_y += v_p_ant[k].y;
                   }
                   Point2f p_medio((int)(media_x/size), (int)(media_y/size));
-                  //cout << "Punto medio: " << p_medio << endl;
+                  cout << "Punto medio: " << p_medio << endl;
 
 
                   for (size_t k = 0; k < size; k++) {
@@ -450,28 +469,6 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
                   float CONSTANTE_X = 0;
                   float CONSTANTE_Y = 0;
 
-                  /*for (size_t k = 0; k < v_p_act.size(); k++) {
-                    Point2f pi, pf;
-                    pi = v_p_ant[0];
-                    pf = v_p_act[k];
-
-                    //Calculamos la distancia y el angulo entre los dos puntos
-                    float dist = sqrt(pow((pf.x - pi.x) , 2) + pow((pf.y - pi.y) , 2));
-                      if(dist >= 2 && dist<=30){
-                      //float angulo = fmod((180*atan2((pf.y - pi.y), (pf.x - pi.x))),360);
-                      double angulo = ((atan2((pf.y - pi.y), (pf.x - pi.x))));
-                      angulo = (angulo*360)/(2*M_PI);
-                      std::cout << "angulo: " << angulo << '\n';
-                      std::cout << "Distancia: " << dist << '\n';
-
-
-
-                        CONSTANTE_X += dist*cos(angulo);
-                        CONSTANTE_Y += dist*sin(angulo);
-                      //  cout << dist << endl;
-
-                    }
-                  }*/
 
                   int media_x_act=0, media_y_act=0;
                   int size_act = v_p_act.size();
@@ -482,16 +479,13 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
                   Point2f p_final = Point2f((int)(media_x_act/size_act), (int)(media_y_act/size_act));
 
 
-                  //Point2f p_final = Point2f((int)(CONSTANTE_X/v_p_act.size()), (int)(CONSTANTE_Y/v_p_act.size()));
-                  //Point2f p_final = Point2f(p_medio.x+(int)(CONSTANTE_X), p_medio.y+(int)(CONSTANTE_Y));
-                  //std::cout << "Punto final: "<< p_final << '\n';
                   v_fin.push_back(p_final);
 
                   //std::cout << "Distancia final: " << sqrt(pow((p_final.x - p_medio.x) , 2) + pow((p_final.y - p_medio.y) , 2)) << '\n';
-                  arrowedLine(img_original, p_medio, p_final, Scalar(0,0,255),1,8,0,0.2);
-                  //dibuja_CloudTracking_red(img_original, v_ini, v_fin,i,j,estado,id);
-                //  dibuja_CloudTracking(img_original, v_p_ant, v_p_act, i, j ,estado, id);
-                }
+
+                  //arrowedLine(img_original, p_medio, p_final, Scalar(0,0,255),1,8,0,0.2);
+                  dibuja_CloudTracking_red(img_original, v_ini, v_fin,i,j,estado,id);
+               }
 
 
               }
