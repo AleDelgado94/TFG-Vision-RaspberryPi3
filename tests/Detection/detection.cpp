@@ -16,7 +16,7 @@ std::vector<std::vector<Point2i>> tracking_points;
 
 int main(int argc, char *argv[])
 {
-    umbral_bajo=250;
+    umbral_bajo=235;
     int filas, columnas, puntos;
     std::string ruta_directorio;
     int key;
@@ -88,7 +88,9 @@ int main(int argc, char *argv[])
 
     inicializa_fichero(fichero, "prueba.txt");
 
-    for(int i=1; i<imgs_name_sort.size(); i++){
+
+
+    for(int i=1; i<images.size(); i++){
         Mat img_ant = images[i-1].clone();
         Mat img_actual = images[i].clone();
         Mat img_sun = images[i].clone();

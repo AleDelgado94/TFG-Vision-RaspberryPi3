@@ -124,30 +124,17 @@ Ventana.o/fast:
 .PHONY : Ventana.o/fast
 
 #=============================================================================
-# Target rules for targets named Detection.o
+# Target rules for targets named Realtime.o
 
 # Build rule for target.
-Detection.o: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Detection.o
-.PHONY : Detection.o
+Realtime.o: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Realtime.o
+.PHONY : Realtime.o
 
 # fast build rule for target.
-Detection.o/fast:
-	$(MAKE) -f CMakeFiles/Detection.o.dir/build.make CMakeFiles/Detection.o.dir/build
-.PHONY : Detection.o/fast
-
-#=============================================================================
-# Target rules for targets named Temperature.o
-
-# Build rule for target.
-Temperature.o: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Temperature.o
-.PHONY : Temperature.o
-
-# fast build rule for target.
-Temperature.o/fast:
-	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/build
-.PHONY : Temperature.o/fast
+Realtime.o/fast:
+	$(MAKE) -f CMakeFiles/Realtime.o.dir/build.make CMakeFiles/Realtime.o.dir/build
+.PHONY : Realtime.o/fast
 
 #=============================================================================
 # Target rules for targets named Merge.o
@@ -163,17 +150,43 @@ Merge.o/fast:
 .PHONY : Merge.o/fast
 
 #=============================================================================
-# Target rules for targets named Realtime.o
+# Target rules for targets named Detection.o
 
 # Build rule for target.
-Realtime.o: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Realtime.o
-.PHONY : Realtime.o
+Detection.o: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Detection.o
+.PHONY : Detection.o
 
 # fast build rule for target.
-Realtime.o/fast:
-	$(MAKE) -f CMakeFiles/Realtime.o.dir/build.make CMakeFiles/Realtime.o.dir/build
-.PHONY : Realtime.o/fast
+Detection.o/fast:
+	$(MAKE) -f CMakeFiles/Detection.o.dir/build.make CMakeFiles/Detection.o.dir/build
+.PHONY : Detection.o/fast
+
+#=============================================================================
+# Target rules for targets named Sun.o
+
+# Build rule for target.
+Sun.o: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Sun.o
+.PHONY : Sun.o
+
+# fast build rule for target.
+Sun.o/fast:
+	$(MAKE) -f CMakeFiles/Sun.o.dir/build.make CMakeFiles/Sun.o.dir/build
+.PHONY : Sun.o/fast
+
+#=============================================================================
+# Target rules for targets named Temperature.o
+
+# Build rule for target.
+Temperature.o: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Temperature.o
+.PHONY : Temperature.o
+
+# fast build rule for target.
+Temperature.o/fast:
+	$(MAKE) -f CMakeFiles/Temperature.o.dir/build.make CMakeFiles/Temperature.o.dir/build
+.PHONY : Temperature.o/fast
 
 Arduino/Temperature/temperature.o: Arduino/Temperature/temperature.cpp.o
 
@@ -283,6 +296,33 @@ RealTime/realtime.cpp.s:
 	$(MAKE) -f CMakeFiles/Realtime.o.dir/build.make CMakeFiles/Realtime.o.dir/RealTime/realtime.cpp.s
 .PHONY : RealTime/realtime.cpp.s
 
+Sun/sun.o: Sun/sun.cpp.o
+
+.PHONY : Sun/sun.o
+
+# target to build an object file
+Sun/sun.cpp.o:
+	$(MAKE) -f CMakeFiles/Sun.o.dir/build.make CMakeFiles/Sun.o.dir/Sun/sun.cpp.o
+.PHONY : Sun/sun.cpp.o
+
+Sun/sun.i: Sun/sun.cpp.i
+
+.PHONY : Sun/sun.i
+
+# target to preprocess a source file
+Sun/sun.cpp.i:
+	$(MAKE) -f CMakeFiles/Sun.o.dir/build.make CMakeFiles/Sun.o.dir/Sun/sun.cpp.i
+.PHONY : Sun/sun.cpp.i
+
+Sun/sun.s: Sun/sun.cpp.s
+
+.PHONY : Sun/sun.s
+
+# target to generate assembly for a file
+Sun/sun.cpp.s:
+	$(MAKE) -f CMakeFiles/Sun.o.dir/build.make CMakeFiles/Sun.o.dir/Sun/sun.cpp.s
+.PHONY : Sun/sun.cpp.s
+
 Ventanas/ventana.o: Ventanas/ventana.cpp.o
 
 .PHONY : Ventanas/ventana.o
@@ -319,10 +359,11 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Ventana.o"
-	@echo "... Detection.o"
-	@echo "... Temperature.o"
-	@echo "... Merge.o"
 	@echo "... Realtime.o"
+	@echo "... Merge.o"
+	@echo "... Detection.o"
+	@echo "... Sun.o"
+	@echo "... Temperature.o"
 	@echo "... Arduino/Temperature/temperature.o"
 	@echo "... Arduino/Temperature/temperature.i"
 	@echo "... Arduino/Temperature/temperature.s"
@@ -335,6 +376,9 @@ help:
 	@echo "... RealTime/realtime.o"
 	@echo "... RealTime/realtime.i"
 	@echo "... RealTime/realtime.s"
+	@echo "... Sun/sun.o"
+	@echo "... Sun/sun.i"
+	@echo "... Sun/sun.s"
 	@echo "... Ventanas/ventana.o"
 	@echo "... Ventanas/ventana.i"
 	@echo "... Ventanas/ventana.s"

@@ -127,8 +127,9 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/Ventana.o.dir/DependInfo.cmake"
-  "CMakeFiles/Detection.o.dir/DependInfo.cmake"
-  "CMakeFiles/Temperature.o.dir/DependInfo.cmake"
-  "CMakeFiles/Merge.o.dir/DependInfo.cmake"
   "CMakeFiles/Realtime.o.dir/DependInfo.cmake"
+  "CMakeFiles/Merge.o.dir/DependInfo.cmake"
+  "CMakeFiles/Detection.o.dir/DependInfo.cmake"
+  "CMakeFiles/Sun.o.dir/DependInfo.cmake"
+  "CMakeFiles/Temperature.o.dir/DependInfo.cmake"
   )

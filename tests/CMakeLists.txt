@@ -46,9 +46,9 @@ target_link_libraries(Merge.o ${OpenCV_LIBS})
 
 ################  SUN  #######################
 
-#add_executable(Sun.o Sun/sun.cpp)
-#target_link_libraries(Sun.o Threads::Threads)
-#target_link_libraries(Sun.o ${OpenCV_LIBS})
+add_executable(Sun.o Sun/sun.cpp)
+target_link_libraries(Sun.o Threads::Threads)
+target_link_libraries(Sun.o ${OpenCV_LIBS})
 
 ################  CLOUDS  #######################
 
