@@ -442,14 +442,18 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
 
       }
 
-      circle(img_original, ini_sol, 5, Scalar(255,0,0));
-      circle(img_original, fin_sol, 5, Scalar(0,255,0));
 
       std::cout << "Direccion al Sol??: " << intercepta << '\n';
       std::cout << "COMPONENTE_X: " << COMPONENTE_X << '\n';
       std::cout << "COMPONENTE_Y: " << COMPONENTE_Y << '\n';
-      //line(img_original, base_vector, final, CV_RGB(0,255,0), 2 ,CV_AA);
+
+      if(intercepta){
+        
+      }
+
     }
+
+
 
   }
 
