@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# Install script for directory: /home/pi/Desktop/TFG-Vision-RaspberryPi3/tests
-=======
-# Install script for directory: /home/aledelgado/TFG-Vision-RaspberryPi3/tests
->>>>>>> c2c2d35f7e5f24a7fc320cd89efbac57b2c24b2b
+# Install script for directory: /home/adelgado/TFG-Vision-RaspberryPi3/tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,9 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-<<<<<<< HEAD
-file(WRITE "/home/pi/Desktop/TFG-Vision-RaspberryPi3/tests/${CMAKE_INSTALL_MANIFEST}"
-=======
-file(WRITE "/home/aledelgado/TFG-Vision-RaspberryPi3/tests/${CMAKE_INSTALL_MANIFEST}"
->>>>>>> c2c2d35f7e5f24a7fc320cd89efbac57b2c24b2b
+file(WRITE "/home/adelgado/TFG-Vision-RaspberryPi3/tests/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

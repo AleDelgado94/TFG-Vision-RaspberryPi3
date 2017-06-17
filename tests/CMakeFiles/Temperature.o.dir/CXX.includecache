@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/adelgado/TFG-Vision-RaspberryPi3/tests/Arduino/Temperature/temperature.cpp
+iostream
+-
+boost/asio.hpp
+-
+boost/program_options/options_description.hpp
+-
+boost/program_options.hpp
+-
+boost/program_options/option.hpp
+-
+sqlite3.h
+-
+../../Database/sqlite3/sqliteCallBack.hpp
+/home/adelgado/TFG-Vision-RaspberryPi3/tests/Database/sqlite3/sqliteCallBack.hpp
+list
+-
+
+/home/adelgado/TFG-Vision-RaspberryPi3/tests/Database/sqlite3/sqliteCallBack.hpp
+iostream
+-
+vector
+-
+string
+-
+
