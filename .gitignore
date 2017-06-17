@@ -3,3 +3,8 @@ Imagenes*
 imagenes*
 Images*
 *.o
+CMakeCache.txt 
+CMakeFiles*
+cmake_install.cmake
+Makefile
+
