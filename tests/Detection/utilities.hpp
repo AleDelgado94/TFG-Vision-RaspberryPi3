@@ -501,7 +501,7 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
 
   void predice(Mat& img_original, Point2f centro_sol, Point2f base_vector, Point2f final_vector, int precision, int id,
     sqlite3* db, std::string fecha, std::string hora, double temperatura, double humedad, double solar, int region_imagen,
-    std::string fecha_img_ant, int tipo_deteccion_sol){
+    std::string hora_img_ant, int tipo_deteccion_sol){
 
     double dist = sqrt(pow((final_vector.x - base_vector.x) , 2) + pow((final_vector.y - base_vector.y) , 2));
     string prediccion;
@@ -572,6 +572,57 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
         //CALCULAMOS LA DISTANCIA ENTRE EL VECTOR Y LA REGION DONDE SE ENCUENTRA EL SOL
         double distancia_Sol = sqrt(pow((actual.x - base_vector.x) , 2) + pow((actual.y - base_vector.y) , 2));
         std::cout << "La distancia hasta la región de Sol es de: " << distancia_Sol << '\n';
+
+        //DIFERENCIA EN SEGUNDOS ENTRE LAS IMAGENES
+        std::tm t_act;
+        std::istringstream h_act(hora);
+        std::cout << "hora actual: " << hora << '\n';
+        h_act >> std::get_time(&t_act, "%H:%M:%S");
+        int secs_act = (t_act.tm_hour * 3600) + (t_act.tm_min * 60) + t_act.tm_sec;
+
+        std::tm t_ant;
+        std::istringstream h_ant(hora_img_ant);
+        std::cout << "hora anterior: " << hora_img_ant << '\n';
+        h_ant >> std::get_time(&t_ant, "%H:%M:%S");
+        int secs_ant = t_ant.tm_hour * 3600 + t_ant.tm_min * 60 + t_ant.tm_sec;
+
+        int paso_tiempo = secs_act - secs_ant;
+
+        // PUNTO SE MUEVE "paso_tiempo" SEGUNDOS ENTRE EL PUNTO "base_vector" Y "final_vector"
+        // CON UNA DISTANCIA "dist"
+        double velocida_pixel = dist/paso_tiempo;
+        std::cout << "Velocidad: " << velocida_pixel << '\n';
+
+        //TENEMOS DISTANCIA HASTA LA REGION DEL SOL "distancia_Sol"
+        // SI VECTOR SE DESPLAZA A LA VELOCIDAD "velocida_pixel" LLEGARÁ
+        // SI ALL VA BIEN AL SOL EN UN TIEMPO ?
+        std::cout << "distancia_Sol: " << distancia_Sol << '\n';
+        std::cout << "paso_tiempo: " << paso_tiempo << '\n';
+        std::cout << "dist: " << dist << '\n';
+        double secs_llegada_a_region_solar = (distancia_Sol * paso_tiempo) / dist;
+
+        double secs_llegada = secs_act + secs_llegada_a_region_solar;
+
+        int hour = (int)secs_llegada_a_region_solar/3600;
+        secs_llegada_a_region_solar = (int)secs_llegada_a_region_solar%3600;
+        int min = (int)secs_llegada_a_region_solar/60;
+        secs_llegada_a_region_solar = (int)secs_llegada_a_region_solar%60;
+        int sec = (int)secs_llegada_a_region_solar;
+
+
+        int hour_llegada = (int)secs_llegada/3600;
+        secs_llegada = (int)secs_llegada%3600;
+        int min_llegada = (int)secs_llegada/60;
+        secs_llegada = (int)secs_llegada%60;
+        int sec_llegada = (int)secs_llegada;
+
+
+
+        std::string tiempo_prediccion = to_string(hour) + " horas " + to_string(min) + " minutos y " + to_string(sec) + " segundos";
+        std::string tiempo_llegada_total = to_string(hour_llegada) + ":" + to_string(min_llegada) + ":" + to_string(sec_llegada);
+
+        std::cout << "Tardará aproximadamente " << tiempo_prediccion << " en llegar a la region solar sobre las "<< tiempo_llegada_total <<" horas." << '\n';
+
 
 
       }
@@ -645,20 +696,21 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
                 solar = (sqlite3_column_double(ppStmt, 4));
               }
             }else{
-              std::cerr << "Error en la base de datos: " << sqlite3_errmsg(db) << '\n';
+              std::cerr << "Error en la consulta " << query_sql << ": " << sqlite3_errmsg(db) << '\n';
             }
 
 
             std::string id_anterior = to_string(id-1);
             std::string hora_ant_sql("SELECT HORA FROM DATOS WHERE ID_NOMBRE = ");
+            hora_ant_sql += id_anterior;
             std::string hora_ant;
-            hora_ant += id_anterior;
+
             if(int exe = sqlite3_prepare_v2(db, hora_ant_sql.c_str(), -1, &ppStmt, NULL) == SQLITE_OK ){
               while (SQLITE_ROW == sqlite3_step(ppStmt)) {
                 hora_ant = (char*)(sqlite3_column_text(ppStmt, 0));
               }
             }else{
-              std::cerr << "Error en la base de datos: " << sqlite3_errmsg(db) << '\n';
+              std::cerr << "Error en la consulta " << hora_ant_sql << ": " << sqlite3_errmsg(db) << '\n';
             }
 
 
