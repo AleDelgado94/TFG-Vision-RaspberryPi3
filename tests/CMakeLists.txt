@@ -83,6 +83,7 @@ target_link_libraries(Detection.o ${Boost_PROGRAM_OPTIONS_LIBRARY})
 target_link_libraries(Detection.o ${Boost_SYSTEM_LIBRARY})
 target_link_libraries(Detection.o ${Boost_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 target_include_directories(Detection.o PUBLIC SYSTEM ${Boost_INCLUDE_DIRS})
+target_link_libraries(Detection.o sqlite3)
 
 ################  TEMPERATURE  #######################
 

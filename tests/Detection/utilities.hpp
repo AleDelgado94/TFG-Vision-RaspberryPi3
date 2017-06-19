@@ -22,12 +22,23 @@
 #include <boost/program_options.hpp>
 #include <boost/program_options/option.hpp>
 #include <boost/asio.hpp>
+#include <sqlite3.h>
+#include "../Database/sqlite3/sqliteCallBack.hpp"
+#include "typeinfo"
+
+
 
 using namespace std;
 using namespace cv;
 namespace opt = boost::program_options;
 namespace as = boost::asio;
 using namespace::boost::asio;
+
+/********************************
+Tipo de prediccion del sol
+ 0 - Prediccion por brillo
+ 1 - Prediccion por contornos
+ ********************************/
 
 
 void save_data(ofstream& fichero, string ruta_fichero, string nombre_img, Point2i pi, Point2i pf, float dist, float angulo, int id){
@@ -98,6 +109,109 @@ int menor_vector(vector<float> soles_radio){
     return retorno;
 }
 
+int sun(Mat& img1, int umbral_bajo){
+  vector<float> soles_radio;
+  vector<Point2f> soles_center;
+
+  Mat img;
+  img1.copyTo(img);
+  //BILATERAL FILTER
+  Mat bilateralFilterImg;
+  bilateralFilter(img, bilateralFilterImg, 5, 175, 175);
+
+  //EDGE DETECTION
+  Mat edge;
+  cvtColor(bilateralFilterImg, bilateralFilterImg, CV_RGB2GRAY);
+  threshold(bilateralFilterImg, edge, umbral_bajo, 255, 0);
+
+
+  //COUNTOURS
+  vector<vector<Point>> contours;
+  vector<Vec4i> hierarchy;
+  findContours(edge, contours, hierarchy, CV_RETR_TREE, CHAIN_APPROX_SIMPLE, Point(0, 0));
+
+  vector<vector<Point>> contours_poly(contours.size());
+  vector<Point2f> center(contours.size());
+  vector<float> radius(contours.size());
+
+
+  for (int i = 0; i < contours.size(); i++)
+  {
+          approxPolyDP(Mat(contours[i]), contours_poly[i], 3, true);
+          minEnclosingCircle((Mat)contours_poly[i], center[i], radius[i]);
+
+          if (radius[i] > 50 && radius[i] < 210) {
+                  soles_radio.push_back(radius[i]);
+                  soles_center.push_back(center[i]);
+          }
+  }
+
+
+  if(soles_radio.size() > 1){
+
+      int i, proximo;
+      auto centro = soles_center.front();
+      auto radio = soles_radio.front();
+
+
+      //BUSQUEDA DEL ELEMENTO MÁS PROXIMO A 200
+
+      int num_aproximar = 50;
+
+      vector<float> diferencia;
+      for(int j=0; j<soles_radio.size(); j++){
+          diferencia.push_back(abs(num_aproximar-soles_radio[j]));
+      }
+
+      int index = menor_vector(diferencia);
+
+      centro = soles_center[index];
+      radio = soles_radio[index];
+
+      return 1;
+
+  }else if(soles_radio.size() == 1){
+      auto radio = soles_radio.front();
+      auto centro = soles_center.front();
+      soles_radio.clear();
+      soles_center.clear();
+      return 1;
+  }
+  else
+  {
+
+    //imshow("img1",img1);
+      //NO SE DETECTO EL SOL MEDIANTE LA TÉCNICA UTILIZADA
+      Mat hsv;
+      cvtColor(img1, hsv, CV_RGB2GRAY);
+
+      Scalar LOW(228,230,237);
+      Scalar HIGH(255,255,255);
+
+
+      //DETECCIÓN MEDIANTE BRILLO
+      Mat mask;
+      inRange(hsv, LOW, HIGH, mask);
+
+      //ELIMINACION DE RUIDOS
+      Moments m;
+      m = moments(mask);
+      double moment_area = m.m00;
+      Point2f center;
+
+      cout << moment_area << endl;
+      //Buscar el centro
+      int x = int(m.m10/m.m00);
+      int y = int(m.m01/m.m00);
+      center.x = x;
+      center.y = y;
+
+      return 0;
+
+  }
+}
+
+
 Point2f detecta_sun(Mat& img1, int umbral_bajo){
 
     vector<float> soles_radio;
@@ -113,7 +227,8 @@ Point2f detecta_sun(Mat& img1, int umbral_bajo){
     Mat edge;
     cvtColor(bilateralFilterImg, bilateralFilterImg, CV_RGB2GRAY);
     threshold(bilateralFilterImg, edge, umbral_bajo, 255, 0);
-    //imshow("threshold", edge);
+    imshow("threshold", edge);
+
 
     //COUNTOURS
     vector<vector<Point>> contours;
@@ -134,9 +249,10 @@ Point2f detecta_sun(Mat& img1, int umbral_bajo){
             minEnclosingCircle((Mat)contours_poly[i], center[i], radius[i]);
             //double area = (3.14159265359 * pow(radius[i],2));
 
-          //  cout << "Radio: " << radius[i] << endl;
 
-            if (radius[i] > 75 && radius[i] < 100) {
+
+            if (radius[i] > 50 && radius[i] < 210) {
+              cout << "Radio: " << radius[i] << endl;
                     soles_radio.push_back(radius[i]);
                     soles_center.push_back(center[i]);
             }
@@ -153,7 +269,7 @@ Point2f detecta_sun(Mat& img1, int umbral_bajo){
 
         //BUSQUEDA DEL ELEMENTO MÁS PROXIMO A 200
 
-        int num_aproximar = 80;
+        int num_aproximar = 50;
 
         vector<float> diferencia;
         for(int j=0; j<soles_radio.size(); j++){
@@ -383,15 +499,20 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
   }
 
 
-  void predice(Mat& img_original, Point2f centro_sol, Point2f base_vector, Point2f final_vector){
+  void predice(Mat& img_original, Point2f centro_sol, Point2f base_vector, Point2f final_vector, int precision, int id,
+    sqlite3* db, std::string fecha, std::string hora, double temperatura, double humedad, double solar, int region_imagen,
+    std::string fecha_img_ant, int tipo_deteccion_sol){
+
     double dist = sqrt(pow((final_vector.x - base_vector.x) , 2) + pow((final_vector.y - base_vector.y) , 2));
+    string prediccion;
     //cvFlip(img_original);
 
     //angle = angle
-    Point ini_sol(centro_sol.x-70,centro_sol.y-70);
-    Point fin_sol(centro_sol.x+70, centro_sol.y+70);
+    Point ini_sol(centro_sol.x-precision,centro_sol.y-precision);
+    Point fin_sol(centro_sol.x+precision, centro_sol.y+precision);
     if(dist >= 15){
 
+      std::cout << endl << endl << "Región: " << region_imagen << '\n';
 
       //CALCULAMOS LAS COMPONENTES DEL VECTOR
       int COMPONENTE_X = final_vector.x - base_vector.x;
@@ -414,32 +535,32 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
         }
 
         if(angle == 0){
-          actual.x = actual.x + COMPONENTE_X;
+          actual.x = actual.x + COMPONENTE_X/2;
         }else if(angle == 90){
-          actual.y = actual.y - -COMPONENTE_Y;
+          actual.y = actual.y - -COMPONENTE_Y/2;
         }else if(angle == 180){
-          actual.x = actual.x + COMPONENTE_X;
+          actual.x = actual.x + COMPONENTE_X/2;
         }else if(angle == -90){
-          actual.y = actual.y + -COMPONENTE_Y;
+          actual.y = actual.y + -COMPONENTE_Y/2;
         }else if(angle > 90){
           //SEGUNDO CUADRANTE +-
-          actual.x = actual.x + COMPONENTE_X;
-          actual.y = actual.y - COMPONENTE_Y;
+          actual.x = actual.x + COMPONENTE_X/2;
+          actual.y = actual.y - COMPONENTE_Y/2;
         }else if(angle > 0){
           //PRIMER CUADRANTE ++
-          actual.x = actual.x + COMPONENTE_X;
-          actual.y = actual.y - COMPONENTE_Y;
+          actual.x = actual.x + COMPONENTE_X/2;
+          actual.y = actual.y - COMPONENTE_Y/2;
         }else if(angle < -90){
           //CUARTO CUADRANTE --
-          actual.x = actual.x + COMPONENTE_X;
-          actual.y = actual.y + -COMPONENTE_Y;
+          actual.x = actual.x + COMPONENTE_X/2;
+          actual.y = actual.y + -COMPONENTE_Y/2;
         }else if(angle < 0){
           //TERCER CUADRANTE -+
-          actual.x = actual.x + COMPONENTE_X;
-          actual.y = actual.y + -COMPONENTE_Y;
+          actual.x = actual.x + COMPONENTE_X/2;
+          actual.y = actual.y + -COMPONENTE_Y/2;
         }
 
-
+        circle(img_original, actual, 2, Scalar(255,0,0));
       }
 
 
@@ -448,7 +569,11 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
       std::cout << "COMPONENTE_Y: " << COMPONENTE_Y << '\n';
 
       if(intercepta){
-        
+        //CALCULAMOS LA DISTANCIA ENTRE EL VECTOR Y LA REGION DONDE SE ENCUENTRA EL SOL
+        double distancia_Sol = sqrt(pow((actual.x - base_vector.x) , 2) + pow((actual.y - base_vector.y) , 2));
+        std::cout << "La distancia hasta la región de Sol es de: " << distancia_Sol << '\n';
+
+
       }
 
     }
@@ -459,7 +584,7 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
 
 
   void vectores_img(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const Mat& img_act, int id, int filas=12,
-    int columnas=8, int num_puntos=5000){
+    int columnas=8, int precision=70,int num_puntos=5000, sqlite3* db=nullptr, int tipo_deteccion_sol=-1){
       vector<vector<vector<Point2f>>> v_tracking;
       int ancho = 1024/columnas;
       int alto = 768/filas;
@@ -494,11 +619,54 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
             goodFeaturesToTrack(edge, p_img_anterior, num_puntos, 0.01, 0);
             calcOpticalFlowPyrLK(edge, edge2, p_img_anterior, p_img_actual, estado, error);
 
+            ///////////////////////////////
+            ///////////////////////////////
+            ///// CONSULTA A LA BASE DE ///
+            ////// DATOS LOS PARAMETROS////
+            ///////////////////////////////
+            ///////////////////////////////
+
+            std::string id_str = to_string(id);
+            //EXTRAEMOS LA INFORMACIÓN ASOCIADA A LA IMAGEN ACTUAL DE LA BASE DE DATOS
+            std::string query_sql("SELECT FECHA, HORA, TEMPERATURA, HUMEDAD, SOLAR FROM DATOS WHERE ID_NOMBRE = ");
+            query_sql += id_str;
+            std::string fecha, hora;
+            double temperatura, humedad, solar;
+
+
+            //ejecutamos las consultas
+            sqlite3_stmt* ppStmt;
+            if(int exe = sqlite3_prepare_v2(db, query_sql.c_str(), -1, &ppStmt, NULL) == SQLITE_OK ){
+              while (SQLITE_ROW == sqlite3_step(ppStmt)) {
+                fecha =  (char*)(sqlite3_column_text(ppStmt, 0));
+                hora = (char*)(sqlite3_column_text(ppStmt, 1));
+                temperatura = (sqlite3_column_double(ppStmt, 2));
+                humedad = (sqlite3_column_double(ppStmt, 3));
+                solar = (sqlite3_column_double(ppStmt, 4));
+              }
+            }else{
+              std::cerr << "Error en la base de datos: " << sqlite3_errmsg(db) << '\n';
+            }
+
+
+            std::string id_anterior = to_string(id-1);
+            std::string hora_ant_sql("SELECT HORA FROM DATOS WHERE ID_NOMBRE = ");
+            std::string hora_ant;
+            hora_ant += id_anterior;
+            if(int exe = sqlite3_prepare_v2(db, hora_ant_sql.c_str(), -1, &ppStmt, NULL) == SQLITE_OK ){
+              while (SQLITE_ROW == sqlite3_step(ppStmt)) {
+                hora_ant = (char*)(sqlite3_column_text(ppStmt, 0));
+              }
+            }else{
+              std::cerr << "Error en la base de datos: " << sqlite3_errmsg(db) << '\n';
+            }
+
+
             int index = 0;
             for (size_t i = 0; i < 1024 ; i=i+ancho) {
               for (size_t j = 0; j < 768  ; j=j+alto) {
-                cout << "Index: " << index << endl;
-                index++;
+                //cout << "Index: " << index << endl;
+
                 std::vector<Point2f> v_p_ant;
                 std::vector<Point2f> v_p_act;
                 for (size_t k = 0; k < p_img_anterior.size(); k++) {
@@ -523,7 +691,6 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
                     media_y += v_p_ant[k].y;
                   }
                   Point2f p_medio((int)(media_x/size), (int)(media_y/size));
-                  cout << "Punto medio: " << p_medio << endl;
 
 
                   for (size_t k = 0; k < size; k++) {
@@ -570,7 +737,9 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
 
                   //arrowedLine(img_original, p_medio, p_final, Scalar(0,0,255),1,8,0,0.2);
                   dibuja_CloudTracking_red(img_original, v_ini, v_fin,i,j,estado,id);
-                  predice(img_original, centro_sol,p_medio, p_final);
+                  predice(img_original, centro_sol,p_medio, p_final, precision, id, db, fecha, hora, temperatura,
+                     humedad, solar, index, hora_ant, tipo_deteccion_sol);
+                  index++;
                }
 
 
@@ -584,20 +753,20 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
                 for (size_t j = 0; j < 768 ; j=j+alto) {
                   rectangle(img_original, Point(i,j), Point(i+ancho, j+alto), Scalar(0,255,255));
 
-                  if((centro_sol.x-70 >= i && centro_sol.y+70 >= j) && (centro_sol.x-70 <= i+ancho && centro_sol.y+70 <= j+alto)
-                  || (centro_sol.x+70 >= i && centro_sol.y-70 >= j) && (centro_sol.x+70 <= i+ancho && centro_sol.y-70 <= j+alto)
-                  || (centro_sol.x+70 >= i && centro_sol.y+70 >= j) && (centro_sol.x+70 <= i+ancho && centro_sol.y+70 <= j+alto)
-                  || (centro_sol.x-70 >= i && centro_sol.y-70 >= j) && (centro_sol.x-70 <= i+ancho && centro_sol.y-70 <= j+alto)
-                  || (centro_sol.x-70 >= i && centro_sol.y >= j) && (centro_sol.x-70 <= i+ancho && centro_sol.y <= j+alto)
-                  || (centro_sol.x+70 >= i && centro_sol.y >= j) && (centro_sol.x+70 <= i+ancho && centro_sol.y <= j+alto)
-                  || (centro_sol.x >= i && centro_sol.y+70 >= j) && (centro_sol.x <= i+ancho && centro_sol.y+70 <= j+alto)
-                  || (centro_sol.x >= i && centro_sol.y-70 >= j) && (centro_sol.x <= i+ancho && centro_sol.y-70 <= j+alto)
-                  || (centro_sol.x-70/2 >= i && centro_sol.y >= j) && (centro_sol.x-70/2 <= i+ancho && centro_sol.y <= j+alto)
-                  || (centro_sol.x+70/2 >= i && centro_sol.y >= j) && (centro_sol.x+70/2 <= i+ancho && centro_sol.y <= j+alto)
-                  || (centro_sol.x >= i && centro_sol.y+70/2 >= j) && (centro_sol.x <= i+ancho && centro_sol.y+70/2 <= j+alto)
-                  || (centro_sol.x >= i && centro_sol.y-70/2 >= j) && (centro_sol.x <= i+ancho && centro_sol.y-70/2 <= j+alto)){
-                    Point ini(centro_sol.x-70,centro_sol.y+70);
-                    Point fin(centro_sol.x+70, centro_sol.y-70);
+                  if((centro_sol.x-precision >= i && centro_sol.y+precision >= j) && (centro_sol.x-precision <= i+ancho && centro_sol.y+precision <= j+alto)
+                  || (centro_sol.x+precision >= i && centro_sol.y-precision >= j) && (centro_sol.x+precision <= i+ancho && centro_sol.y-precision <= j+alto)
+                  || (centro_sol.x+precision >= i && centro_sol.y+precision >= j) && (centro_sol.x+precision <= i+ancho && centro_sol.y+precision <= j+alto)
+                  || (centro_sol.x-precision >= i && centro_sol.y-precision >= j) && (centro_sol.x-precision <= i+ancho && centro_sol.y-precision <= j+alto)
+                  || (centro_sol.x-precision >= i && centro_sol.y >= j) && (centro_sol.x-precision <= i+ancho && centro_sol.y <= j+alto)
+                  || (centro_sol.x+precision >= i && centro_sol.y >= j) && (centro_sol.x+precision <= i+ancho && centro_sol.y <= j+alto)
+                  || (centro_sol.x >= i && centro_sol.y+precision >= j) && (centro_sol.x <= i+ancho && centro_sol.y+precision <= j+alto)
+                  || (centro_sol.x >= i && centro_sol.y-precision >= j) && (centro_sol.x <= i+ancho && centro_sol.y-precision <= j+alto)
+                  || (centro_sol.x-precision/2 >= i && centro_sol.y >= j) && (centro_sol.x-precision/2 <= i+ancho && centro_sol.y <= j+alto)
+                  || (centro_sol.x+precision/2 >= i && centro_sol.y >= j) && (centro_sol.x+precision/2 <= i+ancho && centro_sol.y <= j+alto)
+                  || (centro_sol.x >= i && centro_sol.y+precision/2 >= j) && (centro_sol.x <= i+ancho && centro_sol.y+precision/2 <= j+alto)
+                  || (centro_sol.x >= i && centro_sol.y-precision/2 >= j) && (centro_sol.x <= i+ancho && centro_sol.y-precision/2 <= j+alto)){
+                    Point ini(centro_sol.x-precision,centro_sol.y+precision);
+                    Point fin(centro_sol.x+precision, centro_sol.y-precision);
                     rectangle(img_original, ini, fin, Scalar(0,0,255));
                   }
                 }
@@ -607,7 +776,7 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
 
 
 void vectores_Window(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const Mat& img_act, int id, int filas=12,
-  int columnas=8, int num_puntos=15){
+  int columnas=8, int precision=70, int num_puntos=15){
     vector<vector<vector<Point2f>>> v_tracking;
     int ancho = 1024/columnas;
     int alto = 768/filas;
@@ -752,26 +921,28 @@ void vectores_Window(Point2f centro_sol, Mat& img_original, const Mat& img_ant, 
 
 
 
-        for (size_t i = ancho ; i < 1024 - ancho; i=i+ancho) {
-          for (size_t j = 0; j < 768 - alto; j=j+alto) {
-            if((centro_sol.x-70 >= i && centro_sol.y+70 >= j) && (centro_sol.x-70 <= i+ancho && centro_sol.y+70 <= j+alto)
-            || (centro_sol.x+70 >= i && centro_sol.y-70 >= j) && (centro_sol.x+70 <= i+ancho && centro_sol.y-70 <= j+alto)
-            || (centro_sol.x+70 >= i && centro_sol.y+70 >= j) && (centro_sol.x+70 <= i+ancho && centro_sol.y+70 <= j+alto)
-            || (centro_sol.x-70 >= i && centro_sol.y-70 >= j) && (centro_sol.x-70 <= i+ancho && centro_sol.y-70 <= j+alto)
-            || (centro_sol.x-70 >= i && centro_sol.y >= j) && (centro_sol.x-70 <= i+ancho && centro_sol.y <= j+alto)
-            || (centro_sol.x+70 >= i && centro_sol.y >= j) && (centro_sol.x+70 <= i+ancho && centro_sol.y <= j+alto)
-            || (centro_sol.x >= i && centro_sol.y+70 >= j) && (centro_sol.x <= i+ancho && centro_sol.y+70 <= j+alto)
-            || (centro_sol.x >= i && centro_sol.y-70 >= j) && (centro_sol.x <= i+ancho && centro_sol.y-70 <= j+alto)
-            || (centro_sol.x-70/2 >= i && centro_sol.y >= j) && (centro_sol.x-70/2 <= i+ancho && centro_sol.y <= j+alto)
-            || (centro_sol.x+70/2 >= i && centro_sol.y >= j) && (centro_sol.x+70/2 <= i+ancho && centro_sol.y <= j+alto)
-            || (centro_sol.x >= i && centro_sol.y+70/2 >= j) && (centro_sol.x <= i+ancho && centro_sol.y+70/2 <= j+alto)
-            || (centro_sol.x >= i && centro_sol.y-70/2 >= j) && (centro_sol.x <= i+ancho && centro_sol.y-70/2 <= j+alto)){
-              Point ini(centro_sol.x-70,centro_sol.y+70);
-              Point fin(centro_sol.x+70, centro_sol.y-70);
-              rectangle(img_original, ini, fin, Scalar(0,0,255));
-              rectangle(img_original, Point(i,j), Point(i+ancho, j+alto), Scalar(0,0,255));
-            }
-          }
+    for (size_t i = 0 ; i < 1024 ; i=i+ancho) {
+      for (size_t j = 0; j < 768 ; j=j+alto) {
+        rectangle(img_original, Point(i,j), Point(i+ancho, j+alto), Scalar(0,255,255));
+
+        if((centro_sol.x-precision >= i && centro_sol.y+precision >= j) && (centro_sol.x-precision <= i+ancho && centro_sol.y+precision <= j+alto)
+        || (centro_sol.x+precision >= i && centro_sol.y-precision >= j) && (centro_sol.x+precision <= i+ancho && centro_sol.y-precision <= j+alto)
+        || (centro_sol.x+precision >= i && centro_sol.y+precision >= j) && (centro_sol.x+precision <= i+ancho && centro_sol.y+precision <= j+alto)
+        || (centro_sol.x-precision >= i && centro_sol.y-precision >= j) && (centro_sol.x-precision <= i+ancho && centro_sol.y-precision <= j+alto)
+        || (centro_sol.x-precision >= i && centro_sol.y >= j) && (centro_sol.x-precision <= i+ancho && centro_sol.y <= j+alto)
+        || (centro_sol.x+precision >= i && centro_sol.y >= j) && (centro_sol.x+precision <= i+ancho && centro_sol.y <= j+alto)
+        || (centro_sol.x >= i && centro_sol.y+precision >= j) && (centro_sol.x <= i+ancho && centro_sol.y+precision <= j+alto)
+        || (centro_sol.x >= i && centro_sol.y-precision >= j) && (centro_sol.x <= i+ancho && centro_sol.y-precision <= j+alto)
+        || (centro_sol.x-precision/2 >= i && centro_sol.y >= j) && (centro_sol.x-precision/2 <= i+ancho && centro_sol.y <= j+alto)
+        || (centro_sol.x+precision/2 >= i && centro_sol.y >= j) && (centro_sol.x+precision/2 <= i+ancho && centro_sol.y <= j+alto)
+        || (centro_sol.x >= i && centro_sol.y+precision/2 >= j) && (centro_sol.x <= i+ancho && centro_sol.y+precision/2 <= j+alto)
+        || (centro_sol.x >= i && centro_sol.y-precision/2 >= j) && (centro_sol.x <= i+ancho && centro_sol.y-precision/2 <= j+alto)){
+          Point ini(centro_sol.x-precision,centro_sol.y+precision);
+          Point fin(centro_sol.x+precision, centro_sol.y-precision);
+          rectangle(img_original, ini, fin, Scalar(0,0,255));
         }
+      }
+    }
+
 
 }

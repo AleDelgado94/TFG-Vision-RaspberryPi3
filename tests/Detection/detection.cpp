@@ -11,14 +11,16 @@ int ratio_ = 3;
 int kernel_size = 3;
 int umbral;
 std::vector<std::vector<Point2i>> tracking_points;
+std::string database;
+sqlite3* db;
 
 
 
 int main(int argc, char *argv[])
 {
-    umbral_bajo=235;
-    int filas, columnas, puntos, inicial;
-    std::string ruta_directorio;
+    umbral_bajo=220;
+    int filas, columnas, puntos, inicial, precision, sol;
+    std::string ruta_directorio, output_prediction;
     int key;
 
     opt::options_description desc("Options");
@@ -28,7 +30,11 @@ int main(int argc, char *argv[])
       ("filas,f", opt::value<int>(&filas)->default_value(12), "filas")
       ("columnas,c", opt::value<int>(&columnas)->default_value(8), "columnas")
       ("puntos,p", opt::value<int>(&puntos)->default_value(2000), "puntos")
-      ("inicial,i", opt::value<int>(&inicial)->default_value(1), "inicial");
+      ("precision,u", opt::value<int>(&precision)->default_value(70), "precision")
+      ("sol,s", opt::value<int>(&sol)->default_value(1), "sol")
+      ("database,b", opt::value<std::vector<std::string>>(), "base de datos")
+      ("inicial,i", opt::value<int>(&inicial)->default_value(1), "inicial")
+      ("output,o", opt::value<std::vector<std::string>>(), "Fichero salida de la prediccion");
 
       opt::variables_map vm;
       store(opt::parse_command_line(argc, argv,desc), vm);
@@ -51,12 +57,33 @@ int main(int argc, char *argv[])
       if(vm.count("inicial")){
         inicial = vm["inicial"].as<int>();
       }
+      if(vm.count("precision")){
+        precision = vm["precision"].as<int>();
+      }
+      if(vm.count("sol")){
+        sol = vm["sol"].as<int>();
+      }
       if(vm.count("dir")){
         std::vector<std::string> v = vm["dir"].as<std::vector<std::string>>();
         ruta_directorio = v[0];
       }
+      if(vm.count("database")){
+        std::vector<std::string> v = vm["database"].as<std::vector<std::string>>();
+        database = v[0];
+      }
+      if(vm.count("output")){
+        std::vector<std::string> v = vm["output"].as<std::vector<std::string>>();
+        output_prediction = v[0];
+      }else{
+        std::cerr << "Especifica el fichero de salida de la prediccion con -o" << '\n';
+        return -1;
+      }
 
-
+      int db_handler = sqlite3_open(database.c_str(), &db);
+      if(db_handler){
+          std::cerr << "No se puede abrir la base de datos. Error: " << sqlite3_errmsg(db) <<'\n';
+          return(-1);
+      }
 
     //string ruta_directorio = argv[1];
 
@@ -92,19 +119,19 @@ int main(int argc, char *argv[])
 
     inicializa_fichero(fichero, "prueba.txt");
 
-
+    int j=sol;
+    Point2f centro_sol;
 
     for(int i=inicial; i<images.size(); i++){
+
+        int tipo_deteccion_sol = -1;
+
         Mat img_ant = images[i-1].clone();
         Mat img_actual = images[i].clone();
         Mat img_sun = images[i].clone();
 
-        /*flip(img_ant, img_ant, -1);
-        flip(img_actual,img_actual , -1);
-        flip(img_sun, img_sun, -1);
-*/
         Mat im_ant, im_act;
-        Point2f centro_sol;
+
         //PARA CADA VENTANA SE PROCESAN LOS VECTORES DE MOVIMIENTO
         //IMAGEN SE DIVIDE EN VENTANAS DE 8X12 DE TAMAÑO (128X64)
 
@@ -115,12 +142,17 @@ int main(int argc, char *argv[])
 
         cout << "IMG: " << i << endl;
 
-        centro_sol = detecta_sun(img_sun, umbral_bajo);
+
+        if(j == sol)
+          centro_sol = detecta_sun(img_sun, umbral_bajo);
+
+        tipo_deteccion_sol = sun(img_sun, umbral_bajo);
 
 
       //  vectores_Window(centro_sol, img_actual, im_ant, im_act, i, filas, columnas);
         //vectores(centro_sol, img_actual, im_ant, im_act, i, filas, columnas, puntos);
-        vectores_img(centro_sol, img_actual, im_ant, im_act, i, filas, columnas, puntos);
+        vectores_img(centro_sol, img_actual, im_ant, im_act, i, filas, columnas, precision ,puntos, db, tipo_deteccion_sol);
+        std::cout << "--------------------------------------------------------------------------" << '\n';
 
 
 
@@ -132,14 +164,18 @@ int main(int argc, char *argv[])
         imshow("nubes", img_actual);
         //imshow("sol", img_sun);
 
+        j--;
 
+        if(j == 0) j = sol;
 
         key = waitKey(0);
         if(key == 27)
             break;
 
+
+
     }
 
-
+    sqlite3_close(db);
     return 0;
 }
