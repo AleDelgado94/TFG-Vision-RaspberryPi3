@@ -41,27 +41,56 @@ Tipo de prediccion del sol
  ********************************/
 
 
-void save_data(ofstream& fichero, string ruta_fichero, string nombre_img, Point2i pi, Point2i pf, float dist, float angulo, int id){
+bool existeFichero(char* fichero){
+  FILE* fich = nullptr;
+  fich = fopen(fichero, "r");
+  if( fich == NULL && errno == ENOENT)
+    return false;
+  else{
+    fclose(fich);
+    return true;
+  }
+}
+
+bool existeFichero(string fichero){
+  FILE* fich = nullptr;
+  fich = fopen(fichero.c_str(), "r");
+  if( fich == NULL && errno == ENOENT)
+    return false;
+  else{
+    fclose(fich);
+    return true;
+  }
+}
 
 
+void save_data(ofstream& fichero, string ruta_fichero, string nombre_img, int region, Point2f base_vector,
+  double dist, double angle, bool aproxima, std::string hora, std::string fecha, std::string llegada, string hora_llegada,
+  int temperature, int humedad, double solar ){
 
     fichero.open(ruta_fichero.c_str(), ios::app);
 
-    int pi_x = pi.x;
-    int pi_y = pi.y;
-    int pf_x = pf.x;
-    int pf_y = pf.y;
+    std::string aprox_sol;
 
-    fichero << id << ": ("+ to_string(pi_x) +", "+ to_string(pi_y) +")    ("+ to_string(pf_x) +", "+ to_string(pf_y) +")    "+ to_string(dist) +"    "+ to_string(angulo) +"\n";
+    if(aproxima)
+      aprox_sol = "Sí";
+    else
+      aprox_sol = "No";
+
+    std::string input = nombre_img + ",        " + to_string(region) + ",       " + "[" + to_string(base_vector.x) + "   " + to_string(base_vector.y) + "],       " +
+    to_string(dist) + ",       " + to_string(angle) + ",        " + aprox_sol + ",       " + hora + ",        " + fecha + ",       " +
+    llegada + ",       " + hora_llegada + ",        "  + to_string(temperature) + "ºC,        " + to_string(humedad) + "%,       " + to_string(solar) + "\n";
+
+
+    fichero << input;
     fichero.close();
-
 
 }
 
 
 void inicializa_fichero(ofstream& fichero, string ruta_fichero){
     fichero.open(ruta_fichero.c_str(), ios::app);
-    fichero << "Id_img  (Pi.x, Pi.y)    (Pf.x, Pf.y)    Dist    Angle\n";
+    fichero << "Nombre_Imagen,       Región,        Base_vector,       Distancia,        Ángulo,        Aproxima_Sol??,       Hora,        Fecha,       Llegada_aproximada,        Hora_llegada,        Temperatura,       Humedad,       Solar\n";
     fichero.close();
 }
 
@@ -73,8 +102,7 @@ void save_end_img(ofstream& fichero, string ruta_fichero){
 
 
 
-vector<string> leer_imagenes(const string& ruta_imagenes)
-{
+vector<string> leer_imagenes(const string& ruta_imagenes){
     vector<string> imagenes;
     dirent* img;
     DIR* directorio;
@@ -425,8 +453,7 @@ void dibuja_CloudTracking_red(Mat& img, const vector<Point2f>& img_ant_pts, cons
     save_end_img(fichero, "prueba.txt");
 }
 
-void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const Mat& img_act, int id, int filas=12,
-  int columnas=8, int num_puntos=2000){
+void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const Mat& img_act, int id, int filas=12,int columnas=8, int num_puntos=2000){
     vector<vector<vector<Point2f>>> v_tracking;
     int ancho = 1024/columnas;
     int alto = 768/filas;
@@ -485,13 +512,13 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
 
   }
 
-  bool entre(float num_procesar, float value_max, float value_min){
+bool entre(float num_procesar, float value_max, float value_min){
     return (num_procesar <= value_max && num_procesar >= value_min) ? true : false;
   }
 
 
 
-  bool entre(Point punto_procesar, Point vertice_superior, Point vertice_inferior){
+bool entre(Point punto_procesar, Point vertice_superior, Point vertice_inferior){
     if(entre(punto_procesar.x, vertice_inferior.x, vertice_superior.x) && entre(punto_procesar.y, vertice_inferior.y, vertice_superior.y))
       return true;
     else
@@ -499,9 +526,9 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
   }
 
 
-  void predice(Mat& img_original, Point2f centro_sol, Point2f base_vector, Point2f final_vector, int precision, int id,
+void predice(Mat& img_original, Point2f centro_sol, Point2f base_vector, Point2f final_vector, int precision, int id,
     sqlite3* db, std::string fecha, std::string hora, double temperatura, double humedad, double solar, int region_imagen,
-    std::string hora_img_ant, int tipo_deteccion_sol){
+    std::string hora_img_ant, int tipo_deteccion_sol, ofstream& fichero, string ruta_fichero, string nombre_img){
 
     double dist = sqrt(pow((final_vector.x - base_vector.x) , 2) + pow((final_vector.y - base_vector.y) , 2));
     string prediccion;
@@ -519,7 +546,6 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
       int COMPONENTE_Y = -(final_vector.y - base_vector.y);
 
       double angle = ((atan2((COMPONENTE_Y - 0), (COMPONENTE_X - 0)))*360) / (2*M_PI);
-      std::cout << "angulo: " << angle << '\n';
 
 
       Point final = Point((base_vector.x+(100*COMPONENTE_X)), (base_vector.y+100*(-COMPONENTE_Y)));
@@ -567,6 +593,9 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
       std::cout << "Direccion al Sol??: " << intercepta << '\n';
       std::cout << "COMPONENTE_X: " << COMPONENTE_X << '\n';
       std::cout << "COMPONENTE_Y: " << COMPONENTE_Y << '\n';
+
+      std::string tiempo_llegada_total  = "-1";
+      std::string tiempo_prediccion = "-1";
 
       if(intercepta){
         //CALCULAMOS LA DISTANCIA ENTRE EL VECTOR Y LA REGION DONDE SE ENCUENTRA EL SOL
@@ -618,14 +647,17 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
 
 
 
-        std::string tiempo_prediccion = to_string(hour) + " horas " + to_string(min) + " minutos y " + to_string(sec) + " segundos";
-        std::string tiempo_llegada_total = to_string(hour_llegada) + ":" + to_string(min_llegada) + ":" + to_string(sec_llegada);
+        tiempo_prediccion = to_string(hour) + " horas " + to_string(min) + " minutos y " + to_string(sec) + " segundos";
+        tiempo_llegada_total = to_string(hour_llegada) + ":" + to_string(min_llegada) + ":" + to_string(sec_llegada);
 
         std::cout << "Tardará aproximadamente " << tiempo_prediccion << " en llegar a la region solar sobre las "<< tiempo_llegada_total <<" horas." << '\n';
 
 
 
       }
+
+      save_data(fichero, ruta_fichero, nombre_img, region_imagen, base_vector, dist, angle,
+        intercepta, hora, fecha, tiempo_prediccion, tiempo_llegada_total, temperatura, humedad, solar);
 
     }
 
@@ -634,8 +666,9 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
   }
 
 
-  void vectores_img(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const Mat& img_act, int id, int filas=12,
-    int columnas=8, int precision=70,int num_puntos=5000, sqlite3* db=nullptr, int tipo_deteccion_sol=-1){
+void vectores_img(ofstream& fichero, Point2f centro_sol, Mat& img_original, const Mat& img_ant, const Mat& img_act, int id, int filas=12,
+    int columnas=8, int precision=70,int num_puntos=5000, sqlite3* db=nullptr, int tipo_deteccion_sol=-1,
+  std::string ruta_fichero="", std::string nombre_img=""){
       vector<vector<vector<Point2f>>> v_tracking;
       int ancho = 1024/columnas;
       int alto = 768/filas;
@@ -790,7 +823,7 @@ void vectores(Point2f centro_sol, Mat& img_original, const Mat& img_ant, const M
                   //arrowedLine(img_original, p_medio, p_final, Scalar(0,0,255),1,8,0,0.2);
                   dibuja_CloudTracking_red(img_original, v_ini, v_fin,i,j,estado,id);
                   predice(img_original, centro_sol,p_medio, p_final, precision, id, db, fecha, hora, temperatura,
-                     humedad, solar, index, hora_ant, tipo_deteccion_sol);
+                     humedad, solar, index, hora_ant, tipo_deteccion_sol, fichero, ruta_fichero, nombre_img);
                   index++;
                }
 

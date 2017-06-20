@@ -85,7 +85,11 @@ int main(int argc, char *argv[])
           return(-1);
       }
 
-    //string ruta_directorio = argv[1];
+      if(!existeFichero(output_prediction)){
+        std::cout << "Creando fichero: " << output_prediction << '\n';
+        inicializa_fichero(fichero, output_prediction);
+      }
+
 
 
     cout << "Umbral: " << umbral_bajo << endl << endl;
@@ -117,7 +121,6 @@ int main(int argc, char *argv[])
         images.push_back(im);
     }
 
-    inicializa_fichero(fichero, "prueba.txt");
 
     int j=sol;
     Point2f centro_sol;
@@ -151,9 +154,14 @@ int main(int argc, char *argv[])
 
       //  vectores_Window(centro_sol, img_actual, im_ant, im_act, i, filas, columnas);
         //vectores(centro_sol, img_actual, im_ant, im_act, i, filas, columnas, puntos);
-        vectores_img(centro_sol, img_actual, im_ant, im_act, i, filas, columnas, precision ,puntos, db, tipo_deteccion_sol);
+        vectores_img(fichero, centro_sol, img_actual, im_ant, im_act, i, filas, columnas, precision ,puntos,
+          db, tipo_deteccion_sol, output_prediction, imgs_name_sort[i]);
         std::cout << "--------------------------------------------------------------------------" << '\n';
-
+        int fontFace = FONT_HERSHEY_PLAIN;
+        double fontScale = 1.5;
+        int thinkness = 1;
+        putText(img_actual, imgs_name_sort[i], Point(10,25), fontFace, fontScale, CV_RGB(29,247,29), thinkness, 8);
+        save_end_img(fichero, output_prediction);
 
 
         //dibuja_CloudTracking(img_actual, puntos_ant, puntos_actual, estado, i);

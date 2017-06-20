@@ -1,3 +1,6 @@
 Mejores patrones para el algoritmo:
  - images12062017_merge 421 o 438 o 583
  - images04062017_hdr 49
+
+./Detection.o -d imagenes/images12062017_merge/ -p 9000 -i 438 -u 60 -s 10 -b Database/database_12062017.db -o salida.txt
+
