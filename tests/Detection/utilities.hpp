@@ -35,9 +35,10 @@ namespace as = boost::asio;
 using namespace::boost::asio;
 
 /********************************
-Tipo de prediccion del sol
+Tipo de prediccion del Sol
  0 - Prediccion por brillo
  1 - Prediccion por contornos
+ -1 - No deteccion del Sol
  ********************************/
 
 
@@ -66,7 +67,7 @@ bool existeFichero(string fichero){
 
 void save_data(ofstream& fichero, string ruta_fichero, string nombre_img, int region, Point2f base_vector,
   double dist, double angle, bool aproxima, std::string hora, std::string fecha, std::string llegada, string hora_llegada,
-  int temperature, int humedad, double solar ){
+  int temperature, int humedad, double solar, double velocidad ){
 
     fichero.open(ruta_fichero.c_str(), ios::app);
 
@@ -77,9 +78,9 @@ void save_data(ofstream& fichero, string ruta_fichero, string nombre_img, int re
     else
       aprox_sol = "No";
 
-    std::string input = nombre_img + ",        " + to_string(region) + ",       " + "[" + to_string(base_vector.x) + "   " + to_string(base_vector.y) + "],       " +
-    to_string(dist) + ",       " + to_string(angle) + ",        " + aprox_sol + ",       " + hora + ",        " + fecha + ",       " +
-    llegada + ",       " + hora_llegada + ",        "  + to_string(temperature) + "ºC,        " + to_string(humedad) + "%,       " + to_string(solar) + "\n";
+    std::string input = nombre_img + "," + to_string(region) + "," + "[" + to_string(base_vector.x) + "   " + to_string(base_vector.y) + "],       " +
+    to_string(dist) + "," + to_string(angle) + "," + aprox_sol + "," + hora + "," + fecha + "," +
+    llegada + "," + hora_llegada + "," + to_string(velocidad)+ "," + to_string(temperature) + "ºC," + to_string(humedad) + "%," + to_string(solar) + "\n";
 
 
     fichero << input;
@@ -90,7 +91,7 @@ void save_data(ofstream& fichero, string ruta_fichero, string nombre_img, int re
 
 void inicializa_fichero(ofstream& fichero, string ruta_fichero){
     fichero.open(ruta_fichero.c_str(), ios::app);
-    fichero << "Nombre_Imagen,       Región,        Base_vector,       Distancia,        Ángulo,        Aproxima_Sol??,       Hora,        Fecha,       Llegada_aproximada,        Hora_llegada,        Temperatura,       Humedad,       Solar\n";
+    fichero << "Nombre_Imagen,       Región,        Base_vector,       Distancia,        Ángulo,        Aproxima_Sol??,       Hora,        Fecha,       Llegada_aproximada,        Hora_llegada,        Velocidad (pixel/sec),        Temperatura,       Humedad,       Solar\n";
     fichero.close();
 }
 
@@ -137,7 +138,7 @@ int menor_vector(vector<float> soles_radio){
     return retorno;
 }
 
-int sun(Mat& img1, int umbral_bajo){
+int sun(Mat img1, int umbral_bajo){
   vector<float> soles_radio;
   vector<Point2f> soles_center;
 
@@ -199,6 +200,8 @@ int sun(Mat& img1, int umbral_bajo){
       return 1;
 
   }else if(soles_radio.size() == 1){
+
+
       auto radio = soles_radio.front();
       auto centro = soles_center.front();
       soles_radio.clear();
@@ -207,7 +210,6 @@ int sun(Mat& img1, int umbral_bajo){
   }
   else
   {
-
     //imshow("img1",img1);
       //NO SE DETECTO EL SOL MEDIANTE LA TÉCNICA UTILIZADA
       Mat hsv;
@@ -225,6 +227,12 @@ int sun(Mat& img1, int umbral_bajo){
       Moments m;
       m = moments(mask);
       double moment_area = m.m00;
+
+      if(moment_area <= 0){
+        return -1;
+      }
+
+
       Point2f center;
 
       cout << moment_area << endl;
@@ -233,6 +241,8 @@ int sun(Mat& img1, int umbral_bajo){
       int y = int(m.m01/m.m00);
       center.x = x;
       center.y = y;
+
+
 
       return 0;
 
@@ -267,8 +277,6 @@ Point2f detecta_sun(Mat& img1, int umbral_bajo){
     vector<Point2f> center(contours.size());
     vector<float> radius(contours.size());
 
-    cout << "Contornos encontrados: " << contours.size() << endl;
-
     Point2f aprox_punto_central;
 
     for (int i = 0; i < contours.size(); i++)
@@ -280,13 +288,11 @@ Point2f detecta_sun(Mat& img1, int umbral_bajo){
 
 
             if (radius[i] > 50 && radius[i] < 210) {
-              cout << "Radio: " << radius[i] << endl;
                     soles_radio.push_back(radius[i]);
                     soles_center.push_back(center[i]);
             }
     }
 
-    std::cout << "Radio_Sol: " << soles_radio.size() << '\n';
 
     if(soles_radio.size() > 1){
 
@@ -310,7 +316,6 @@ Point2f detecta_sun(Mat& img1, int umbral_bajo){
         radio = soles_radio[index];
         aprox_punto_central = centro;
 
-        std::cout << "Detección por contornos aproximacion" << '\n';
 
         circle(img1, centro, 70, Scalar(0, 0, 255), 2, 8, 0);
         circle(img1, centro, 5, Scalar(255, 0, 0), 2, 8, 0);
@@ -323,7 +328,6 @@ Point2f detecta_sun(Mat& img1, int umbral_bajo){
         aprox_punto_central = centro;
         soles_radio.clear();
         soles_center.clear();
-        std::cout << "Detección por contornos" << '\n';
         circle(img1, centro, 70, Scalar(0, 0, 255), 2, 8, 0);
         circle(img1, centro, 5, Scalar(255, 0, 0), 2, 8, 0);
     }
@@ -589,13 +593,11 @@ void predice(Mat& img_original, Point2f centro_sol, Point2f base_vector, Point2f
         circle(img_original, actual, 2, Scalar(255,0,0));
       }
 
-
-      std::cout << "Direccion al Sol??: " << intercepta << '\n';
-      std::cout << "COMPONENTE_X: " << COMPONENTE_X << '\n';
-      std::cout << "COMPONENTE_Y: " << COMPONENTE_Y << '\n';
-
       std::string tiempo_llegada_total  = "-1";
       std::string tiempo_prediccion = "-1";
+      double velocida_pixel = 0.0;
+
+      std::cout << "Direccion al Sol??: " << intercepta << '\n';
 
       if(intercepta){
         //CALCULAMOS LA DISTANCIA ENTRE EL VECTOR Y LA REGION DONDE SE ENCUENTRA EL SOL
@@ -619,7 +621,7 @@ void predice(Mat& img_original, Point2f centro_sol, Point2f base_vector, Point2f
 
         // PUNTO SE MUEVE "paso_tiempo" SEGUNDOS ENTRE EL PUNTO "base_vector" Y "final_vector"
         // CON UNA DISTANCIA "dist"
-        double velocida_pixel = dist/paso_tiempo;
+        velocida_pixel = dist/paso_tiempo;
         std::cout << "Velocidad: " << velocida_pixel << '\n';
 
         //TENEMOS DISTANCIA HASTA LA REGION DEL SOL "distancia_Sol"
@@ -656,8 +658,26 @@ void predice(Mat& img_original, Point2f centro_sol, Point2f base_vector, Point2f
 
       }
 
+      //CASO EN EL QUE EL VECTOR DE MOVIMIENTO SE ENCUENTRA COMPLETAMENTE
+      //DENTRO DE LA REGION SOLAR
+      if(entre(base_vector, ini_sol, fin_sol) && entre(final_vector, ini_sol, fin_sol) && tipo_deteccion_sol==0){
+          intercepta = true;
+          tiempo_prediccion = "Nube tapa el Sol";
+          tiempo_llegada_total = "Actualmente";
+      }else if(entre(base_vector, ini_sol, fin_sol) && entre(final_vector, ini_sol, fin_sol) && tipo_deteccion_sol==1){
+          intercepta = true;
+          tiempo_prediccion = "Nube tapa parcialmente el Sol";
+          tiempo_llegada_total = "Actualmente";
+      }else if(tipo_deteccion_sol == -1){
+        tiempo_llegada_total = "Sol completamente tapado";
+          tiempo_llegada_total = "Actualmente";
+      }
+
+      //NUBE SE VA
+      //if(entre(base_vector, ini_sol, fin_sol) && !entre(final_vector, ini_sol, fin_sol))
+
       save_data(fichero, ruta_fichero, nombre_img, region_imagen, base_vector, dist, angle,
-        intercepta, hora, fecha, tiempo_prediccion, tiempo_llegada_total, temperatura, humedad, solar);
+        intercepta, hora, fecha, tiempo_prediccion, tiempo_llegada_total, temperatura, humedad, solar, velocida_pixel);
 
     }
 

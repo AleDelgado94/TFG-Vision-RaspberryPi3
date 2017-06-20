@@ -150,6 +150,8 @@ int main(int argc, char *argv[])
           centro_sol = detecta_sun(img_sun, umbral_bajo);
 
         tipo_deteccion_sol = sun(img_sun, umbral_bajo);
+        if(tipo_deteccion_sol == 0) std::cout << "Detecta por brillo" << '\n';
+        else  std::cout << "Detecta por contornos" << '\n';
 
 
       //  vectores_Window(centro_sol, img_actual, im_ant, im_act, i, filas, columnas);
