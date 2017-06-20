@@ -265,7 +265,6 @@ Point2f detecta_sun(Mat& img1, int umbral_bajo){
     Mat edge;
     cvtColor(bilateralFilterImg, bilateralFilterImg, CV_RGB2GRAY);
     threshold(bilateralFilterImg, edge, umbral_bajo, 255, 0);
-    imshow("threshold", edge);
 
 
     //COUNTOURS
@@ -706,7 +705,6 @@ void vectores_img(ofstream& fichero, Point2f centro_sol, Mat& img_original, cons
             Mat edge;
             cvtColor(bilateralFilterImg, bilateralFilterImg, CV_RGB2GRAY);
             threshold(bilateralFilterImg, edge, 200, 255, 0);
-            imshow("edge", edge);
 
             Mat bilateralFilterImg2;
             bilateralFilter(img_act, bilateralFilterImg2, 5, 175, 175);
@@ -715,7 +713,6 @@ void vectores_img(ofstream& fichero, Point2f centro_sol, Mat& img_original, cons
             Mat edge2;
             cvtColor(bilateralFilterImg2, bilateralFilterImg2, CV_RGB2GRAY);
             threshold(bilateralFilterImg2, edge2, 200, 255, 0);
-            imshow("edge", edge2);
 
 
             //imshow(im, ventana_img_actual);
@@ -770,7 +767,8 @@ void vectores_img(ofstream& fichero, Point2f centro_sol, Mat& img_original, cons
             int index = 0;
             for (size_t i = 0; i < 1024 ; i=i+ancho) {
               for (size_t j = 0; j < 768  ; j=j+alto) {
-                //cout << "Index: " << index << endl;
+                putText(img_original, to_string(index), Point(i+10,j+15), FONT_HERSHEY_PLAIN, 1, CV_RGB(255,213,0), 1, 8);
+
 
                 std::vector<Point2f> v_p_ant;
                 std::vector<Point2f> v_p_act;
@@ -834,18 +832,15 @@ void vectores_img(ofstream& fichero, Point2f centro_sol, Mat& img_original, cons
                     media_y_act += v_p_act[k].y;
                   }
                   Point2f p_final = Point2f((int)(media_x_act/size_act), (int)(media_y_act/size_act));
-
-
                   v_fin.push_back(p_final);
-
-                  //std::cout << "Distancia final: " << sqrt(pow((p_final.x - p_medio.x) , 2) + pow((p_final.y - p_medio.y) , 2)) << '\n';
+                  putText(img_original, to_string(index), Point(i+10,j+15), FONT_HERSHEY_PLAIN, 1, CV_RGB(255,0,0), 1, 8);
 
                   //arrowedLine(img_original, p_medio, p_final, Scalar(0,0,255),1,8,0,0.2);
                   dibuja_CloudTracking_red(img_original, v_ini, v_fin,i,j,estado,id);
                   predice(img_original, centro_sol,p_medio, p_final, precision, id, db, fecha, hora, temperatura,
                      humedad, solar, index, hora_ant, tipo_deteccion_sol, fichero, ruta_fichero, nombre_img);
-                  index++;
                }
+               index++;
 
 
               }
