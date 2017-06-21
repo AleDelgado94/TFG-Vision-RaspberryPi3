@@ -717,7 +717,7 @@ void vectores_img(ofstream& fichero, Point2f centro_sol, Mat& img_original, cons
 
             //imshow(im, ventana_img_actual);
 
-            goodFeaturesToTrack(edge, p_img_anterior, num_puntos, 0.01, 0);
+            goodFeaturesToTrack(edge, p_img_anterior, num_puntos, 0.01, 0,noArray(),3,true);
             calcOpticalFlowPyrLK(edge, edge2, p_img_anterior, p_img_actual, estado, error);
 
             ///////////////////////////////
